@@ -1,0 +1,38 @@
+.card
+{
+    align-items: center;
+    width: 250px;
+    float: right;
+    margin-right: 5px;
+    position: relative;
+    
+}
+h5{
+    text-align: center;
+    margin-top: 3px;
+}
+
+@media screen and (min-width: 350px){
+    .cont{
+        position: absolute;
+        /*margin-left: 5%;*/
+    }
+    body{
+        background-color: yellow;
+    }
+}
+
+@media screen and (max-width: 1280px){
+    .cont{
+        position: absolute;
+        margin-left: 50%;
+    }
+
+}
+@media screen and (max-width: 1920px){
+    .cont{
+        position: absolute;
+        margin-left: 87%;
+    }
+
+}
