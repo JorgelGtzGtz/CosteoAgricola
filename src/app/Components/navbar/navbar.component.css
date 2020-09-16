@@ -1,38 +1,59 @@
-.card
-{
+.card {
     align-items: center;
     width: 250px;
     float: right;
     margin-right: 5px;
     position: relative;
-    
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
-h5{
+
+h5 {
     text-align: center;
     margin-top: 3px;
 }
 
-@media screen and (min-width: 350px){
-    .cont{
+@media screen and (min-width: 350px) {
+    .cont {
         position: absolute;
         /*margin-left: 5%;*/
     }
-    body{
+    body {
         background-color: yellow;
     }
 }
 
-@media screen and (max-width: 1280px){
-    .cont{
+@media (max-width: 1500px) {
+    .cont {
         position: absolute;
-        margin-left: 50%;
+        margin-left: 95%;
     }
-
 }
-@media screen and (max-width: 1920px){
-    .cont{
-        position: absolute;
-        margin-left: 87%;
-    }
 
+@media (min-width: 1300px) {
+    .cont {
+        position: absolute;
+        margin-left: 80%;
+    }
+}
+
+@media (max-width: 1280px) {
+    .cont {
+        position: absolute;
+        margin-left: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .cont {
+        position: absolute;
+        margin-left: 65%;
+    }
+}
+
+@media (max-width: 500px) {
+    .cont {
+        position: absolute;
+        margin-left: 35%;
+    }
 }
