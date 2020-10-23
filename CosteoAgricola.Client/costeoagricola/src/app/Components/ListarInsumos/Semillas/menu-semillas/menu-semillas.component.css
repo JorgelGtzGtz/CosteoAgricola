@@ -1,0 +1,14 @@
+.card {
+    width: 67rem;
+}
+
+.tablita {
+    width: 64rem;
+    height: 22rem;
+}
+
+thead {
+    background: white;
+    position: sticky;
+    top: 0;
+}
