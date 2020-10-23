@@ -14,8 +14,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  // tslint:disable-next-line: typedef
   iniciarSesion(){
-    this.router.navigateByUrl('/home');
+    this.router.navigate(['/home']);
+    // this.router.navigateByUrl('/home');
   }
 
 

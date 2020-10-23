@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-fert',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuFertComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
+// tslint:disable-next-line: typedef
+altaFertilizantes(){
+  this.router.navigate(['/alta-fertilizantes']);
+}
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-semillas',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuSemillasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
+  // tslint:disable-next-line: typedef
+  altaSemillas(){
+    this.router.navigate(['/alta-semillas']);
+  }
+  // tslint:disable-next-line: typedef
+  home()
+  {
+    this.router.navigate(['/home']);
+  }
 }

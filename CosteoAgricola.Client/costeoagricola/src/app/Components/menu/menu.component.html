@@ -28,9 +28,11 @@
                                 <a><i class="fas fa-hammer pr-4"></i> Insumos<span class="arrow"></span></a>
                             </li>
                             <ul class="sub-menu collapse" id="new2">
-                                <li><a [routerLink]="['',{ outlets: { routerhome: ['insumos-semillas'] }}]">Semillas</a></li>
-                                <li><a [routerLink]="['insumos-semillas']">Fertilizantes</a></li>
-                                <li><a [routerLink]="['insumos-agroquimicos']">Agroquímicos</a></li>
+                                <!-- Los puse en el Li tambien para que agarre si le aplasta donde no esta el nombre    -->
+                                <li [routerLink]="['/insumos-semillas']"> <a [routerLink]="['/insumos-semillas']">Semillas</a></li>
+                                <li [routerLink]="['/insumos-fertilizantes']"> <a [routerLink]="['/insumos-fertilizantes']">Fertilizantes</a></li>
+                                <li [routerLink]="['/insumos-agroquimicos']"> <a [routerLink]="['/insumos-agroquimicos']">Agroquímicos</a></li>
+                                <li [routerLink]="['/insumos-productos']"> <a [routerLink]="['/insumos-productos']">Productos</a></li>
                             </ul>
                             <!-- SUBMENU DE SIEMBRA-->
                             <li data-toggle="collapse" data-target="#new3" class="collapsed">
