@@ -16,4 +16,9 @@ export class MenuProduInsuComponent implements OnInit {
 altaProductos(){
   this.router.navigate(['/alta-productos']);
 }
+// tslint:disable-next-line: typedef
+retroceder()
+{
+  this.router.navigate(['/home']);
+}
 }

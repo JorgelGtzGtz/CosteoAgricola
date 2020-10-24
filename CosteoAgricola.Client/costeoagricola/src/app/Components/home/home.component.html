@@ -1,6 +1,16 @@
-<app-menu></app-menu>
-<div class="container overflow-scroll">
+<div class="containermenu float-left bg-danger">
+
+    <app-menu> </app-menu>
+    <!--
+         <h5>MENU</h5>
+    <app-menu></app-menu>
+     -->
+</div>
+<div class="container overflow-scroll float-right bg-primary" (click)="pantalla()">
+    <h5>PANTALLAS</h5>
     <!-- <router-outlet name="routerhome"></router-outlet> -->
-    <!-- <app-alta-semillas></app-alta-semillas> -->
+    <!--<app-alta-semillas></app-alta-semillas>-->
     <!--Arreglar outlet-->
 </div>
+
+<router-outlet></router-outlet>

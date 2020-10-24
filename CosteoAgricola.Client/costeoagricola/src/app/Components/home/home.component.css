@@ -1,4 +1,52 @@
 .container {
-    padding-left: 14rem;
-    padding-top: 2rem;
+    /*padding-left: 14rem;
+    padding-top: 2rem;*/
+    width: 64rem;
 }
+
+.containermenu {
+    width: 21.5rem;
+    /*padding-top: 2rem;*/
+}
+
+
+/*RESPONSIVIDAD*/
+
+@media (max-width: 767px) {
+    .containermenu {
+        width: 100%;
+    }
+    .container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .containermenu {
+        width: 250px;
+    }
+    .container {
+        width: 774px;
+    }
+}
+
+@media (min-width: 1040px) {
+    .containermenu {
+        width: 50%;
+    }
+    .container {
+        width: 75%;
+    }
+}
+
+
+/*
+@media (min-width: 767px) {
+    .containermenu {
+        width: 100%;
+    }
+    .container {
+        width: 100%;
+    }
+}
+*/

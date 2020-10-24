@@ -16,4 +16,9 @@ export class MenuAgroComponent implements OnInit {
  altaAgroquimicos(){
   this.router.navigate(['/alta-agroquimicos']);
 }
+// tslint:disable-next-line: typedef
+retroceder()
+{
+  this.router.navigate(['/home']);
+}
 }

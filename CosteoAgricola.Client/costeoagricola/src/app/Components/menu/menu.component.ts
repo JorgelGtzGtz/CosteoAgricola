@@ -14,4 +14,4 @@ export class MenuComponent implements OnInit {
   // tslint:disable-next-line:typedef
   ngOnInit() {
   }
-  }
+}
