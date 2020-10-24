@@ -16,4 +16,9 @@ export class MenuFertComponent implements OnInit {
 altaFertilizantes(){
   this.router.navigate(['/alta-fertilizantes']);
 }
+// tslint:disable-next-line: typedef
+retroceder()
+{
+  this.router.navigate(['/home']);
+}
 }

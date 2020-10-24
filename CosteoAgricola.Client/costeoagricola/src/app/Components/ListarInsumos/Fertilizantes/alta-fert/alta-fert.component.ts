@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alta-fert',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AltaFertComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
+  // tslint:disable-next-line: typedef
+  retroceder()
+  {
+    this.router.navigate(['/insumos-fertilizantes']);
+  }
 }
