@@ -20,17 +20,22 @@ const routes: Routes = [
     {path: 'insumos-semillas', outlet: 'inicio-semillas', component: MenuSemillasComponent},
     {path: 'alta-semillas', outlet: 'add-semillas', component: AltaSemillasComponent},
     {path: 'insumos-fertilizantes', outlet: 'inicio-fertilizantes', component: MenuFertComponent},
+    {path: 'alta-fertilizantes', outlet: 'add-fertilizantes', component: AltaFertComponent},
     {path: 'insumos-agroquimicos', outlet: 'inicio-agroquimicos', component: MenuAgroComponent},
+    {path: 'alta-agroquimicos', outlet: 'add-agroquimicos', component: AltaAgroComponent},
     {path: 'insumos-productos', outlet: 'inicio-productos', component: MenuProduInsuComponent},
-    {path: 'insumos-unidades', outlet: 'inicio-unidades', component: MenuUniInsComponent}]},
+    {path: 'alta-productos', outlet: 'add-productos', component: AltaProduComponent},
+    {path: 'insumos-unidades', outlet: 'inicio-unidades', component:  MenuUniInsComponent}]},
+    {path: 'alta-unidades', outlet: 'add-unidades', component: AltaUniInsComponent}
  // {path: 'insumos-fertilizantes', component: MenuFertComponent},
  // {path: 'insumos-agroquimicos', component: MenuAgroComponent},
   // {path: 'insumos-semillas', component: MenuSemillasComponent},
   // {path: 'insumos-productos', component: MenuProduInsuComponent},
  // {path: 'alta-semillas', component: AltaSemillasComponent},
-  {path: 'alta-fertilizantes', component: AltaFertComponent},
-  {path: 'alta-agroquimicos', component: AltaAgroComponent},
-  {path: 'alta-productos', component: AltaProduComponent}
+ // {path: 'alta-fertilizantes', component: AltaFertComponent},
+  // {path: 'alta-agroquimicos', component: AltaAgroComponent},
+ // {path: 'alta-productos', component: AltaProduComponent},
+  // {path: 'alta-unidades', component: AltaUniInsComponent}
 ];
 
 @NgModule({

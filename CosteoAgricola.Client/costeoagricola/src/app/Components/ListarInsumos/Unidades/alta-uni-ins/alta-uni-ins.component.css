@@ -1,0 +1,10 @@
+.card {
+    width: 63.4rem;
+    margin-left: -1.6%;
+}
+
+@media (max-width: 280px) {
+    .card {
+        width: auto;
+    }
+}
