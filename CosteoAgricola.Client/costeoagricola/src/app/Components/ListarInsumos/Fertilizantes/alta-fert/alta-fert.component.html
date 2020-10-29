@@ -1,5 +1,8 @@
 <div class="card">
-    <h5 class="card-header">Alta de Fertilizantes <button class="float-right btn btn-danger ml-1 w-15 h-25 mt-4 m-auto" (click)="retroceder()">Cerrar</button> </h5>
+    <h5 class="card-header">Alta de Fertilizantes <button class="float-right btn btn-danger ml-1 w-15 h-25 mt-4 m-auto" (click)="retroceder()">
+        <i class="fas fa-arrow-circle-left"></i>
+        Cerrar
+    </button> </h5>
     <div class="card-body">
         <div class="form-row">
             <div class="form-group col-md-1">
@@ -125,7 +128,10 @@
                 <label for="inputState">Observaciones</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary w-25 h-25 mt-4 m-auto">Guardar</button>
+            <button type="submit" class="btn btn-success w-25 h-25 mt-4 m-auto">
+                <i class="fas fa-save"></i>
+                Guardar
+            </button>
         </div>
 
     </div>
