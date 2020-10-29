@@ -16,6 +16,8 @@ import { AltaAgroComponent } from './Components/ListarInsumos/Agroquimicos/alta-
 import { AltaFertComponent } from './Components/ListarInsumos/Fertilizantes/alta-fert/alta-fert.component';
 import { AltaProduComponent } from './Components/ListarInsumos/ProductosInsumos/alta-produ/alta-produ.component';
 import { AltaSemillasComponent } from './Components/ListarInsumos/Semillas/alta-semillas/alta-semillas.component';
+import { AltaUniInsComponent } from './Components/ListarInsumos/Unidades/alta-uni-ins/alta-uni-ins.component';
+import { MenuUniInsComponent } from './Components/ListarInsumos/Unidades/menu-uni-ins/menu-uni-ins.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AltaSemillasComponent } from './Components/ListarInsumos/Semillas/alta-
     AltaAgroComponent,
     AltaFertComponent,
     AltaProduComponent,
-    AltaSemillasComponent
+    AltaSemillasComponent,
+    MenuUniInsComponent,
+    AltaUniInsComponent
   ],
   imports: [
     BrowserModule,
