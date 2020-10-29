@@ -12,10 +12,7 @@ export class MenuSemillasComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // tslint:disable-next-line: typedef
-  altaSemillas(){
-    this.router.navigate(['/alta-semillas']);
-  }
+
   // tslint:disable-next-line: typedef
   home()
   {

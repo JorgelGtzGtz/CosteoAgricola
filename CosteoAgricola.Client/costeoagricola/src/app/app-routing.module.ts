@@ -14,7 +14,10 @@ import { AltaProduComponent } from './Components/ListarInsumos/ProductosInsumos/
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
+
+  {path: 'home', component: HomeComponent, children: [
+    {path: 'insumos-semillas', outlet: 'inicio-semillas', component: MenuSemillasComponent},
+    {path: 'alta-semillas', outlet: 'add-semillas', component: AltaSemillasComponent}]},
   {path: 'insumos-fertilizantes', component: MenuFertComponent},
   {path: 'insumos-agroquimicos', component: MenuAgroComponent},
   {path: 'insumos-semillas', component: MenuSemillasComponent},
@@ -23,7 +26,6 @@ const routes: Routes = [
   {path: 'alta-fertilizantes', component: AltaFertComponent},
   {path: 'alta-agroquimicos', component: AltaAgroComponent},
   {path: 'alta-productos', component: AltaProduComponent}
-
 ];
 
 @NgModule({

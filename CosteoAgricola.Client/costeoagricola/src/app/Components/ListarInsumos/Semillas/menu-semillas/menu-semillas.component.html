@@ -24,7 +24,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary ml-1 w-25 h-25 mt-4 m-auto" (click)="altaSemillas()">+ Nuevo</button>
+            <button type="submit" class="btn btn-primary ml-1 w-25 h-25 mt-4 m-auto" [routerLink]="['/home', {outlets: {'add-semillas': ['alta-semillas']}}]">+ Nuevo</button>
         </div>
 
         <div class="tablita mt-2 overflow-auto table-responsive">

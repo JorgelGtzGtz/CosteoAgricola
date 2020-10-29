@@ -9,10 +9,9 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   constructor(private router: Router) { }
-
   ngOnInit(): void {
   }
   // tslint:disable-next-line: ban-types
   // tslint:disable-next-line: typedef
-  
+
 }
