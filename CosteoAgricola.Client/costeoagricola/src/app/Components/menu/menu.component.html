@@ -29,10 +29,10 @@
                             </li>
                             <ul class="sub-menu collapse" id="new2">
                                 <!-- Los puse en el Li tambien para que agarre si le aplasta donde no esta el nombre    -->
-                                <li [routerLink]="['/insumos-semillas']"> <a [routerLink]="['/insumos-semillas']">Semillas</a></li>
-                                <li [routerLink]="['/insumos-fertilizantes']"> <a [routerLink]="['/insumos-fertilizantes']">Fertilizantes</a></li>
+                                <li> <a [routerLink]="['/home', {outlets: {'inicio-semillas': ['insumos-semillas']}}]">Semillas</a></li>
+                                <!--<li [routerLink]="['/insumos-fertilizantes']"> <a [routerLink]="['/insumos-fertilizantes']">Fertilizantes</a></li>
                                 <li [routerLink]="['/insumos-agroquimicos']"> <a [routerLink]="['/insumos-agroquimicos']">Agroquímicos</a></li>
-                                <li [routerLink]="['/insumos-productos']"> <a [routerLink]="['/insumos-productos']">Productos</a></li>
+                                <li [routerLink]="['/insumos-productos']"> <a [routerLink]="['/insumos-productos']">Productos</a></li>-->
                             </ul>
                             <!-- SUBMENU DE SIEMBRA-->
                             <li data-toggle="collapse" data-target="#new3" class="collapsed">
@@ -81,7 +81,7 @@
             </div>
             <!-- 
       <div class="col-sm-9 col-sm-offset-1">
-          <h1>Welcome To Dashboard Panel :)</h1>
+          <h1>Welcome To Dashboard Panel </h1>
           <p>
               this is test text.this is test text.this is test text.this is test text. this is test text.this is test text.this is test text.this is test text. this is test text.this is test text.this is test text.this is test text. this is test text.this is test text.this
               is test text.this is test text. this is test text.this is test text.

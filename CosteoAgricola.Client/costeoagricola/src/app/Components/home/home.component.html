@@ -1,16 +1,18 @@
 <div class="containermenu float-left bg-danger">
 
-    <app-menu> </app-menu>
+    <app-menu style="z-index: 100;"> </app-menu>
     <!--
          <h5>MENU</h5>
     <app-menu></app-menu>
      -->
 </div>
-<div class="container overflow-scroll float-right bg-primary" (click)="pantalla()">
-    <h5>PANTALLAS</h5>
-    <!-- <router-outlet name="routerhome"></router-outlet> -->
-    <!--<app-alta-semillas></app-alta-semillas>-->
-    <!--Arreglar outlet-->
-</div>
 
-<router-outlet></router-outlet>
+<div class="container overflow-scroll float-right bg-primary">
+
+    <router-outlet name="inicio-semillas"> </router-outlet>
+
+
+    <!-- <router-outlet name="routerhome"></router-outlet> <h5>PANTALLAS</h5>-->
+    <!--<app-alta-semillas></app-alta-semillas>  <router-outlet></router-outlet> -->
+    <!--Arreglar outlet       <router-outlet name="add-semillas"> </router-outlet> -->
+</div>
