@@ -29,10 +29,27 @@
                             </li>
                             <ul class="sub-menu collapse" id="new2">
                                 <!-- Los puse en el Li tambien para que agarre si le aplasta donde no esta el nombre    -->
-                                <li> <a [routerLink]="['/home', {outlets: {'inicio-semillas': ['insumos-semillas']}}]">Semillas</a></li>
-                                <!--<li [routerLink]="['/insumos-fertilizantes']"> <a [routerLink]="['/insumos-fertilizantes']">Fertilizantes</a></li>
-                                <li [routerLink]="['/insumos-agroquimicos']"> <a [routerLink]="['/insumos-agroquimicos']">Agroquímicos</a></li>
-                                <li [routerLink]="['/insumos-productos']"> <a [routerLink]="['/insumos-productos']">Productos</a></li>-->
+                                <!-- INSUMOS/OPCIÓN DE SEMILLAS-->
+                                <li [routerLink]="['/home', {outlets: {'inicio-semillas': ['insumos-semillas']}}]">
+                                    <a [routerLink]="['/home', {outlets: {'inicio-semillas': ['insumos-semillas']}}]">Semillas</a>
+                                </li>
+                                <!-- INSUMOS/OPCIÓN DE FERTILIZANTES-->
+                                <li [routerLink]="['/home', {outlets: {'inicio-fertilizantes': ['insumos-fertilizantes']}}]">
+                                    <a [routerLink]="['/home', {outlets: {'inicio-fertilizantes': ['insumos-fertilizantes']}}]">Fertilizantes</a>
+                                </li>
+                                <!-- INSUMOS/OPCIÓN DE AGROQUÍMICOS-->
+                                <li [routerLink]="['/home', {outlets: {'inicio-agroquimicos': ['insumos-agroquimicos']}}]">
+                                    <a [routerLink]="['/home', {outlets: {'inicio-agroquimicos': ['insumos-agroquimicos']}}]">Agroquímicos</a>
+                                </li>
+                                <!-- INSUMOS/OPCIÓN DE PRODUCTOS-->
+                                <li [routerLink]="['/home', {outlets: {'inicio-productos': ['insumos-productos']}}]">
+                                    <a [routerLink]="['/home', {outlets: {'inicio-productos': ['insumos-productos']}}]">Productos</a>
+                                </li>
+                                <!-- INSUMOS/OPCIÓN DE UNIDADES-->
+                                <li [routerLink]="['/home', {outlets: {'inicio-unidades': ['insumos-unidades']}}]">
+                                    <a [routerLink]="['/home', {outlets: {'inicio-unidades': ['insumos-unidades']}}]">Unidades</a>
+                                </li>
+
                             </ul>
                             <!-- SUBMENU DE SIEMBRA-->
                             <li data-toggle="collapse" data-target="#new3" class="collapsed">
