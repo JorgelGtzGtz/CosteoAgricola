@@ -1,5 +1,5 @@
-<div class="card">
-    <h5 class="card-header">Alta de Semillas <button class="float-right btn btn-danger ml-1 w-15 h-25 mt-4 m-auto" [routerLink]="['/home', {outlets: {'inicio-semillas': ['insumos-semillas']}}]">
+<div class="card" *ngIf="show">
+    <h5 class="card-header">Alta de Semillas <button class="float-right btn btn-danger ml-1 w-15 h-25 mt-4 m-auto" [routerLink]="['/home', {outlets: {'inicio-semillas': ['insumos-semillas']}}]" (click)="show=!show" (click)="retroceder()">
         <i class="fas fa-arrow-circle-left"></i>
         Cerrar
     </button></h5>
