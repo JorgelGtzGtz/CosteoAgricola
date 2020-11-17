@@ -25,8 +25,8 @@ const routes: Routes = [
     {path: 'alta-agroquimicos', outlet: 'add-agroquimicos', component: AltaAgroComponent},
     {path: 'insumos-productos', outlet: 'inicio-productos', component: MenuProduInsuComponent},
     {path: 'alta-productos', outlet: 'add-productos', component: AltaProduComponent},
-    {path: 'insumos-unidades', outlet: 'inicio-unidades', component:  MenuUniInsComponent}]},
-    {path: 'alta-unidades', outlet: 'add-unidades', component: AltaUniInsComponent}
+    {path: 'insumos-unidades', outlet: 'inicio-unidades', component:  MenuUniInsComponent},
+    {path: 'alta-unidades', outlet: 'add-unidades', component: AltaUniInsComponent}]}
  // {path: 'insumos-fertilizantes', component: MenuFertComponent},
  // {path: 'insumos-agroquimicos', component: MenuAgroComponent},
   // {path: 'insumos-semillas', component: MenuSemillasComponent},
