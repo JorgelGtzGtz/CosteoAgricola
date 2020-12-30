@@ -1,0 +1,177 @@
+<div class="card">
+    <h5 class="card-header">Alta de Agroquímicos <button class="float-right btn btn-danger ml-1 w-15 h-25 mt-4 m-auto" (click)="retroceder()">
+        <i class="fas fa-arrow-circle-left"></i>
+        Cerrar
+    </button> </h5>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group col-md-1">
+                <label for="inputDescrip">ID</label>
+                <input type="text" class="form-control" disabled/>
+            </div>
+            <div class="form-group col-md-5">
+                <label for="inputState">Nombre Comercial</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">Tipo</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="custom-control custom-switch m-auto">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                <label class="custom-control-label" for="customSwitch1">Activo</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputState">Estado</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">Formulación</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">Unidad</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <!-- <button type="submit" class="btn btn-primary w-25 h-25 mt-4 m-auto">+ Nuevo</button> -->
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-2 my-auto">
+                <label for="inputState">Ingredientes Activos:</label>
+            </div>
+            <div class="form-group col-md-2 my-auto">
+                <button type="button" class="btn btn-success"> <i class="fas fa-plus-circle"></i> Agregar</button>
+            </div>
+            <div class="form-group col-md-3"></div>
+            <div class="form-group col-md-5">
+                <label for="inputState">Ingredientes Inertes</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <!-- <button type="submit" class="btn btn-primary w-25 h-25 mt-4 m-auto">+ Nuevo</button> -->
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-7 tablita overflow-auto">
+                <table class="table overflow-auto">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Ingrediente</th>
+                            <th scope="col">Concentración</th>
+                            <th scope="col">Unidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Null</td>
+                            <td>Null</td>
+                            <td>Null</td>
+                        </tr>
+                        <tr>
+                            <td>Null</td>
+                            <td>Null</td>
+                            <td>Null</td>
+                        </tr>
+                        <tr>
+                            <td>Null</td>
+                            <td>Null</td>
+                            <td>Null</td>
+                        </tr>
+                        <tr>
+                            <td>Null</td>
+                            <td>Null</td>
+                            <td>Null</td>
+                        </tr>
+                        <tr>
+                            <td>Null</td>
+                            <td>Null</td>
+                            <td>Null</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group col-md-5">
+                <label for="inputState">Descripción</label>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputState">Registro</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputState">Inventariable</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Tiempo de Reentrada</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="form-group col-md-3">
+                <label>Unidad de Reentrada</label>
+                <select class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label>Intervalo de Seguridad</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="form-group col-md-3">
+                <label>Unidad del Int. de seguridad</label>
+                <select class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-2 mx-auto">
+                <label for="inputDescrip">Eristeacia</label>
+                <input type="text" class="form-control" disabled/>
+            </div>
+            <div class="form-group col-md-2 mx-auto">
+                <label for="inputDescrip">Costo Promedio</label>
+                <input type="text" class="form-control" disabled/>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-7">
+                <label for="inputState">Observaciones</label>
+                <input type="text" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-success w-25 h-25 mt-4 m-auto">
+                <i class="fas fa-save"></i>
+                Guardar
+            </button>
+        </div>
+
+    </div>
+</div>

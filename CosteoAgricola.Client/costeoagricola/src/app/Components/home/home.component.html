@@ -1,0 +1,28 @@
+<div class="containermenu float-left bg-danger">
+
+    <app-menu style="z-index: 100;"> </app-menu>
+    <!--
+    <h5>MENU</h5>
+    <app-menu></app-menu>
+    -->
+</div>
+
+<div class="container overflow-scroll float-right">
+
+    <!-- OPCIONES DE LA SECCION INSUMOS DEL MENU -->
+    <router-outlet name="inicio-semillas"></router-outlet>
+    <router-outlet name="add-semillas"> </router-outlet>
+    <router-outlet name="inicio-fertilizantes"></router-outlet>
+    <router-outlet name="add-fertilizantes"> </router-outlet>
+    <router-outlet name="inicio-agroquimicos"></router-outlet>
+    <router-outlet name="add-agroquimicos"> </router-outlet>
+    <router-outlet name="inicio-productos"></router-outlet>
+    <router-outlet name="add-productos"> </router-outlet>
+    <router-outlet name="inicio-unidades"></router-outlet>
+    <router-outlet name="add-unidades"> </router-outlet>
+
+
+    <!-- <router-outlet name="routerhome"></router-outlet> <h5>PANTALLAS</h5>-->
+    <!--<app-alta-semillas></app-alta-semillas>  <router-outlet></router-outlet> -->
+    <!--Arreglar outlet       <router-outlet name="add-semillas"> </router-outlet> -->
+</div>
