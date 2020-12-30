@@ -15,6 +15,6 @@ export class AltaFertComponent implements OnInit {
   // tslint:disable-next-line: typedef
   retroceder()
   {
-    this.router.navigate(['/insumos-fertilizantes']);
+    this.router.navigate(['/home']);
   }
 }

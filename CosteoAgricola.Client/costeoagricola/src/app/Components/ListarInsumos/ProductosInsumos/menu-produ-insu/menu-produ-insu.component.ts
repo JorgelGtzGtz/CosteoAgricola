@@ -7,15 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu-produ-insu.component.css']
 })
 export class MenuProduInsuComponent implements OnInit {
-
+show=true;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-// tslint:disable-next-line: typedef
-altaProductos(){
-  this.router.navigate(['/alta-productos']);
-}
+
 // tslint:disable-next-line: typedef
 retroceder()
 {

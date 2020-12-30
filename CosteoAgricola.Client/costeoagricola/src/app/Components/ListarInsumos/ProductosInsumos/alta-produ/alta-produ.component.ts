@@ -15,6 +15,6 @@ export class AltaProduComponent implements OnInit {
   // tslint:disable-next-line: typedef
   retroceder()
   {
-    this.router.navigate(['/insumos-productos']);
+    this.router.navigate(['/home']);
   }
 }

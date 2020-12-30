@@ -15,6 +15,6 @@ export class AltaAgroComponent implements OnInit {
   // tslint:disable-next-line: typedef
   retroceder()
   {
-    this.router.navigate(['/insumos-agroquimicos']);
+    this.router.navigate(['/home']);
   }
 }

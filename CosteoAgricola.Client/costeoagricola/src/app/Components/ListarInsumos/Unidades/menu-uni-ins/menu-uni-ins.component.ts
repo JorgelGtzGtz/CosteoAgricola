@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu-uni-ins.component.css']
 })
 export class MenuUniInsComponent implements OnInit {
-
+  show=true;
   constructor(private router: Router) { }
 
   ngOnInit(): void {

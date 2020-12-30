@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="show">
     <h5 class="card-header">Insumos Agroquímicos<button class="float-right btn btn-danger ml-1 w-15 h-25 mt-4 m-auto" (click)="retroceder()">
         <i class="fas fa-arrow-circle-left"></i>
         Cerrar
@@ -34,7 +34,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary ml-1 w-25 h-25 mt-4 m-auto" [routerLink]="['/home', {outlets: {'add-agroquimicos': ['alta-agroquimicos']}}]">
+            <button type="submit" class="btn btn-primary ml-1 w-25 h-25 mt-4 m-auto" [routerLink]="['/home', {outlets: {'add-agroquimicos': ['alta-agroquimicos']}}]" (click)="show=!show">
                 <i class="fas fa-plus-circle"></i>
                 Nuevo
             </button>
