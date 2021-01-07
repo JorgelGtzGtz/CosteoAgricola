@@ -12,13 +12,13 @@ export class MenuFertComponent implements OnInit {
 
   ngOnInit(): void {
   }
-// tslint:disable-next-line: typedef
-altaFertilizantes(){
-  this.router.navigate(['/alta-fertilizantes']);
-}
-// tslint:disable-next-line: typedef
+
 retroceder()
 {
-  this.router.navigate(['/home']);
+  this.router.navigate(['/welcome']);
+}
+alta()
+{
+  this.router.navigate(['/alta-fertilizantes']);
 }
 }

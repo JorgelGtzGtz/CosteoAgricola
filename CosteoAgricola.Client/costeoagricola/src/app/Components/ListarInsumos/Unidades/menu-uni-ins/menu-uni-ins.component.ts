@@ -12,9 +12,13 @@ export class MenuUniInsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // tslint:disable-next-line: typedef
+
   retroceder()
 {
-  this.router.navigate(['/home']);
+  this.router.navigate(['/welcome']);
+}
+alta()
+{
+  this.router.navigate(['/alta-unidades']);
 }
 }

@@ -12,9 +12,9 @@ export class AltaAgroComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // tslint:disable-next-line: typedef
+
   retroceder()
   {
-    this.router.navigate(['/insumos-agroquimicos']);
+    this.router.navigate(['/menu-agroquimicos']);
   }
 }

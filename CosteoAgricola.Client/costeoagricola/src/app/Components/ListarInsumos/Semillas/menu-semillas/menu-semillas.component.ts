@@ -6,17 +6,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu-semillas.component.css']
 })
 export class MenuSemillasComponent implements OnInit {
-  // para mostrar solo la pantalla de altas cuando le da en nuevo
-  show = true;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  // tslint:disable-next-line: typedef
-  home()
+  welcome()
   {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/welcome']);
+  }
+  alta()
+  {
+    this.router.navigate(['/alta-semillas']);
   }
 }
