@@ -14,6 +14,6 @@ export class AltaUniInsComponent implements OnInit {
   }
   retroceder()
   {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/menu-unidades']);
   }
 }

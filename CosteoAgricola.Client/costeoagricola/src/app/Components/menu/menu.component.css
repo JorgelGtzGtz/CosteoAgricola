@@ -1,15 +1,8 @@
-.col-sm-9 {
-    height: 160px;
-    background-color: #2aabd2;
-    border: 1px solid yellow;
-    opacity: 0.9;
-}
-
 .nav-side-menu {
     overflow: auto;
     font-family: "verdana";
     /* font-size: 15px;*/
-    width: 25%;
+    width: 21%;
     background-color: rgba(255, 255, 255, 0.5);
     position: fixed;
     /*top: 0px;*/

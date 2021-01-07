@@ -1,5 +1,5 @@
-<h1 class="logo-cnt">LOGO</h1>
-<div class="container">
+<div class="container" *ngIf="show">
+    <h1 class="logo-cnt">LOGO</h1>
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">
@@ -23,10 +23,14 @@
                         <input type="checkbox"> Recordar
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Login" class="btn float-right login_btn" (click)="iniciarSesion()">
+                        <input type="submit" value="Login" class="btn float-right login_btn" (click)="iniciarSesion()" (click)="show=!show">
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<ng-container *ngIf="!show">
+    <app-home></app-home>
+</ng-container>
