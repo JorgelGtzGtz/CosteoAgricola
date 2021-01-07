@@ -8,8 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./alta-semillas.component.css']
 })
 export class AltaSemillasComponent implements OnInit {
-  // para mostrar solo la pantalla de inicio cuando le da en cerrar
-  show = true;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -17,6 +16,6 @@ export class AltaSemillasComponent implements OnInit {
   // tslint:disable-next-line: typedef
   retroceder()
   {
-    this.router.navigate([['/home', {outlets: {'inicio-semillas': ['insumos-semillas']}}]]);
+    this.router.navigate(['/menu-semillas']);
   }
 }
