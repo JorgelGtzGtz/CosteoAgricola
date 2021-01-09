@@ -1,35 +1,60 @@
-<div class="container" *ngIf="show">
+<div class="container-fluid pt-5 " *ngIf="show">
     <h1 class="logo-cnt">LOGO</h1>
     <div class="d-flex justify-content-center h-100">
-        <div class="card">
-            <div class="card-header">
-                <h3>Iniciar Sesión</h3>
+        <div class="card shadow p-4 mb-5 bg-white rounded">
+            <div class="card-header bg-transparent">
+                <h3>Sing In</h3>
             </div>
             <div class="card-body">
                 <form>
+                    <!-- INPUT USER-->
+                    <div class="md-form">
+                        <mdb-icon fas icon="user" class="prefix"></mdb-icon>
+                        <input mdbInput type="text" id="form2" class="form-control">
+                        <label for="form2">User</label>
+                    </div>
+                    <!-- USUARIO
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
                         <input type="text" class="form-control" placeholder="Usuario">
                     </div>
+                    -->
+                    <!-- INPUT PASSWORD-->
+                    <div class="md-form">
+                        <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+                        <input mdbInput mdbValidate formControlName="passwordFormEx" minLength="10" maxLength="25" type="password" class="form-control" id="form10">
+                        <label for="form10">Type your password</label>
+                    </div>
+
+                    <!-- PASSWORD 
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         </div>
                         <input type="password" class="form-control" placeholder="Contraseña">
                     </div>
+                    -->
+                    <!--CHECK
                     <div class="row align-items-center remember">
                         <input type="checkbox"> Recordar
                     </div>
+                    -->
+                    <!--CHECK-->
+                    <mdb-checkbox [default]="true">Remember</mdb-checkbox>
+                    <!--BOTON LOGIN-->
                     <div class="form-group">
-                        <input type="submit" value="Login" class="btn float-right login_btn" (click)="iniciarSesion()" (click)="show=!show">
+                        <button class="font-weight-bold" type="submit" mdbBtn type="button" gradient="peach" rounded="true" mdbWavesEffect style="float: right;" value="Login" (click)="iniciarSesion()" (click)="show=!show">Login</button>
+                        <!-- <input type="submit" value="Login" class="btn float-right login_btn" (click)="iniciarSesion()" (click)="show=!show"> -->
                     </div>
+
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 
 <ng-container *ngIf="!show">
     <app-home></app-home>
