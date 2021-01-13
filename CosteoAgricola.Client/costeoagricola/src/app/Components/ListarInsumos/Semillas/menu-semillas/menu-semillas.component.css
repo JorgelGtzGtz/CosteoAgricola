@@ -1,9 +1,16 @@
 .card {
     width: 63.4rem;
     margin-left: -1.6%;
+    background-color: rgba(255, 255, 255, 0.829);
 }
 
-@media (max-width: 280px) {
+@media (max-width: 745px) {
+    .card {
+        width: auto;
+    }
+}
+
+@media (max-width: 1024px) {
     .card {
         width: auto;
     }
