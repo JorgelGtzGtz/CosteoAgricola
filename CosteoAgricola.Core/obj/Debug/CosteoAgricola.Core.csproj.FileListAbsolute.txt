@@ -12,3 +12,17 @@ C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CosteoAgricola.Cor
 C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.dll
 C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.pdb
 C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.csprojAssemblyReference.cache
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\bin\Debug\CosteoAgricola.Core.dll.config
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\bin\Debug\CosteoAgricola.Core.dll
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\bin\Debug\CosteoAgricola.Core.pdb
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\bin\Debug\Newtonsoft.Json.dll
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\bin\Debug\System.Net.Http.Formatting.dll
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\bin\Debug\System.Web.Http.dll
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\bin\Debug\Newtonsoft.Json.xml
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\bin\Debug\System.Net.Http.Formatting.xml
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\bin\Debug\System.Web.Http.xml
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.csprojAssemblyReference.cache
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.csproj.CoreCompileInputs.cache
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.csproj.CopyComplete
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.dll
+C:\Repositorio\GitHub\CosteoAgricola2\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.pdb
