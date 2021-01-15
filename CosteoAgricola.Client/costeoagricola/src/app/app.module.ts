@@ -19,6 +19,8 @@ import { AltaSemillasComponent } from './Components/ListarInsumos/Semillas/alta-
 import { AltaUniInsComponent } from './Components/ListarInsumos/Unidades/alta-uni-ins/alta-uni-ins.component';
 import { MenuUniInsComponent } from './Components/ListarInsumos/Unidades/menu-uni-ins/menu-uni-ins.component';
 import { WelcomeComponent } from './Components/welcome/welcome.component';
+import { MenuCicloComponent } from './Components/ListarCatalogos/CicloAgricola/menu-ciclo/menu-ciclo.component';
+import { AltaCicloComponent } from './Components/ListarCatalogos/CicloAgricola/alta-ciclo/alta-ciclo.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { WelcomeComponent } from './Components/welcome/welcome.component';
     AltaSemillasComponent,
     MenuUniInsComponent,
     AltaUniInsComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    MenuCicloComponent,
+    AltaCicloComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+.card {
+    width: 63.4rem;
+    margin-left: -1.6%;
+    background-color: rgba(255, 255, 255, 0.829);
+}
+
+.datep {
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 5px;
+    height: 40px;
+    color: dimgrey;
+}
+
+@media (max-width: 280px) {
+    .card {
+        width: auto;
+    }
+}

@@ -1,7 +1,0 @@
-C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CAgricola\CAgricola.Core\bin\Debug\CAgricola.Core.dll.config
-C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CAgricola\CAgricola.Core\bin\Debug\CAgricola.Core.dll
-C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CAgricola\CAgricola.Core\bin\Debug\CAgricola.Core.pdb
-C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CAgricola\CAgricola.Core\obj\Debug\CAgricola.Core.csprojAssemblyReference.cache
-C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CAgricola\CAgricola.Core\obj\Debug\CAgricola.Core.csproj.CoreCompileInputs.cache
-C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CAgricola\CAgricola.Core\obj\Debug\CAgricola.Core.dll
-C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CAgricola\CAgricola.Core\obj\Debug\CAgricola.Core.pdb
