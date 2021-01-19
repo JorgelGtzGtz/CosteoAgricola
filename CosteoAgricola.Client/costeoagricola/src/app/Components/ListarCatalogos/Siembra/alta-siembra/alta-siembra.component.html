@@ -1,7 +1,7 @@
 <div class="card">
     <!-- HEADER -->
     <div class="card-header ">
-        <h5 class="card-header bg-transparent  border-0 float-left ">Alta Productos</h5>
+        <h5 class="card-header bg-transparent  border-0 float-left ">Alta Siembra</h5>
         <button type="button" class="btn btn-danger float-right" (click)="retroceder()"> <i class="fas fa-arrow-circle-left"></i> Cerrar</button>
     </div>
     <div class="card-body">
@@ -23,16 +23,15 @@
         <br>
 
         <div class="form-row">
-            <div class="form-group col-md-3">
-                <label for="inputState">Unidad</label>
+            <div class="form-group col-md-6">
+                <label for="inputState">Lote</label>
                 <select id="inputState" class="form-control">
                     <option selected>Choose...</option>
                     <option>...</option>
                 </select>
             </div>
-            <div class="form-group col-md-3"></div>
-            <div class="form-group col-md-3">
-                <label for="inputState">Inventariable</label>
+            <div class="form-group col-md-6">
+                <label for="inputState">Semilla</label>
                 <select id="inputState" class="form-control">
                     <option selected>Choose...</option>
                     <option>...</option>
@@ -40,18 +39,20 @@
             </div>
         </div>
 
-        <br>
-
         <div class="form-row">
-            <div class="form-group col-md-3">
-                <label for="inputDescrip">Existencia</label>
-                <input type="text" class="form-control" disabled/>
+            <div class="form-group col-md-6">
+                <label for="inputState">Ciclo</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
             </div>
-            <div class="form-group col-md-3"></div>
-            <div class="form-group col-md-3">
-                <label for="inputDescrip">Costo Promedio</label>
-                <input type="text" class="form-control" disabled/>
+
+            <div class="form-group col-md-6">
+                <label for="inputState">Fecha inicial: </label>
+                <input type='date' name="dateField" class="datep form-control" min="1950-01-01" max="2018-12-31" />
             </div>
+
         </div>
 
         <br>

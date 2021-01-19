@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 
 @Component({
-  selector: 'app-alta-fert',
-  templateUrl: './alta-fert.component.html',
-  styleUrls: ['./alta-fert.component.css']
+  selector: 'app-alta-siembra',
+  templateUrl: './alta-siembra.component.html',
+  styleUrls: ['./alta-siembra.component.css']
 })
-export class AltaFertComponent implements OnInit {
+export class AltaSiembraComponent implements OnInit {
 
   constructor(private router: Router,private service: NotificationsService) { }
 
@@ -15,7 +15,7 @@ export class AltaFertComponent implements OnInit {
   }
   retroceder()
   {
-    this.router.navigate(['/menu-fertilizantes']);
+    this.router.navigate(['/menu-siembra']);
   }
   onSuccess(message)
   {

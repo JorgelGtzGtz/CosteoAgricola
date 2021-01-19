@@ -1,0 +1,27 @@
+.card {
+    width: 65.4rem;
+    margin-left: -1.6%;
+    background-color: rgba(255, 255, 255, 0.829);
+}
+
+
+/*
+.tablita {
+    width: 64rem;
+    height: 22rem;
+}
+
+
+
+thead {
+    background: white;
+    position: sticky;
+    top: 0;
+}
+*/
+
+@media (max-width: 280px) {
+    .card {
+        width: auto;
+    }
+}

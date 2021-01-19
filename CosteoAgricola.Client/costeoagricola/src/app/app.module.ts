@@ -21,6 +21,12 @@ import { MenuUniInsComponent } from './Components/ListarInsumos/Unidades/menu-un
 import { WelcomeComponent } from './Components/welcome/welcome.component';
 import { MenuCicloComponent } from './Components/ListarCatalogos/CicloAgricola/menu-ciclo/menu-ciclo.component';
 import { AltaCicloComponent } from './Components/ListarCatalogos/CicloAgricola/alta-ciclo/alta-ciclo.component';
+import { MenuLotesComponent } from './Components/ListarCatalogos/Lotes/menu-lotes/menu-lotes.component';
+import { AltaLotesComponent } from './Components/ListarCatalogos/Lotes/alta-lotes/alta-lotes.component';
+import { MenuSiembraComponent } from './Components/ListarCatalogos/Siembra/menu-siembra/menu-siembra.component';
+import { AltaSiembraComponent } from './Components/ListarCatalogos/Siembra/alta-siembra/alta-siembra.component';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -42,12 +48,18 @@ import { AltaCicloComponent } from './Components/ListarCatalogos/CicloAgricola/a
     AltaUniInsComponent,
     WelcomeComponent,
     MenuCicloComponent,
-    AltaCicloComponent
+    AltaCicloComponent,
+    MenuLotesComponent,
+    AltaLotesComponent,
+    MenuSiembraComponent,
+    AltaSiembraComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    SimpleNotificationsModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

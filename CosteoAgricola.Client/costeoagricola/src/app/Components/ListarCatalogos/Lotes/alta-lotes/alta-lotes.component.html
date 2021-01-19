@@ -1,7 +1,7 @@
 <div class="card">
     <!-- HEADER -->
     <div class="card-header ">
-        <h5 class="card-header bg-transparent  border-0 float-left ">Alta Unidades</h5>
+        <h5 class="card-header bg-transparent  border-0 float-left ">Alta Lote</h5>
         <button type="button" class="btn btn-danger float-right" (click)="retroceder()"> <i class="fas fa-arrow-circle-left"></i> Cerrar</button>
     </div>
     <div class="card-body">
@@ -10,9 +10,13 @@
                 <label for="inputDescrip">ID</label>
                 <input type="text" class="form-control" disabled/>
             </div>
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-4">
                 <label for="inputState">Descripción</label>
                 <input type="text" class="form-control" />
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">Superficie en hectáreas</label>
+                <input class="form-control" type="text" value="1" id="example-text-input">
             </div>
             <div class="custom-control custom-switch m-auto">
                 <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
@@ -21,36 +25,17 @@
         </div>
 
         <br>
-
         <div class="form-row">
-            <div class="form-group col-md-3">
-                <label for="inputState">Tipo</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
+            <div class="form-group col-md-7">
+                <label for="inputState">Observaciones</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <div class="form-group col-md-3">
-                <label for="inputState">Abreviatura</label>
-                <input type="text" class="form-control" />
-            </div>
-
             <button type="submit" class="btn btn-success w-25 h-25 mt-4 m-auto" (click)="onSuccess('Agregado correctamente')">
-                    <i class="fas fa-save"></i>
-                        Guardar
-                </button>
+                <i class="fas fa-save"></i>
+                Guardar
+            </button>
             <simple-notifications></simple-notifications>
         </div>
-
-        <!-- 
-        <div class="form-row">
-            <button type="submit" class="btn btn-success w-25 h-25 mt-4 m-auto">
-                <i class="fas fa-save"></i>
-                    Guardar
-            </button>
-        </div>
-        -->
-
 
     </div>
 </div>
