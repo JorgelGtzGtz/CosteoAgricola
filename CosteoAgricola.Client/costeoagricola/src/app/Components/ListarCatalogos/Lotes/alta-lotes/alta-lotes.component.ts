@@ -3,19 +3,19 @@ import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 
 @Component({
-  selector: 'app-alta-fert',
-  templateUrl: './alta-fert.component.html',
-  styleUrls: ['./alta-fert.component.css']
+  selector: 'app-alta-lotes',
+  templateUrl: './alta-lotes.component.html',
+  styleUrls: ['./alta-lotes.component.css']
 })
-export class AltaFertComponent implements OnInit {
+export class AltaLotesComponent implements OnInit {
 
-  constructor(private router: Router,private service: NotificationsService) { }
+  constructor(private router: Router, private service: NotificationsService) { }
 
   ngOnInit(): void {
   }
   retroceder()
   {
-    this.router.navigate(['/menu-fertilizantes']);
+    this.router.navigate(['/menu-lotes']);
   }
   onSuccess(message)
   {

@@ -129,10 +129,11 @@
                 <label for="inputState">Observaciones</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn btn-success w-25 h-25 mt-4 m-auto">
+            <button type="submit" class="btn btn-success w-25 h-25 mt-4 m-auto" (click)="onSuccess('Agregado correctamente')">
                 <i class="fas fa-save"></i>
                 Guardar
             </button>
+            <simple-notifications></simple-notifications>
         </div>
 
     </div>
