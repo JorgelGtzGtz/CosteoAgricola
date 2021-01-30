@@ -12,13 +12,13 @@ namespace CosteoAgricola.Core.Services
 {
     public interface ITipoUsuarioService
     {
-        TiposUsuario GetTipoUsuario(int id);
-        List<TiposUsuario> GetTipoUsuarios();
-        List<TiposUsuario> GetTipoUsuariosFiltro(string nombre = null);
-        bool InsertUpdateTipoUsuario(TiposUsuario tipoPersonal, List<Acceso> accesos, out string Message);
+        TIPO_USUARIO GetTipoUsuario(int id);
+        List<TIPO_USUARIO> GetTipoUsuarios();
+        List<TIPO_USUARIO> GetTipoUsuariosFiltro(string nombre = null);
+        bool InsertUpdateTipoUsuario(TIPO_USUARIO tipoPersonal, List<ACCESOS> accesos, out string Message);
         bool EliminarTipoUsuario(int id, out string Message);
-        List<Acceso> GetTipoUsuarioAccesos(int id);
-        List<Acceso> GetAccesos();
+        List<ACCESOS> GetTipoUsuarioAccesos(int id);
+        List<ACCESOS> GetAccesos();
     }
 
     public class TipoUsuarioService : ITipoUsuarioService
@@ -33,28 +33,28 @@ namespace CosteoAgricola.Core.Services
             _accesosRepository = accesosRepository;
         }
 
-        public TiposUsuario GetTipoUsuario(int id) {
+        public TIPO_USUARIO GetTipoUsuario(int id) {
             return _tipoUsuarioRepository.Get(id);
         }
 
-        public List<TiposUsuario> GetTipoUsuarios() {
-            return _tipoUsuarioRepository.GetAll("TiposUsuario").ToList();
+        public List<TIPO_USUARIO> GetTipoUsuarios() {
+            return _tipoUsuarioRepository.GetAll("TIPO_USUARIO").ToList();
         }
 
-        public List<TiposUsuario> GetTipoUsuariosFiltro(string nombre = null)
+        public List<TIPO_USUARIO> GetTipoUsuariosFiltro(string nombre = null)
         {
             string filter = " Where ";
 
             if (!string.IsNullOrEmpty(nombre))
             {
-                filter += string.Format("Nombre = '{0}' ", nombre);
+                filter += string.Format("tipoUsuario_desc = '{0}' ", nombre);
             }
 
-            Sql query = new Sql(@"select * from TiposUsuario " + (!string.IsNullOrEmpty(nombre) ? filter : ""));
+            Sql query = new Sql(@"select * from TIPO_USUARIO " + (!string.IsNullOrEmpty(nombre) ? filter : ""));
             return _tipoUsuarioRepository.GetByFilter(query);
         }
 
-        public bool InsertUpdateTipoUsuario(TiposUsuario tipoPersonal, List<Acceso> accesos, out string Message)
+        public bool InsertUpdateTipoUsuario(TIPO_USUARIO tipoPersonal, List<ACCESOS> accesos, out string Message)
         {
 
             Message = string.Empty;
@@ -62,14 +62,14 @@ namespace CosteoAgricola.Core.Services
             try
             {
                 var id = _tipoUsuarioRepository.InsertOrUpdate<int>(tipoPersonal);
-                tipoPersonal.ID = id;
+                tipoPersonal.tipoUsuario_id = id;
                 Sql query = new Sql()
-                .Select("*").From("AccesosTipoUsuario")
-                .Where("ID_TipoUsuario = @0", id);
-                List<AccesosTipoUsuario> _detallesActuales = _accesosTipoUsuarioRepository.GetByFilter(query);
+                .Select("*").From("ACESSOS_TIPO_USUARIO")
+                .Where("ac_id_tipo_usuario = @0", id);
+                List<ACCESOS_TIPO_USUARIO> _detallesActuales = _accesosTipoUsuarioRepository.GetByFilter(query);
 
                 // Eliminar detalles que no existen en los actuales
-                foreach (var detalleNoExiste in _detallesActuales.Where(p => !accesos.Any(p2 => p2.ID == p.ID_Acceso)))
+                foreach (var detalleNoExiste in _detallesActuales.Where(p => !accesos.Any(p2 => p2.acceso_id == p.ac_id_accesos)))
                 {
                     _accesosTipoUsuarioRepository.Remove(detalleNoExiste);
                 }
@@ -78,19 +78,19 @@ namespace CosteoAgricola.Core.Services
                 foreach (var detalle in accesos)
                 {
                     query = new Sql()
-                    .Select("*").From("AccesosTipoUsuario")
-                    .Where("ID_TipoUsuario = @0 and ID_Acceso = @1", id, detalle.ID);
-                    AccesosTipoUsuario accesosPersonal = _accesosTipoUsuarioRepository.Get(query);
+                    .Select("*").From("ACCESOS_TIPO_USUARIO")
+                    .Where("ac_id_tipo_usuario = @0 and ac_id_accesos = @1", id, detalle.acceso_id);
+                    ACCESOS_TIPO_USUARIO accesosPersonal = _accesosTipoUsuarioRepository.Get(query);
                     if (accesosPersonal == null)
                     {
-                        accesosPersonal = new AccesosTipoUsuario();
-                        accesosPersonal.ID_Acceso = detalle.ID;
-                        accesosPersonal.ID_TipoUsuario = id;
+                        accesosPersonal = new ACCESOS_TIPO_USUARIO();
+                        accesosPersonal.ac_id_accesos = detalle.acceso_id;
+                        accesosPersonal.ac_id_tipo_usuario = id;
                     }
                     _accesosTipoUsuarioRepository.InsertOrUpdate<int>(accesosPersonal);
                 }
 
-                Message = "Tipo de Usuario guardado " + tipoPersonal.Nombre + "con exito";
+                Message = "Tipo de Usuario guardado " + tipoPersonal.tipoUsuario_desc + "con exito";
                 result = true;
             }
             catch (Exception ex)
@@ -110,8 +110,8 @@ namespace CosteoAgricola.Core.Services
             {
                 var tipo = _tipoUsuarioRepository.Get(id);
                 Sql query = new Sql()
-                .Select("*").From("AccesosTipoUsuario")
-                .Where("ID_TipoUsuario = @0", tipo.ID);
+                .Select("*").From("ACCESOS_TIPO_USUARIO")
+                .Where("ac_id_tipo_usuario = @0", tipo.tipoUsuario_id   );
                 var listAccesos = _accesosTipoUsuarioRepository.GetByFilter(query);
 
                 foreach (var item in listAccesos)
@@ -121,7 +121,7 @@ namespace CosteoAgricola.Core.Services
 
                 _tipoUsuarioRepository.Remove(tipo);
 
-                Message = "Tipo Usuario eliminado " + tipo.Nombre + "con exito";
+                Message = "Tipo Usuario eliminado " + tipo.tipoUsuario_desc + "con exito";
                 result = true;
             }
             catch (Exception ex)
@@ -132,19 +132,19 @@ namespace CosteoAgricola.Core.Services
             return result;
         }
 
-        public List<Acceso> GetTipoUsuarioAccesos(int id)
+        public List<ACCESOS> GetTipoUsuarioAccesos(int id)
         {
-            Sql query = new Sql(@"select a.* from [dbo].[Accesos] a
-                                inner join [dbo].[AccesosTipoUsuario] ap on ap.ID_Acceso = a.ID
-                                Where ap.ID_TipoUsuario = @0", id);
-            List<Acceso> accesos = _accesosRepository.GetByFilter(query);
+            Sql query = new Sql(@"select a.* from ACCESOS a
+                                inner join ACCESOS_TIPO_USUARIO ap on ap.ac_id_accesos = a.acceso_id
+                                Where ap.ac_id_tipo_usuario = @0", id);
+            List<ACCESOS> accesos = _accesosRepository.GetByFilter(query);
 
             return accesos;
         }
 
-        public List<Acceso> GetAccesos()
+        public List<ACCESOS> GetAccesos()
         {
-            return _accesosRepository.GetAll("Accesos").ToList();
+            return _accesosRepository.GetAll("ACCESOS").ToList();
         }
     }
 }

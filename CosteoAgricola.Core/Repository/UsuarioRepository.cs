@@ -10,39 +10,39 @@ using System.Threading.Tasks;
 
 namespace CosteoAgricola.Core.Repository
 {
-    public interface IUsuarioRepository : IRepositoryBase<Usuario>
+    public interface IUsuarioRepository : IRepositoryBase<USUARIO>
     {
         List<dynamic> GetByDynamicFilter(Sql sql);
-        Usuario GetUsuario(string usr, string password);
-        Usuario GetUsuario(string usr);
+        USUARIO GetUsuario(string usr, string password);
+        USUARIO GetUsuario(string usr);
     }
 
-    public class UsuarioRepository : RepositoryBase<Usuario>, IUsuarioRepository
+    public class UsuarioRepository : RepositoryBase<USUARIO>, IUsuarioRepository
     {
         public UsuarioRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
 
-        public Usuario GetUsuario(string usr, string password)
+        public USUARIO GetUsuario(string usr, string password)
         {
             var query = new Sql()
                 .Select("*")
-                .From("Usuarios")
-                .Where("lower(Usuario) = @0 and Contrasena = @1", usr.ToLower(), password);
+                .From("USUARIO")
+                .Where("lower(usuario_login) = @0 and usuario_password = @1", usr.ToLower(), password);
 
-            var user = this.Context.SingleOrDefault<Usuario>(query);
+            var user = this.Context.SingleOrDefault<USUARIO>(query);
 
             return user;
         }
 
-        public Usuario GetUsuario(string usr)
+        public USUARIO GetUsuario(string usr)
         {
             var query = new Sql()
                 .Select("*")
-                .From("Usuarios")
-                .Where("lower(Usuario) = @0", usr.ToLower());
+                .From("USUARIO")
+                .Where("lower(usuario_login) = @0", usr.ToLower());
 
-            var user = this.Context.SingleOrDefault<Usuario>(query);
+            var user = this.Context.SingleOrDefault<USUARIO>(query);
 
             return user;
         }
