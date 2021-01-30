@@ -118,6 +118,26 @@ namespace dbconnection
 		[Column] public byte[] definition { get; set; }
 	}
     
+	[TableName("hiram74_residencias.ACCESOS")]
+	[PrimaryKey("acceso_id")]
+	[ExplicitColumns]
+    public partial class ACCESOS : dbconnectionDB.Record<ACCESOS>  
+    {
+		[Column] public int acceso_id { get; set; }
+		[Column] public string acceso_nombre { get; set; }
+		[Column] public bool? acceso_status { get; set; }
+	}
+    
+	[TableName("hiram74_residencias.ACCESOS_TIPO_USUARIO")]
+	[PrimaryKey("acceso_tu_id")]
+	[ExplicitColumns]
+    public partial class ACCESOS_TIPO_USUARIO : dbconnectionDB.Record<ACCESOS_TIPO_USUARIO>  
+    {
+		[Column] public int acceso_tu_id { get; set; }
+		[Column] public int? ac_id_accesos { get; set; }
+		[Column] public int? ac_id_tipo_usuario { get; set; }
+	}
+    
 	[TableName("hiram74_residencias.AGROQUIMICOS")]
 	[PrimaryKey("agrog_id")]
 	[ExplicitColumns]
@@ -160,7 +180,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.EMPRESA")]
 	[PrimaryKey("emp_id")]
 	[ExplicitColumns]
-    public partial class EMPRESAS : dbconnectionDB.Record<EMPRESAS>  
+    public partial class EMPRESA : dbconnectionDB.Record<EMPRESA>  
     {
 		[Column] public int emp_id { get; set; }
 		[Column] public string emp_nombre { get; set; }
@@ -262,7 +282,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.TIPO_AGROQUIMICO")]
 	[PrimaryKey("tipoAgroq_id")]
 	[ExplicitColumns]
-    public partial class TIPO_AGROQUIMICO : dbconnectionDB.Record<TIPO_AGROQUIMICO>  
+    public partial class TIPO_AGROQUIMICOS : dbconnectionDB.Record<TIPO_AGROQUIMICOS>  
     {
 		[Column] public int tipoAgroq_id { get; set; }
 		[Column] public string tipoAgroq_desc { get; set; }
@@ -317,5 +337,6 @@ namespace dbconnection
 		[Column] public string usuario_login { get; set; }
 		[Column] public string usuario_password { get; set; }
 		[Column] public bool? usuario_status { get; set; }
+		[Column] public bool? usuario_superAdmin { get; set; }
 	}
 }

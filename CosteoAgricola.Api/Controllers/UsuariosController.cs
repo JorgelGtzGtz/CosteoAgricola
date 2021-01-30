@@ -40,7 +40,7 @@ namespace CosteoAgricola.Api.Controllers
                     if (UserLogged != null)
                     {
                         var op = _usuarioservice.GetUsuario(UserLogged.UserName, UserLogged.Password);
-                        var accesos = _tipoUsuarioService.GetTipoUsuarioAccesos(op.ID_TipoUsuario);
+                        var accesos = _tipoUsuarioService.GetTipoUsuarioAccesos(op.usuario_id);
                         User = Thread.CurrentPrincipal;
                         response = request.CreateResponse(HttpStatusCode.OK, new { usuario = op, accesos = accesos });
                     }
@@ -122,7 +122,7 @@ namespace CosteoAgricola.Api.Controllers
 
         [HttpPost]
         [Route("Guardar")]
-        public async Task<HttpResponseMessage> Guardar(HttpRequestMessage request, Usuario model)
+        public async Task<HttpResponseMessage> Guardar(HttpRequestMessage request, USUARIO model)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {
