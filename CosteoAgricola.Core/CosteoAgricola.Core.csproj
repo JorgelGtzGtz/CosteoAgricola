@@ -67,12 +67,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repository\SemillasRepository.cs" />
     <Compile Include="Repository\TipoUsuarioRepository.cs" />
     <Compile Include="Repository\UsuarioRepository.cs" />
     <Compile Include="Repository\AccesosTipoUsuarioRepository.cs" />
     <Compile Include="Repository\AccesosRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Services\ListaCombosService.cs" />
+    <Compile Include="Services\SemillasService.cs" />
     <Compile Include="Services\TipoUsuarioService.cs" />
     <Compile Include="Services\UsuarioService.cs" />
   </ItemGroup>
