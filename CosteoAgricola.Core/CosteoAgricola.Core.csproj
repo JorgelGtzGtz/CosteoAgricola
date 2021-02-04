@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Repository\AgroquimicosRepository.cs" />
     <Compile Include="Repository\FertilizantesRepository.cs" />
+    <Compile Include="Repository\LotesRepository.cs" />
     <Compile Include="Repository\ProductosRepository.cs" />
     <Compile Include="Repository\SemillasRepository.cs" />
     <Compile Include="Repository\TipoUsuarioRepository.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Services\AgroquimicoService.cs" />
     <Compile Include="Services\FertilizantesService.cs" />
     <Compile Include="Services\ListaCombosService.cs" />
+    <Compile Include="Services\LotesService.cs" />
     <Compile Include="Services\ProductosService.cs" />
     <Compile Include="Services\SemillasService.cs" />
     <Compile Include="Services\TipoUsuarioService.cs" />
