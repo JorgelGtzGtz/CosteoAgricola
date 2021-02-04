@@ -41,6 +41,7 @@ namespace CosteoAgricola.Api.App_Start
             builder.RegisterType<FertilizantesRepository>().As<IFertilizantesRepository>().AsImplementedInterfaces();
             builder.RegisterType<AgroquimicosRepository>().As<IAgroquimicosRepository>().AsImplementedInterfaces();
             builder.RegisterType<ProductosRepository>().As<IProductosRepository>().AsImplementedInterfaces();
+            builder.RegisterType<LotesRepository>().As<ILotesRepository>().AsImplementedInterfaces();
 
 
             builder.RegisterType<ListaCombosService>().As<IListaCombosService>().AsImplementedInterfaces();
@@ -51,6 +52,7 @@ namespace CosteoAgricola.Api.App_Start
             builder.RegisterType<FertilizantesService>().As<IFertilizantesService>().AsImplementedInterfaces();
             builder.RegisterType<AgroquimicosService>().As<IAgroquimicoService>().AsImplementedInterfaces();
             builder.RegisterType<ProductosService>().As<IProductosService>().AsImplementedInterfaces();
+            builder.RegisterType<LotesService>().As<ILotesService>().AsImplementedInterfaces();
 
 
             Container = builder.Build();
