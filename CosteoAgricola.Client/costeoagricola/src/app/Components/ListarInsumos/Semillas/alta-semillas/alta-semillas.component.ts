@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-alta-semillas',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AltaSemillasComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private service: NotificationsService) { }
 
   ngOnInit(): void {
   }
@@ -18,4 +18,11 @@ export class AltaSemillasComponent implements OnInit {
   {
     this.router.navigate(['/menu-semillas']);
   }
+
+  onSuccess(message)
+  {
+    this.service.success('Success',message,{ position: ['top'],timeOut: 2000, animate:'fade',showProgressBar: true});
+  }
 }
+
+  

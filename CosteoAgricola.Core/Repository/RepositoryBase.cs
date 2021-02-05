@@ -1,5 +1,6 @@
 ﻿using CosteoAgricola.Core.Data;
 using CosteoAgricola.Core.Factories;
+using dbconnection;
 using PetaPoco;
 using System;
 using System.Collections.Generic;
@@ -71,10 +72,10 @@ namespace CosteoAgricola.Core.Repository
 
         public TKey InsertOrUpdate<TKey>(TEntity entity)
         {
-            //var pd = PocoData.ForType(typeof(TEntity), Context.DefaultMapper);
-            //var primaryKey = pd.TableInfo.PrimaryKey;
+            var pd = PocoData.ForType(typeof(TEntity), Context.DefaultMapper);
+            var primaryKey = pd.TableInfo.PrimaryKey;
 
-            var id = entity.GetType().GetProperty("ID").GetValue(entity, null);
+            var id = entity.GetType().GetProperty(primaryKey).GetValue(entity, null);
             var exists = Context.SingleOrDefault<TEntity>(id);
 
             if (!EqualityComparer<TEntity>.Default.Equals(exists, default(TEntity)))

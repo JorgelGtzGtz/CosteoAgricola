@@ -88,8 +88,8 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var tipo = data["tipo"].ToObject<TiposUsuario>();
-                    var accesos = data["accesos"].ToObject<List<Acceso>>();
+                    var tipo = data["tipo"].ToObject<TIPO_USUARIO>();
+                    var accesos = data["accesos"].ToObject<List<ACCESOS>>();
 
                     var result = _tipoUsuarioService.InsertUpdateTipoUsuario(tipo, accesos, out message);
                     if (result)

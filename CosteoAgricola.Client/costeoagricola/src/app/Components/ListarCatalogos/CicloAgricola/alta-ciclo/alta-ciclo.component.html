@@ -1,0 +1,50 @@
+<div class="card">
+    <!-- HEADER -->
+    <div class="card-header ">
+        <h5 class="card-header bg-transparent  border-0 float-left ">Alta Ciclo Agrícola</h5>
+        <button type="button" class="btn btn-danger float-right" (click)="retroceder()"> <i class="fas fa-arrow-circle-left"></i> Cerrar</button>
+    </div>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group col-md-1">
+                <label for="inputDescrip">ID</label>
+                <input type="text" class="form-control" disabled/>
+            </div>
+            <div class="form-group col-md-9">
+                <label for="inputState">Descripción</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="custom-control custom-switch m-auto">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                <label class="custom-control-label" for="customSwitch1">Activo</label>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputState">Fecha inicial: </label>
+                <input type='date' name="dateField" class="datep form-control" min="1950-01-01" max="2021-12-31" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputState">Fecha final: </label>
+                <input type='date' name="dateField" class="datep form-control" min="1950-01-01" max="2021-12-31" />
+            </div>
+        </div>
+
+        <br>
+        <div class="form-row">
+            <div class="form-group col-md-7">
+                <label for="inputState">Observaciones</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success w-25 h-25 mt-4 m-auto" (click)="onSuccess('Agregado correctamente')">
+                <i class="fas fa-save"></i>
+                Guardar
+            </button>
+            <simple-notifications></simple-notifications>
+        </div>
+
+    </div>
+</div>

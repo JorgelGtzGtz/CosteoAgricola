@@ -62,13 +62,30 @@
     </Compile>
     <Compile Include="Models\PetaPoco.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\AgroquimicosRepository.cs" />
+    <Compile Include="Repository\FertilizantesRepository.cs" />
+    <Compile Include="Repository\LotesRepository.cs" />
+    <Compile Include="Repository\ProductosRepository.cs" />
+    <Compile Include="Repository\SemillasRepository.cs" />
     <Compile Include="Repository\TipoUsuarioRepository.cs" />
+    <Compile Include="Repository\UnidadesRepository.cs" />
     <Compile Include="Repository\UsuarioRepository.cs" />
     <Compile Include="Repository\AccesosTipoUsuarioRepository.cs" />
     <Compile Include="Repository\AccesosRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="Services\AgroquimicoService.cs" />
+    <Compile Include="Services\FertilizantesService.cs" />
     <Compile Include="Services\ListaCombosService.cs" />
+    <Compile Include="Services\LotesService.cs" />
+    <Compile Include="Services\ProductosService.cs" />
+    <Compile Include="Services\SemillasService.cs" />
     <Compile Include="Services\TipoUsuarioService.cs" />
+    <Compile Include="Services\UnidadesService.cs" />
     <Compile Include="Services\UsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +93,10 @@
     <None Include="Models\Generated\PetaPoco.Core.ttinclude" />
     <None Include="Models\Generated\PetaPoco.Generator.ttinclude" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\Generated\Database.tt">

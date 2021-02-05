@@ -12,12 +12,12 @@ namespace CosteoAgricola.Core.Services
 {
     public interface IUsuarioService
     {
-        Usuario GetUsuario(int id);
-        Usuario GetUsuario(string usr);
-        Usuario GetUsuario(string usr, string password);
-        List<Usuario> GetUsuarios();
+        USUARIO GetUsuario(int id);
+        USUARIO GetUsuario(string usr);
+        USUARIO GetUsuario(string usr, string password);
+        List<USUARIO> GetUsuarios();
         List<dynamic> GetUsuarioesFiltro(string nombre = null);
-        bool InsertUpdateUsuario(Usuario Usuario, out string Message);
+        bool InsertUpdateUsuario(USUARIO Usuario, out string Message);
         bool EliminarUsuario(int id, out string Message);
     }
 
@@ -31,22 +31,22 @@ namespace CosteoAgricola.Core.Services
             _accesosTipoUsuarioRepository = accesosTipoUsuarioRepository;
         }
 
-        public Usuario GetUsuario(int id) {
+        public USUARIO GetUsuario(int id) {
             return _usuarioRepository.Get(id);
         }
 
-        public Usuario GetUsuario(string usr, string password)
+        public USUARIO GetUsuario(string usr, string password)
         {
             return _usuarioRepository.GetUsuario(usr, password);
         }
 
-        public Usuario GetUsuario(string usr)
+        public USUARIO GetUsuario(string usr)
         {
             return _usuarioRepository.GetUsuario(usr);
         }
 
-        public List<Usuario> GetUsuarios() {
-            return _usuarioRepository.GetAll("Usuarios").ToList();
+        public List<USUARIO> GetUsuarios() {
+            return _usuarioRepository.GetAll("USUARIO").ToList();
         }
 
         public List<dynamic> GetUsuarioesFiltro(string nombre = null)
@@ -55,15 +55,15 @@ namespace CosteoAgricola.Core.Services
 
             if (!string.IsNullOrEmpty(nombre))
             {
-                filter += string.Format("p.Nombre like '%{0}%' or p.Usuario like '%{0}%' or p.ID like '%{0}%' or pt.Nombre like '%{0}%'", nombre);
+                filter += string.Format("p.usuario_nom like '%{0}%' or p.usuario_login like '%{0}%' or p.usuario_id like '%{0}%' or pt.tipoUsuario_id like '%{0}%'", nombre);
             }
 
-            Sql query = new Sql(@"select p.*, pt.Nombre as NombreTipo from  [dbo].[Usuarios] p
-                                  inner join [dbo].[TiposUsuario] pt on pt.ID = p.ID_TipoUsuario" + (!string.IsNullOrEmpty(nombre) ? filter : ""));
+            Sql query = new Sql(@"select p.*, pt.usuario_nom as NombreTipo from  USUARIO p
+                                  inner join TIPO_USUARIO pt on pt.tipoUsuario_id = p.tipoUsuario_id" + (!string.IsNullOrEmpty(nombre) ? filter : ""));
             return _usuarioRepository.GetByDynamicFilter(query);
         }
 
-        public bool InsertUpdateUsuario(Usuario usuario, out string Message) {
+        public bool InsertUpdateUsuario(USUARIO usuario, out string Message) {
 
             Message = string.Empty;
             bool result = false;
@@ -71,7 +71,7 @@ namespace CosteoAgricola.Core.Services
             {
                 _usuarioRepository.InsertOrUpdate<int>(usuario);
 
-                Message = "Usuario guardado " + usuario.Nombre + "con exito";
+                Message = "Usuario guardado " + usuario.usuario_nom + "con exito";
                 result = true;
             }
             catch (Exception ex)
@@ -93,7 +93,7 @@ namespace CosteoAgricola.Core.Services
 
                 _usuarioRepository.Remove(usuario);
 
-                Message = "Usuario eliminado " + usuario.Nombre + "con exito";
+                Message = "Usuario eliminado " + usuario.usuario_nom + "con exito";
                 result = true;
             }
             catch (Exception ex)
@@ -104,11 +104,11 @@ namespace CosteoAgricola.Core.Services
             return result;
         }
 
-        public List<AccesosTipoUsuario> GetPermisosUsuario(int id)
+        public List<ACCESOS_TIPO_USUARIO> GetPermisosUsuario(int id)
         {
             Sql query = new Sql()
-                .Select("*").From("AccesosTipoUsuario")
-                .Where("ID_TipoUsuario = @0", id);
+                .Select("*").From("ACCESOS_TIPO_USUARIO")
+                .Where("ac_id_tipo_usuario = @0", id);
 
             return _accesosTipoUsuarioRepository.GetByFilter(query);
         }

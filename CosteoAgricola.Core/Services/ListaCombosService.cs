@@ -11,7 +11,7 @@ namespace CosteoAgricola.Core.Services
 {
     public interface IListaCombosService
     {
-        List<TiposUsuario> GetTipoUsuarios();
+        List<TIPO_USUARIO> GetTipoUsuarios();
     }
 
     public class ListaCombosService : IListaCombosService
@@ -23,10 +23,10 @@ namespace CosteoAgricola.Core.Services
             _tipoUsuarioRepository = tipoUsuarioRepository;
         }
 
-        public List<TiposUsuario> GetTipoUsuarios()
+        public List<TIPO_USUARIO> GetTipoUsuarios()
         {
             Sql query = new Sql()
-                .Select("*").From("TiposUsuario");
+                .Select("*").From("TIPO_USUARIO");
             return _tipoUsuarioRepository.GetByFilter(query);
         }
 

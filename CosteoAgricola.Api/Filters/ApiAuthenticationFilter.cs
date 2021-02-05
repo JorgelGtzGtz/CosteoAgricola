@@ -40,7 +40,7 @@ namespace CosteoAgricola.Api.Filters
                 if (Thread.CurrentPrincipal.Identity is Authentication)
                 {
                     basicAuthenticationIdentity = Thread.CurrentPrincipal.Identity as Authentication;
-                    basicAuthenticationIdentity.UserID = user.ID;
+                    basicAuthenticationIdentity.UserID = user.usuario_id;
                 }
 
                 return true;

@@ -105,7 +105,7 @@ namespace CosteoAgricola.Api.Filters
                     var user = _userservice.GetUsuario(userName);
 
                     if (user != null)
-                        basicAuthentication = new Authentication(user._Usuario, credentials[1], "Normal", user.ID, user.SuperAdmin);
+                        basicAuthentication = new Authentication(user.usuario_login, credentials[1], "Normal", user.usuario_id, user.usuario_superAdmin);
                     else
                         errors.Add("Usuario " + userName + " no encontrado.");
                 }

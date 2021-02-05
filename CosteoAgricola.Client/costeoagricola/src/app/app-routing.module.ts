@@ -12,11 +12,16 @@ import { AltaProduComponent } from './Components/ListarInsumos/ProductosInsumos/
 import { MenuUniInsComponent } from './Components/ListarInsumos/Unidades/menu-uni-ins/menu-uni-ins.component';
 import { AltaUniInsComponent } from './Components/ListarInsumos/Unidades/alta-uni-ins/alta-uni-ins.component';
 import { WelcomeComponent } from './Components/welcome/welcome.component';
-
+import { MenuCicloComponent } from './Components/ListarCatalogos/CicloAgricola/menu-ciclo/menu-ciclo.component';
+import { AltaCicloComponent } from './Components/ListarCatalogos/CicloAgricola/alta-ciclo/alta-ciclo.component';
+import { MenuLotesComponent } from './Components/ListarCatalogos/Lotes/menu-lotes/menu-lotes.component';
+import { AltaLotesComponent } from './Components/ListarCatalogos/Lotes/alta-lotes/alta-lotes.component';
+import { MenuSiembraComponent } from './Components/ListarCatalogos/Siembra/menu-siembra/menu-siembra.component';
+import { AltaSiembraComponent } from './Components/ListarCatalogos/Siembra/alta-siembra/alta-siembra.component';
 
 const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
-
+  //INSUMOS
   {path: 'menu-semillas', component: MenuSemillasComponent},
   {path: 'alta-semillas', component: AltaSemillasComponent},
 
@@ -30,7 +35,17 @@ const routes: Routes = [
   {path: 'alta-productos', component: AltaProduComponent},
 
   {path: 'menu-unidades', component: MenuUniInsComponent},
-  {path: 'alta-unidades', component: AltaUniInsComponent}
+  {path: 'alta-unidades', component: AltaUniInsComponent},
+
+  //CATALOGOS
+  {path: 'menu-ciclo', component: MenuCicloComponent},
+  {path: 'alta-ciclo', component: AltaCicloComponent},
+
+  {path: 'menu-lotes', component: MenuLotesComponent},
+  {path: 'alta-lotes', component: AltaLotesComponent},
+
+  {path: 'menu-siembra', component: MenuSiembraComponent},
+  {path: 'alta-siembra', component: AltaSiembraComponent}
 ];
 
 @NgModule({
