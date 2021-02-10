@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace CosteoAgricola.Core.Repository
 {
@@ -29,7 +30,6 @@ namespace CosteoAgricola.Core.Repository
                 .Select("*")
                 .From("USUARIO")
                 .Where("lower(usuario_login) = @0 and usuario_password = @1", usr.ToLower(), password);
-
             var user = this.Context.SingleOrDefault<USUARIO>(query);
 
             return user;
@@ -37,14 +37,17 @@ namespace CosteoAgricola.Core.Repository
 
         public USUARIO GetUsuario(string usr)
         {
-            var query = new Sql()
+
+                var query = new Sql()
                 .Select("*")
                 .From("USUARIO")
                 .Where("lower(usuario_login) = @0", usr.ToLower());
 
-            var user = this.Context.SingleOrDefault<USUARIO>(query);
 
-            return user;
+                var user = this.Context.SingleOrDefault<USUARIO>(query);
+
+                return user;
+            
         }
 
         public List<dynamic> GetByDynamicFilter(Sql sql)

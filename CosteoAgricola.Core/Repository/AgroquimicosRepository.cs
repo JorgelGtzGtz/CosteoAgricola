@@ -9,39 +9,39 @@ using System.Threading.Tasks;
 
 namespace CosteoAgricola.Core.Repository
 {
-    public interface IAgroquimicosRepository : IRepositoryBase<AGROQUIMICOS>
+    public interface IAgroquimicosRepository : IRepositoryBase<AGROQUIMICO>
     {
-        AGROQUIMICOS GetAgroquimico(int id);
-        AGROQUIMICOS GetAgroquimico(string desc);
+        AGROQUIMICO GetAgroquimico(int id);
+        AGROQUIMICO GetAgroquimico(string desc);
         List<dynamic> GetByDynamicFilter(Sql query);
     }
-    public class AgroquimicosRepository : RepositoryBase<AGROQUIMICOS>, IAgroquimicosRepository
+    public class AgroquimicosRepository : RepositoryBase<AGROQUIMICO>, IAgroquimicosRepository
     {
         public AgroquimicosRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
 
 
-        public AGROQUIMICOS GetAgroquimico(int id)
+        public AGROQUIMICO GetAgroquimico(int id)
         {
             var query = new Sql()
                 .Select("*")
                 .From("AGROQUIMICOS")
                 .Where("lower(agroq_id) = @0", id);
 
-            var agro = this.Context.SingleOrDefault<AGROQUIMICOS>(query);
+            var agro = this.Context.SingleOrDefault<AGROQUIMICO>(query);
 
             return agro;
         }
 
-        public AGROQUIMICOS GetAgroquimico(string desc)
+        public AGROQUIMICO GetAgroquimico(string desc)
         {
             var query = new Sql()
               .Select("*")
               .From("AGROQUIMICOS")
               .Where("lower(agroq_nomComercial) = @0", desc.ToLower());
 
-            var agro = this.Context.SingleOrDefault<AGROQUIMICOS>(query);
+            var agro = this.Context.SingleOrDefault<AGROQUIMICO>(query);
 
             return agro;
         }

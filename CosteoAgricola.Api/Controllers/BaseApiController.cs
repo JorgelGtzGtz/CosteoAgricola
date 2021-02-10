@@ -22,7 +22,8 @@ namespace CosteoAgricola.Api.Controllers
 
             try
             {
-                /*
+                
+                
                 var CurrentUser = HttpContext.Current.User;
 
                 Thread.CurrentPrincipal = CurrentUser;
@@ -35,7 +36,7 @@ namespace CosteoAgricola.Api.Controllers
                         UserLogged = basicAuthenticationIdentity;
                     }
                 }
-                */
+                
                 response = await function.Invoke();
             }
             catch (Exception ex)

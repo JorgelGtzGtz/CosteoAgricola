@@ -121,7 +121,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.ACCESOS")]
 	[PrimaryKey("acceso_id")]
 	[ExplicitColumns]
-    public partial class ACCESOS : dbconnectionDB.Record<ACCESOS>  
+    public partial class ACCESO : dbconnectionDB.Record<ACCESO>  
     {
 		[Column] public int acceso_id { get; set; }
 		[Column] public string acceso_nombre { get; set; }
@@ -141,7 +141,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.AGROQUIMICOS")]
 	[PrimaryKey("agrog_id")]
 	[ExplicitColumns]
-    public partial class AGROQUIMICOS : dbconnectionDB.Record<AGROQUIMICOS>  
+    public partial class AGROQUIMICO : dbconnectionDB.Record<AGROQUIMICO>  
     {
 		[Column] public int agrog_id { get; set; }
 		[Column] public string agroq_nomComercial { get; set; }
@@ -167,7 +167,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.DETALLE_AGROQUIMICOS")]
 	[PrimaryKey("detAgroq_ID")]
 	[ExplicitColumns]
-    public partial class DETALLE_AGROQUIMICOS : dbconnectionDB.Record<DETALLE_AGROQUIMICOS>  
+    public partial class DETALLE_AGROQUIMICO : dbconnectionDB.Record<DETALLE_AGROQUIMICO>  
     {
 		[Column] public int detAgroq_ID { get; set; }
 		[Column] public int? agrog_id { get; set; }
@@ -190,7 +190,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.FERTILIZANTES")]
 	[PrimaryKey("fert_id")]
 	[ExplicitColumns]
-    public partial class FERTILIZANTES : dbconnectionDB.Record<FERTILIZANTES>  
+    public partial class FERTILIZANTE : dbconnectionDB.Record<FERTILIZANTE>  
     {
 		[Column] public int fert_id { get; set; }
 		[Column] public string fert_desc { get; set; }
@@ -213,7 +213,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.INGREDIENTES_ACTIVOS")]
 	[PrimaryKey("ingredAct_id")]
 	[ExplicitColumns]
-    public partial class INGREDIENTES_ACTIVOS : dbconnectionDB.Record<INGREDIENTES_ACTIVOS>  
+    public partial class INGREDIENTES_ACTIVO : dbconnectionDB.Record<INGREDIENTES_ACTIVO>  
     {
 		[Column] public int ingredAct_id { get; set; }
 		[Column] public string ingredAct_desc { get; set; }
@@ -224,7 +224,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.LOTES")]
 	[PrimaryKey("lote_ID")]
 	[ExplicitColumns]
-    public partial class LOTES : dbconnectionDB.Record<LOTES>  
+    public partial class LOTE : dbconnectionDB.Record<LOTE>  
     {
 		[Column] public int lote_ID { get; set; }
 		[Column] public string lote_descripcion { get; set; }
@@ -237,7 +237,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.PROCESOS_PERMISOS")]
 	[PrimaryKey("procesoPermiso_id")]
 	[ExplicitColumns]
-    public partial class PROCESOS_PERMISOS : dbconnectionDB.Record<PROCESOS_PERMISOS>  
+    public partial class PROCESOS_PERMISO : dbconnectionDB.Record<PROCESOS_PERMISO>  
     {
 		[Column] public int procesoPermiso_id { get; set; }
 		[Column] public string procesoPermiso_des { get; set; }
@@ -246,7 +246,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.PRODUCTOS")]
 	[PrimaryKey("prod_id")]
 	[ExplicitColumns]
-    public partial class PRODUCTOS : dbconnectionDB.Record<PRODUCTOS>  
+    public partial class PRODUCTO : dbconnectionDB.Record<PRODUCTO>  
     {
 		[Column] public int prod_id { get; set; }
 		[Column] public string prod_desc { get; set; }
@@ -263,7 +263,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.SEMILLAS")]
 	[PrimaryKey("sem_ID")]
 	[ExplicitColumns]
-    public partial class SEMILLAS : dbconnectionDB.Record<SEMILLAS>  
+    public partial class SEMILLA : dbconnectionDB.Record<SEMILLA>  
     {
 		[Column] public int sem_ID { get; set; }
 		[Column] public string sem_desc { get; set; }
@@ -282,7 +282,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.TIPO_AGROQUIMICO")]
 	[PrimaryKey("tipoAgroq_id")]
 	[ExplicitColumns]
-    public partial class TIPO_AGROQUIMICOS : dbconnectionDB.Record<TIPO_AGROQUIMICOS>  
+    public partial class TIPO_AGROQUIMICO : dbconnectionDB.Record<TIPO_AGROQUIMICO>  
     {
 		[Column] public int tipoAgroq_id { get; set; }
 		[Column] public string tipoAgroq_desc { get; set; }
@@ -313,7 +313,7 @@ namespace dbconnection
 	[TableName("hiram74_residencias.UNIDADES")]
 	[PrimaryKey("unidad_id")]
 	[ExplicitColumns]
-    public partial class UNIDADES : dbconnectionDB.Record<UNIDADES>  
+    public partial class UNIDADE : dbconnectionDB.Record<UNIDADE>  
     {
 		[Column] public int unidad_id { get; set; }
 		[Column] public string unidad_desc { get; set; }

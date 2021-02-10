@@ -10,11 +10,11 @@ namespace CosteoAgricola.Core.Services
 {
     public interface ILotesService
     {
-        LOTES GetLote(int id);
-        LOTES GetLote(string desc);
-        List<LOTES> GetLotes();
+        LOTE GetLote(int id);
+        LOTE GetLote(string desc);
+        List<LOTE> GetLotes();
         // List<dynamic> GetUnidadesFiltro(string activo = null);
-        bool InsertUpdateLote(LOTES Lotes, out string Message);
+        bool InsertUpdateLote(LOTE Lotes, out string Message);
         bool EliminarLote(int id, out string Message);
     }
 
@@ -48,17 +48,17 @@ namespace CosteoAgricola.Core.Services
             return result;
         }
 
-        public LOTES GetLote(int id)
+        public LOTE GetLote(int id)
         {
             return _lotesRepository.Get(id);
         }
 
-        public LOTES GetLote(string desc)
+        public LOTE GetLote(string desc)
         {
             return _lotesRepository.GetLote(desc);
         }
 
-        public List<LOTES> GetLotes()
+        public List<LOTE> GetLotes()
         {
             return _lotesRepository.GetAll("LOTES").ToList();
         }
@@ -78,7 +78,7 @@ namespace CosteoAgricola.Core.Services
             return _unidadesRepository.GetByDynamicFilter(query);
         }
         */
-        public bool InsertUpdateLote(LOTES lotes, out string Message)
+        public bool InsertUpdateLote(LOTE lotes, out string Message)
         {
             Message = string.Empty;
             bool result = false;

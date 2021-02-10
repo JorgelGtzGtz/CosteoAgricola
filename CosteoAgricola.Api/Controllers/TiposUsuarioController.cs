@@ -32,7 +32,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var item = _tipoUsuarioService.GetTipoUsuariosFiltro(usuario);
+                    var item = _tipoUsuarioService.GetTipoUsuarios();
                     response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)
@@ -89,7 +89,7 @@ namespace CosteoAgricola.Api.Controllers
                 try
                 {
                     var tipo = data["tipo"].ToObject<TIPO_USUARIO>();
-                    var accesos = data["accesos"].ToObject<List<ACCESOS>>();
+                    var accesos = data["accesos"].ToObject<List<ACCESO>>();
 
                     var result = _tipoUsuarioService.InsertUpdateTipoUsuario(tipo, accesos, out message);
                     if (result)

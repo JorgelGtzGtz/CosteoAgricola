@@ -10,11 +10,11 @@ namespace CosteoAgricola.Core.Services
 {
     public interface IAgroquimicoService
     {
-        AGROQUIMICOS GetAgroquimico(int id);
-        AGROQUIMICOS GetAgroquimico(string desc);
-        List<AGROQUIMICOS> GetAgroquimicos();
+        AGROQUIMICO GetAgroquimico(int id);
+        AGROQUIMICO GetAgroquimico(string desc);
+        List<AGROQUIMICO> GetAgroquimicos();
         // List<dynamic> GetUnidadesFiltro(string activo = null);
-        bool InsertUpdateAgroquimico(AGROQUIMICOS agroquimico, out string Message);
+        bool InsertUpdateAgroquimico(AGROQUIMICO agroquimico, out string Message);
         bool EliminarAgroquimico(int id, out string Message);
     }
     public class AgroquimicosService : IAgroquimicoService
@@ -46,16 +46,16 @@ namespace CosteoAgricola.Core.Services
             return result;
         }
 
-        public AGROQUIMICOS GetAgroquimico(int id)
+        public AGROQUIMICO GetAgroquimico(int id)
         {
             return _agroquimicosRepository.Get(id);
         }
 
-        public AGROQUIMICOS GetAgroquimico(string desc)
+        public AGROQUIMICO GetAgroquimico(string desc)
         {
             return _agroquimicosRepository.GetAgroquimico(desc);
         }
-        public List<AGROQUIMICOS> GetAgroquimicos()
+        public List<AGROQUIMICO> GetAgroquimicos()
         {
             return _agroquimicosRepository.GetAll("AGROQUIMICOS").ToList();
         }
@@ -75,7 +75,7 @@ namespace CosteoAgricola.Core.Services
             return _unidadesRepository.GetByDynamicFilter(query);
         }
         */
-        public bool InsertUpdateAgroquimico(AGROQUIMICOS agroquimicos, out string Message)
+        public bool InsertUpdateAgroquimico(AGROQUIMICO agroquimicos, out string Message)
         {
             Message = string.Empty;
             bool result = false;

@@ -22,7 +22,7 @@ namespace CosteoAgricola.Api
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.Initialize(GlobalConfiguration.Configuration);
-          //  GlobalConfiguration.Configuration.Filters.Add(new ApiAuthenticationFilter());
+            GlobalConfiguration.Configuration.Filters.Add(new ApiAuthenticationFilter());
         }
     }
 }

@@ -9,39 +9,39 @@ using System.Threading.Tasks;
 
 namespace CosteoAgricola.Core.Repository
 {
-    public interface IProductosRepository : IRepositoryBase<PRODUCTOS>
+    public interface IProductosRepository : IRepositoryBase<PRODUCTO>
     {
-        PRODUCTOS GetProducto(int id);
-        PRODUCTOS GetProducto(string desc);
+        PRODUCTO GetProducto(int id);
+        PRODUCTO GetProducto(string desc);
         List<dynamic> GetByDynamicFilter(Sql query);
     }
-    public class ProductosRepository : RepositoryBase<PRODUCTOS>, IProductosRepository
+    public class ProductosRepository : RepositoryBase<PRODUCTO>, IProductosRepository
     {
         public ProductosRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
 
 
-        public PRODUCTOS GetProducto(int id)
+        public PRODUCTO GetProducto(int id)
         {
             var query = new Sql()
                 .Select("*")
                 .From("PRODUCTOS")
                 .Where("lower(prod_id) = @0", id);
 
-            var pro = this.Context.SingleOrDefault<PRODUCTOS>(query);
+            var pro = this.Context.SingleOrDefault<PRODUCTO>(query);
 
             return pro;
         }
 
-        public PRODUCTOS GetProducto(string desc)
+        public PRODUCTO GetProducto(string desc)
         {
             var query = new Sql()
               .Select("*")
               .From("PRODUCTOS")
               .Where("lower(prod_desc) = @0", desc.ToLower());
 
-            var pro = this.Context.SingleOrDefault<PRODUCTOS>(query);
+            var pro = this.Context.SingleOrDefault<PRODUCTO>(query);
 
             return pro;
         }

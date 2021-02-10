@@ -10,11 +10,11 @@ namespace CosteoAgricola.Core.Services
 {
     public interface IFertilizantesService
     {
-        FERTILIZANTES GetFertilizante(int id);
-        FERTILIZANTES GetFertilizante(string desc);
-        List<FERTILIZANTES> GetFertilizantes();
+        FERTILIZANTE GetFertilizante(int id);
+        FERTILIZANTE GetFertilizante(string desc);
+        List<FERTILIZANTE> GetFertilizantes();
         // List<dynamic> GetUnidadesFiltro(string activo = null);
-        bool InsertUpdateFertilizante(FERTILIZANTES fertilizantes, out string Message);
+        bool InsertUpdateFertilizante(FERTILIZANTE fertilizantes, out string Message);
         bool EliminarFertilizante(int id, out string Message);
     }
     public class FertilizantesService : IFertilizantesService
@@ -47,17 +47,17 @@ namespace CosteoAgricola.Core.Services
             return result;
         }
 
-        public FERTILIZANTES GetFertilizante(int id)
+        public FERTILIZANTE GetFertilizante(int id)
         {
             return _fertilizantesRepository.Get(id);
         }
 
-        public FERTILIZANTES GetFertilizante(string desc)
+        public FERTILIZANTE GetFertilizante(string desc)
         {
             return _fertilizantesRepository.GetFertilizante(desc);
         }
 
-        public List<FERTILIZANTES> GetFertilizantes()
+        public List<FERTILIZANTE> GetFertilizantes()
         {
             return _fertilizantesRepository.GetAll("FERTILIZANTES").ToList();
         }
@@ -77,7 +77,7 @@ namespace CosteoAgricola.Core.Services
             return _unidadesRepository.GetByDynamicFilter(query);
         }
         */
-        public bool InsertUpdateFertilizante(FERTILIZANTES fertilizantes, out string Message)
+        public bool InsertUpdateFertilizante(FERTILIZANTE fertilizantes, out string Message)
         {
             Message = string.Empty;
             bool result = false;

@@ -11,11 +11,11 @@ namespace CosteoAgricola.Core.Services
 {
    public interface IUnidadesService 
     {
-        UNIDADES GetUnidad(int id);
-        UNIDADES GetUnidad(string desc);
-        List<UNIDADES> GetUnidades();
+        UNIDADE GetUnidad(int id);
+        UNIDADE GetUnidad(string desc);
+        List<UNIDADE> GetUnidades();
        // List<dynamic> GetUnidadesFiltro(string activo = null);
-        bool InsertUpdateUnidad(UNIDADES unidades, out string Message);
+        bool InsertUpdateUnidad(UNIDADE unidades, out string Message);
         bool EliminarUnidad(int id, out string Message);
     }
 
@@ -49,17 +49,17 @@ namespace CosteoAgricola.Core.Services
             return result;
         }
 
-        public UNIDADES GetUnidad(int id)
+        public UNIDADE GetUnidad(int id)
         {
             return _unidadesRepository.Get(id);
         }
 
-        public UNIDADES GetUnidad(string desc)
+        public UNIDADE GetUnidad(string desc)
         {
             return _unidadesRepository.GetUnidad(desc);
         }
 
-        public List<UNIDADES> GetUnidades()
+        public List<UNIDADE> GetUnidades()
         {
             return _unidadesRepository.GetAll("UNIDADES").ToList();
         }
@@ -79,7 +79,7 @@ namespace CosteoAgricola.Core.Services
             return _unidadesRepository.GetByDynamicFilter(query);
         }
         */
-        public bool InsertUpdateUnidad(UNIDADES unidades, out string Message)
+        public bool InsertUpdateUnidad(UNIDADE unidades, out string Message)
         {
             Message = string.Empty;
             bool result = false;

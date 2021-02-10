@@ -9,39 +9,39 @@ using System.Threading.Tasks;
 
 namespace CosteoAgricola.Core.Repository
 {
-    public interface ISemillasRepository : IRepositoryBase<SEMILLAS>
+    public interface ISemillasRepository : IRepositoryBase<SEMILLA>
     {
-        SEMILLAS GetSemilla(int id);
-        SEMILLAS GetSemilla(string desc);
+        SEMILLA GetSemilla(int id);
+        SEMILLA GetSemilla(string desc);
         List<dynamic> GetByDynamicFilter(Sql query);
     }
-    public class SemillasRepository : RepositoryBase<SEMILLAS>, ISemillasRepository
+    public class SemillasRepository : RepositoryBase<SEMILLA>, ISemillasRepository
     {
         public SemillasRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
 
 
-        public SEMILLAS GetSemilla(int id)
+        public SEMILLA GetSemilla(int id)
         {
             var query = new Sql()
                .Select("*")
                .From("SEMILLAS")
                .Where("lower(sem_ID) = @0", id);
 
-            var semilla = this.Context.SingleOrDefault<SEMILLAS>(query);
+            var semilla = this.Context.SingleOrDefault<SEMILLA>(query);
 
             return semilla;
         }
 
-        public SEMILLAS GetSemilla(string desc)
+        public SEMILLA GetSemilla(string desc)
         {
             var query = new Sql()
               .Select("*")
               .From("SEMILLAS")
               .Where("lower(sem_desc) = @0", desc.ToLower());
 
-            var semilla = this.Context.SingleOrDefault<SEMILLAS>(query);
+            var semilla = this.Context.SingleOrDefault<SEMILLA>(query);
 
             return semilla;
         }

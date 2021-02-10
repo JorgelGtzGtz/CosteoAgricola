@@ -11,11 +11,11 @@ namespace CosteoAgricola.Core.Services
 {
     public interface ISemillasService
     {
-        SEMILLAS GetSemilla(int id);
-        SEMILLAS GetSemilla(string desc);
-        List<SEMILLAS> GetSemillas();
+        SEMILLA GetSemilla(int id);
+        SEMILLA GetSemilla(string desc);
+        List<SEMILLA> GetSemillas();
         List<dynamic> GetSemillasFiltro(string activo = null);
-        bool InsertUpdateSemilla(SEMILLAS Semillas, out string Message);
+        bool InsertUpdateSemilla(SEMILLA Semillas, out string Message);
         bool EliminarSemilla(int id, out string Message);
     }
 
@@ -49,17 +49,17 @@ namespace CosteoAgricola.Core.Services
             return result;
         }
 
-        public SEMILLAS GetSemilla(int id)
+        public SEMILLA GetSemilla(int id)
         {
             return _semillasRepository.Get(id);
         }
 
-        public SEMILLAS GetSemilla(string desc)
+        public SEMILLA GetSemilla(string desc)
         {
             return _semillasRepository.GetSemilla(desc);
         }
 
-        public List<SEMILLAS> GetSemillas()
+        public List<SEMILLA> GetSemillas()
         {
             return _semillasRepository.GetAll("SEMILLAS").ToList();
         }
@@ -78,7 +78,7 @@ namespace CosteoAgricola.Core.Services
             return _semillasRepository.GetByDynamicFilter(query);
         }
 
-        public bool InsertUpdateSemilla(SEMILLAS semillas, out string Message)
+        public bool InsertUpdateSemilla(SEMILLA semillas, out string Message)
         {
             Message = string.Empty;
             bool result = false;

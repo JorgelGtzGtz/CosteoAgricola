@@ -75,7 +75,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var item = _usuarioservice.GetUsuarioesFiltro(usuario);
+                    var item = _usuarioservice.GetUsuarios();
                     response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)

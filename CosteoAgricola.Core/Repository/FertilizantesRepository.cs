@@ -9,40 +9,40 @@ using System.Threading.Tasks;
 
 namespace CosteoAgricola.Core.Repository
 {
-    public interface IFertilizantesRepository : IRepositoryBase<FERTILIZANTES>
+    public interface IFertilizantesRepository : IRepositoryBase<FERTILIZANTE>
     {
-        FERTILIZANTES GetFertilizante(int id);
-        FERTILIZANTES GetFertilizante(string desc);
+        FERTILIZANTE GetFertilizante(int id);
+        FERTILIZANTE GetFertilizante(string desc);
         List<dynamic> GetByDynamicFilter(Sql query);
     }
 
-    public class FertilizantesRepository : RepositoryBase<FERTILIZANTES>, IFertilizantesRepository
+    public class FertilizantesRepository : RepositoryBase<FERTILIZANTE>, IFertilizantesRepository
     {
         public FertilizantesRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
 
 
-        public FERTILIZANTES GetFertilizante(int id)
+        public FERTILIZANTE GetFertilizante(int id)
         {
             var query = new Sql()
                 .Select("*")
                 .From("FERTILIZANTES")
                 .Where("lower(fert_id) = @0", id);
 
-            var fert = this.Context.SingleOrDefault<FERTILIZANTES>(query);
+            var fert = this.Context.SingleOrDefault<FERTILIZANTE>(query);
 
             return fert;
         }
 
-        public FERTILIZANTES GetFertilizante(string desc)
+        public FERTILIZANTE GetFertilizante(string desc)
         {
             var query = new Sql()
               .Select("*")
               .From("FERTILIZANTES")
               .Where("lower(fert_desc) = @0", desc.ToLower());
 
-            var fert = this.Context.SingleOrDefault < FERTILIZANTES>(query);
+            var fert = this.Context.SingleOrDefault < FERTILIZANTE>(query);
 
             return fert;
         }

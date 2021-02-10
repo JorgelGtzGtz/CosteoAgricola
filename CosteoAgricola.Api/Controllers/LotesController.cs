@@ -77,7 +77,7 @@ namespace CosteoAgricola.Api.Controllers
 
         [HttpPost]
         [Route("Guardar")]
-        public async Task<HttpResponseMessage> Guardar(HttpRequestMessage request, LOTES model)
+        public async Task<HttpResponseMessage> Guardar(HttpRequestMessage request, LOTE model)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {

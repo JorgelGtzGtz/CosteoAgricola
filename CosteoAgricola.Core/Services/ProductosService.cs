@@ -10,11 +10,11 @@ namespace CosteoAgricola.Core.Services
 {
     public interface IProductosService
     {
-        PRODUCTOS GetProducto(int id);
-        PRODUCTOS GetProducto(string desc);
-        List<PRODUCTOS> GetProductos();
+        PRODUCTO GetProducto(int id);
+        PRODUCTO GetProducto(string desc);
+        List<PRODUCTO> GetProductos();
         // List<dynamic> GetUnidadesFiltro(string activo = null);
-        bool InsertUpdateProducto(PRODUCTOS productos, out string Message);
+        bool InsertUpdateProducto(PRODUCTO productos, out string Message);
         bool EliminarProducto(int id, out string Message);
     }
     public class ProductosService : IProductosService
@@ -46,17 +46,17 @@ namespace CosteoAgricola.Core.Services
             return result;
         }
 
-        public PRODUCTOS GetProducto(int id)
+        public PRODUCTO GetProducto(int id)
         {
             return _productosRepository.Get(id);
         }
 
-        public PRODUCTOS GetProducto(string desc)
+        public PRODUCTO GetProducto(string desc)
         {
             return _productosRepository.GetProducto(desc);
         }
 
-        public List<PRODUCTOS> GetProductos()
+        public List<PRODUCTO> GetProductos()
         {
             return _productosRepository.GetAll("PRODUCTOS").ToList();
         }
@@ -76,7 +76,7 @@ namespace CosteoAgricola.Core.Services
             return _unidadesRepository.GetByDynamicFilter(query);
         }
         */
-        public bool InsertUpdateProducto(PRODUCTOS productos, out string Message)
+        public bool InsertUpdateProducto(PRODUCTO productos, out string Message)
         {
             Message = string.Empty;
             bool result = false;

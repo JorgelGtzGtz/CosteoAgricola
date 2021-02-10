@@ -106,7 +106,7 @@ namespace CosteoAgricola.Api.Controllers
         */
         [HttpPost]
         [Route("Guardar")]
-        public async Task<HttpResponseMessage> Guardar(HttpRequestMessage request, SEMILLAS model)
+        public async Task<HttpResponseMessage> Guardar(HttpRequestMessage request, SEMILLA model)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {

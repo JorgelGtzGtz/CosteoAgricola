@@ -9,39 +9,39 @@ using System.Threading.Tasks;
 
 namespace CosteoAgricola.Core.Repository
 {
-    public interface IUnidadesRepository  : IRepositoryBase<UNIDADES>
+    public interface IUnidadesRepository  : IRepositoryBase<UNIDADE>
     {
-        UNIDADES GetUnidad(int id);
-        UNIDADES GetUnidad(string desc);
+        UNIDADE GetUnidad(int id);
+        UNIDADE GetUnidad(string desc);
         List<dynamic> GetByDynamicFilter(Sql query);
     }
-    public class UnidadesRepository : RepositoryBase<UNIDADES>, IUnidadesRepository
+    public class UnidadesRepository : RepositoryBase<UNIDADE>, IUnidadesRepository
     {
         public UnidadesRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
 
 
-        public UNIDADES GetUnidad(int id)
+        public UNIDADE GetUnidad(int id)
         {
             var query = new Sql()
                 .Select("*")
                 .From("UNIDADES")
                 .Where("lower(unidad_id) = @0", id);
 
-            var unidad = this.Context.SingleOrDefault<UNIDADES>(query);
+            var unidad = this.Context.SingleOrDefault<UNIDADE>(query);
 
             return unidad;
         }
 
-        public UNIDADES GetUnidad(string desc)
+        public UNIDADE GetUnidad(string desc)
         {
             var query = new Sql()
               .Select("*")
               .From("UNIDADES")
               .Where("lower(unidad_desc) = @0", desc.ToLower());
 
-            var unidad = this.Context.SingleOrDefault<UNIDADES>(query);
+            var unidad = this.Context.SingleOrDefault<UNIDADE>(query);
 
             return unidad;
         }

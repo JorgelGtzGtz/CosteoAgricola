@@ -15,10 +15,10 @@ namespace CosteoAgricola.Core.Services
         TIPO_USUARIO GetTipoUsuario(int id);
         List<TIPO_USUARIO> GetTipoUsuarios();
         List<TIPO_USUARIO> GetTipoUsuariosFiltro(string nombre = null);
-        bool InsertUpdateTipoUsuario(TIPO_USUARIO tipoPersonal, List<ACCESOS> accesos, out string Message);
+        bool InsertUpdateTipoUsuario(TIPO_USUARIO tipoPersonal, List<ACCESO> accesos, out string Message);
         bool EliminarTipoUsuario(int id, out string Message);
-        List<ACCESOS> GetTipoUsuarioAccesos(int id);
-        List<ACCESOS> GetAccesos();
+        List<ACCESO> GetTipoUsuarioAccesos(int id);
+        List<ACCESO> GetAccesos();
     }
 
     public class TipoUsuarioService : ITipoUsuarioService
@@ -54,7 +54,7 @@ namespace CosteoAgricola.Core.Services
             return _tipoUsuarioRepository.GetByFilter(query);
         }
 
-        public bool InsertUpdateTipoUsuario(TIPO_USUARIO tipoPersonal, List<ACCESOS> accesos, out string Message)
+        public bool InsertUpdateTipoUsuario(TIPO_USUARIO tipoPersonal, List<ACCESO> accesos, out string Message)
         {
 
             Message = string.Empty;
@@ -132,17 +132,17 @@ namespace CosteoAgricola.Core.Services
             return result;
         }
 
-        public List<ACCESOS> GetTipoUsuarioAccesos(int id)
+        public List<ACCESO> GetTipoUsuarioAccesos(int id)
         {
             Sql query = new Sql(@"select a.* from ACCESOS a
                                 inner join ACCESOS_TIPO_USUARIO ap on ap.ac_id_accesos = a.acceso_id
                                 Where ap.ac_id_tipo_usuario = @0", id);
-            List<ACCESOS> accesos = _accesosRepository.GetByFilter(query);
+            List<ACCESO> accesos = _accesosRepository.GetByFilter(query);
 
             return accesos;
         }
 
-        public List<ACCESOS> GetAccesos()
+        public List<ACCESO> GetAccesos()
         {
             return _accesosRepository.GetAll("ACCESOS").ToList();
         }

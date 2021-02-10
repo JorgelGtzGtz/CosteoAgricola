@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace CosteoAgricola.Core.Repository
 {
-    public interface IAccesosRepository : IRepositoryBase<ACCESOS>
+    public interface IAccesosRepository : IRepositoryBase<ACCESO>
     {
     }
 
-    public class AccesosRepository : RepositoryBase<ACCESOS>, IAccesosRepository
+    public class AccesosRepository : RepositoryBase<ACCESO>, IAccesosRepository
     {
         public AccesosRepository(IDbFactory dbFactory) : base(dbFactory)
         {

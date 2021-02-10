@@ -9,39 +9,39 @@ using System.Threading.Tasks;
 
 namespace CosteoAgricola.Core.Repository
 {
-    public interface ILotesRepository : IRepositoryBase<LOTES>
+    public interface ILotesRepository : IRepositoryBase<LOTE>
     {
-        LOTES GetLote(int id);
-        LOTES GetLote(string desc);
+        LOTE GetLote(int id);
+        LOTE GetLote(string desc);
         List<dynamic> GetByDynamicFilter(Sql query);
     }
 
-    public class LotesRepository : RepositoryBase<LOTES>, ILotesRepository
+    public class LotesRepository : RepositoryBase<LOTE>, ILotesRepository
     {
         public LotesRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
 
-        public LOTES GetLote(int id)
+        public LOTE GetLote(int id)
         {
             var query = new Sql()
                 .Select("*")
                 .From("LOTES")
                 .Where("lower(lote_ID) = @0", id);
 
-            var item = this.Context.SingleOrDefault<LOTES>(query);
+            var item = this.Context.SingleOrDefault<LOTE>(query);
 
             return item;
         }
 
-        public LOTES GetLote(string desc)
+        public LOTE GetLote(string desc)
         {
             var query = new Sql()
               .Select("*")
               .From("LOTES")
               .Where("lower(lote_descripcion) = @0", desc.ToLower());
 
-            var item = this.Context.SingleOrDefault<LOTES>(query);
+            var item = this.Context.SingleOrDefault<LOTE>(query);
 
             return item;
         }

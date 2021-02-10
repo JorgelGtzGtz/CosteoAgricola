@@ -79,7 +79,6 @@ export class UsersService {
       'Authorization': 'Basic ' + btoa(`${_user.user}:${_user.password}`),
       'Content-Type': 'application/json'
     });
-
     return this._http.post(`${this._login}`, null, { headers: headers})
     .pipe(
       tap((data: any) => {
@@ -87,7 +86,6 @@ export class UsersService {
         data.accesos.forEach(acceso => {
           accesoList.push(acceso.Nombre);
         });
-
         this.aclData = {
             member: accesoList
         };
