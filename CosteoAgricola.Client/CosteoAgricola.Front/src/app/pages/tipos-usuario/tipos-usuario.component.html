@@ -57,8 +57,8 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of tiposusuario; let i=index;">
-                                <td>{{ item.ID }}</td>
-                                <td>{{ item.Nombre }}</td>
+                                <td>{{ item.tipoUsuario_id }}</td>
+                                <td>{{ item.tipoUsuario_desc }}</td>
                                 <td>
                                     <button type="button" class="btn btn-warning btn-xs m-lg-1" (click)="onShow(item.ID, template)"><i class="fa fa-edit"></i> Editar</button>
                                     <button type="button" class="btn btn-danger btn-xs m-lg-1" (click)="onDelete(item.ID)"><i class="fa fa-trash"></i> Eliminar</button>
@@ -91,7 +91,7 @@
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <div class="form-group">
                         <label for="nombre">Folio</label>
-                        <input type="text" class="form-control" placeholder="Folio" [(ngModel)]="tipousuario.ID" [ngModelOptions]="{standalone: true}" disabled>
+                        <input type="text" class="form-control" placeholder="Folio" [(ngModel)]="tipousuario.tipoUsuario_id" [ngModelOptions]="{standalone: true}" disabled>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <label for="descripcion">Descripción <span class="text-danger">*</span></label>
-                        <input name="Nombre" #Nombre="ngModel" type="text" class="form-control" placeholder="Descripción" [(ngModel)]="tipousuario.Nombre" [ngClass]="{'form-control-danger': Nombre.invalid && (Nombre.dirty || Nombre.touched || (userForm.submitted && !userForm.valid)),
+                        <input name="Nombre" #Nombre="ngModel" type="text" class="form-control" placeholder="Descripción" [(ngModel)]="tipousuario.tipoUsuario_desc" [ngClass]="{'form-control-danger': Nombre.invalid && (Nombre.dirty || Nombre.touched || (userForm.submitted && !userForm.valid)),
                         'form-control-success': Nombre.valid && (Nombre.dirty || Nombre.touched)}" required>
                     </div>
                     <div *ngIf="Nombre.invalid && (Nombre.dirty || Nombre.touched || userForm.submitted)" class="w-100" style="margin-top: -10px; margin-bottom: 1rem">
@@ -115,7 +115,7 @@
                         <label class="font-weight-bold">Accesos (Permisos)</label>
                         <select multiple class="form-control multiple" [(ngModel)]="selectedAccesoDisponibles" name="selectedAccesoDisponibles">
                                 <ng-container *ngFor="let acceso of AccesoDisponibles">
-                                    <option [value]="acceso">{{acceso.Nombre}}</option>
+                                    <option [value]="acceso">{{acceso.acceso_nombre}}</option>
                                 </ng-container>
                         </select>
                     </div>
@@ -131,7 +131,7 @@
                         <label class="font-weight-bold">Accesos (Permisos) seleccionados</label>
                         <select multiple class="form-control multiple" [(ngModel)]="selectedAccesoAsignados" name="selectedAccesoAsignados">
                                 <ng-container *ngFor="let acceso of AccesoAsignados">
-                                    <option [value]="acceso">{{acceso.Nombre}}</option>
+                                    <option [value]="acceso">{{acceso.acceso_nombre}}</option>
                                 </ng-container>
                         </select>
                     </div>
