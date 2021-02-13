@@ -142,12 +142,12 @@ export class TiposUsuarioComponent implements OnInit {
   AgregarAcceso() {
     this.selectedAccesoDisponibles.forEach(acceso => {
       const  existingAccess = this.AccesoAsignados.filter(
-        item => item.ID === acceso.ID
+        item => item.acceso_id === acceso.acceso_id
       )[0];
 
       if (!existingAccess) {
         this.AccesoAsignados.push(acceso);
-        const accesoIndex = this.AccesoDisponibles.findIndex((accesoItem: Acceso) => accesoItem.ID === acceso.ID);
+        const accesoIndex = this.AccesoDisponibles.findIndex((accesoItem: Acceso) => accesoItem.acceso_id === acceso.acceso_id);
         if (accesoIndex !== -1) {
             this.AccesoDisponibles.splice(accesoIndex, 1);
         }
@@ -158,23 +158,23 @@ export class TiposUsuarioComponent implements OnInit {
   RemoverAcceso() {
     this.selectedAccesoAsignados.forEach(acceso => {
       const  existingAccess = this.AccesoAsignados.filter(
-        item => item.ID === acceso.ID
+        item => item.acceso_id === acceso.acceso_id
       )[0];
 
       if (existingAccess) {
 
         const accesoIndex = this.AccesoAsignados.indexOf(existingAccess);
         const newAcceso = new Acceso();
-        newAcceso.ID = acceso.ID;
-        newAcceso.Nombre = acceso.Nombre;
-        newAcceso.Status = acceso.Status;
+        newAcceso.acceso_id = acceso.acceso_id;
+        newAcceso.acceso_nombre = acceso.acceso_nombre;
+        newAcceso.acceso_status = acceso.acceso_status;
 
         if (accesoIndex !== -1) {
           this.AccesoAsignados.splice(accesoIndex, 1);
         }
 
         const  existingDisponibleAccess = this.AccesoDisponibles.filter(
-          item => item.ID === acceso.ID
+          item => item.acceso_id === acceso.acceso_id
         )[0];
 
         if (!existingDisponibleAccess) {
@@ -188,11 +188,11 @@ export class TiposUsuarioComponent implements OnInit {
     if (this.AccesoAsignados) {
       this.AccesoAsignados.forEach(acceso => {
         const existingAccess = this.AccesoDisponibles.filter(
-          item => item.ID === acceso.ID
+          item => item.acceso_id === acceso.acceso_id
         )[0];
 
         if (existingAccess) {
-          const accesoIndex = this.AccesoDisponibles.findIndex((accesoItem: Acceso) => accesoItem.ID === existingAccess.ID);
+          const accesoIndex = this.AccesoDisponibles.findIndex((accesoItem: Acceso) => accesoItem.acceso_id === existingAccess.acceso_id);
           if (accesoIndex !== -1) {
             this.AccesoDisponibles.splice(accesoIndex, 1);
           }

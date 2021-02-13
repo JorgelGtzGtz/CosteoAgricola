@@ -55,10 +55,10 @@ namespace CosteoAgricola.Core.Services
 
             if (!string.IsNullOrEmpty(nombre))
             {
-                filter += string.Format("p.usuario_nom like '%{0}%' or p.usuario_login like '%{0}%' or p.usuario_id like '%{0}%' or pt.tipoUsuario_id like '%{0}%'", nombre);
+                filter += string.Format("p.usuario_nom like '%{0}%' or p.usuario_login like '%{0}%' or p.usuario_id like '%{0}%' or pt.tipoUsuario_desc like '%{0}%'", nombre);
             }
 
-            Sql query = new Sql(@"select p.*, pt.usuario_nom as NombreTipo from  USUARIO p
+            Sql query = new Sql(@"select p.*, pt.tipoUsuario_desc as NombreTipo from  USUARIO p
                                   inner join TIPO_USUARIO pt on pt.tipoUsuario_id = p.tipoUsuario_id" + (!string.IsNullOrEmpty(nombre) ? filter : ""));
             return _usuarioRepository.GetByDynamicFilter(query);
         }

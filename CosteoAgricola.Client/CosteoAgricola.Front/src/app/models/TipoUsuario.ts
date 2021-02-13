@@ -1,5 +1,5 @@
 export class TipoUsuario {
-    ID: number;
-    Nombre: string;
-    Status: string;
+    tipoUsuario_id: number;
+    tipoUsuario_desc: string;
+    tipoUsuario_status ?: string;
   }

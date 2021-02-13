@@ -1,14 +1,13 @@
 export class Usuario {
-  ID: number;
-  Nombre: string;
-  _Usuario: string;
-  Contrasena: string;
-  Telefono: string;
-  Genero: string;
-  eMail: string;
-  SuperAdmin?: boolean;
-  Estatus?: boolean;
-  ID_TipoUsuario: number;
-  esCliente?: boolean;
-  Cliente_ID?: number;
+  usuario_id: number;
+  emp_id ?: number;
+  usuario_nom: string;
+  usuario_correo: string;
+  usuario_telefono: string;
+  usuario_genero: string;
+  tipoUsuario_id ?: number;
+  usuario_login: string;
+  usuario_password: string;
+  usuario_status?: boolean;
+  usuario_superAdmin?: boolean;
 }

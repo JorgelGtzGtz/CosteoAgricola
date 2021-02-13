@@ -12,7 +12,7 @@ using System.Web.Http;
 
 namespace CosteoAgricola.Api.Controllers
 {
-    [RoutePrefix("api/TiposUsuario")]
+    [RoutePrefix("api/TiposUsuarios")]
     public class TiposUsuarioController : BaseApiController
     {
         private readonly ITipoUsuarioService _tipoUsuarioService;
@@ -32,7 +32,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var item = _tipoUsuarioService.GetTipoUsuarios();
+                    var item = _tipoUsuarioService.GetTipoUsuariosFiltro(usuario);
                     response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)

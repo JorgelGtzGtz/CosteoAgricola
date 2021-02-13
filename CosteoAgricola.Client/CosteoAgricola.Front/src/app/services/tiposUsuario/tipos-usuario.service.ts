@@ -11,7 +11,7 @@ import { UsersService } from '../users/users.service';
   providedIn: 'root'
 })
 export class TiposUsuarioService {
-  private _url = `${AppSettings.API_ENDPOINT}/TiposUsuario`;
+  private _url = `${AppSettings.API_ENDPOINT}/TiposUsuarios`;
   private _getLista = `${this._url}/Lista`;
   private _getGetTipoUsuario = `${this._url}/GetTipoUsuario`;
   private _guardar = `${this._url}/Guardar`;

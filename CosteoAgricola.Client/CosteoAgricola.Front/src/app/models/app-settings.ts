@@ -1,6 +1,6 @@
 export class AppSettings {
      // Site name to save in localstorage
-     public static site_name = 'CredFecere';
+     public static site_name = 'CosteoAgricola';
      // Local
      public static API_ENDPOINT = 'http://localhost:50255/api';
      // Local IIS

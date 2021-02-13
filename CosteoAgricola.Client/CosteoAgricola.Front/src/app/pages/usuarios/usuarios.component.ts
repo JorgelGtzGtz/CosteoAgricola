@@ -24,7 +24,8 @@ export class UsuariosComponent implements OnInit {
   usuarios: any[] = [];
   usuario: Usuario = new Usuario();
   generos = [{ID: 1, Nombre: 'Masculino', Tipo: 'M'}, {ID: 2, Nombre: 'Femenino', Tipo: 'F'}];
-  tiposUsuario: any[] = [];
+  tiposUsuario:  any[] = [];
+
 
   public imagePath;
   imgURL: any;
@@ -119,21 +120,21 @@ export class UsuariosComponent implements OnInit {
       },
       error => this.toastr.error(error.message, 'Error!') );
     }
+    
   }
 
-   getTiposUsuario() {
-    this._userService.getTiposUsuarios()
-      .subscribe(
-        data => {
-          this.tiposUsuario = data;
-        },
-        error => this.toastr.error(error.message, 'Error!') );
-   }
-
-   preview(files) {
-    if (files.length === 0) {
-      return;
-    }
+  getTiposUsuario() {
+  this._userService.getTiposUsuarios()
+    .subscribe(
+      data => {
+        this.tiposUsuario = data;
+      },
+      error => this.toastr.error(error.message, 'Error!') );
+  }
+  preview(files) {
+  if (files.length === 0) {
+    return;
+  }
 
     const mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {

@@ -1,5 +1,5 @@
 export class Acceso {
-    ID: number;
-    Nombre: string;
-    Status: string;
+    acceso_id: number;
+    acceso_nombre: string;
+    acceso_status ?: string;
   }
