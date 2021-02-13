@@ -64,7 +64,7 @@ namespace CosteoAgricola.Core.Services
                 var id = _tipoUsuarioRepository.InsertOrUpdate<int>(tipoPersonal);
                 tipoPersonal.tipoUsuario_id = id;
                 Sql query = new Sql()
-                .Select("*").From("ACESSOS_TIPO_USUARIO")
+                .Select("*").From("ACCESOS_TIPO_USUARIO")
                 .Where("ac_id_tipo_usuario = @0", id);
                 List<ACCESOS_TIPO_USUARIO> _detallesActuales = _accesosTipoUsuarioRepository.GetByFilter(query);
 
