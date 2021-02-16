@@ -182,5 +182,34 @@ namespace CosteoAgricola.Api.Controllers
                 return await Task.FromResult(response);
             });
         }
+
+        /*
+        [HttpGet]
+        [Route("TipoAbrev/{id}")]
+        public async Task<HttpResponseMessage> GetTipoAbrev(HttpRequestMessage request, int id)
+        {
+            return await CreateHttpResponseAsync(request, async () =>
+            {
+                HttpResponseMessage response = null;
+                string message = String.Empty;
+                try
+                {
+                    var item = _listaCombosService.GetTipoabrev(id);
+                    response = request.CreateResponse(HttpStatusCode.OK, item);
+                }
+                catch (Exception ex)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest,
+                    new
+                    {
+                        error = "ERROR",
+                        message = ex.Message
+                    });
+                }
+
+                return await Task.FromResult(response);
+            });
+        }
+        */
     }
 }

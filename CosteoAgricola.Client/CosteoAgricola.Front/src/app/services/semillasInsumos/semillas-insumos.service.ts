@@ -16,6 +16,7 @@ export class SemillasInsumosService {
   private _getLista = `${this._url}/Lista`;
   private _getGetSemilla = `${this._url}/GetSemilla`;
   private _getTiposMedidas = `${this._url}/TiposMedidas`;
+ // private _getTipoAbrev = `${this._url}/TipoAbrev`;
   private _guardar = `${this._url}/Guardar`;
   private _eliminar = `${this._url}/Eliminar`;
 
@@ -48,7 +49,15 @@ export class SemillasInsumosService {
       catchError(this.handleError)
     );
   }
-  
+  /*
+  getTipoAbrev(id: number): Observable<any[]> {
+    return this._http.get<any[]>(`${this._getTipoAbrev}/${id}`, {headers: this._userService.header})
+    .pipe(
+      tap(data => data),
+      catchError(this.handleError)
+    );
+  }
+  */
   guardar(_semilla: any): Observable<Semillas> {
     return this._http.post<Semillas>(`${this._guardar}`, _semilla, { headers: this._userService.header})
     .pipe(

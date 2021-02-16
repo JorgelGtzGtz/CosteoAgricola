@@ -30,6 +30,7 @@ export class SemillasInsumosComponent implements OnInit {
   mostrarCosto = 0;
   //inventariable = [{ID: 1, Nombre: 'Si', Tipo: true}, {ID: 2, Nombre: 'No', Tipo: false}];
   tiposMedidas:  any[] = [];
+  tipoAbrev:  any[] = [];
   constructor(private _userService: UsersService, private _semillasService: SemillasInsumosService, 
     private modalService: BsModalService, private toastr: ToastrService) {
     this._userService.loadStorage();
@@ -121,19 +122,20 @@ export class SemillasInsumosComponent implements OnInit {
       error => this.toastr.error(error.message, 'Error!') );
     }
   }
+  
 
   mostrarExistenciaCosto(valor)
   {
-    if(valor.sem_inventariable == true)
-    {
-      this.mostrarExistencia = valor.sem_existencia;
-      this.mostrarCosto = valor.sem_costoProm;
-    }
-    else
-    {
-      this.mostrarExistencia = 0;
-      this.mostrarCosto = 0;
-    }
+      if(valor.sem_inventariable == true)
+      {
+        this.mostrarExistencia = valor.sem_existencia;
+        this.mostrarCosto = valor.sem_costoProm;
+      }
+      else
+      {
+        this.mostrarExistencia = 0;
+        this.mostrarCosto = 0;
+      }
    }
   getTiposMedidas() {
     this._semillasService.getTiposMedidas()
@@ -143,4 +145,33 @@ export class SemillasInsumosComponent implements OnInit {
         },
         error => this.toastr.error(error.message, 'Error!') );
     }
+
+   mostrarToF(valor: boolean, op: number): string
+    {
+      var res = "";
+      if(op == 1)
+      {
+        if(valor)
+        {
+          return res = "Si"
+        }
+        else
+        {
+          return res = "No"
+        }
+      }
+      if(op == 2)
+      {
+        if(valor)
+        {
+          return res = "Activo"
+        }
+        else
+        {
+          return res = "Inactivo"
+        }
+      }
+      
+    }
+  
 }
