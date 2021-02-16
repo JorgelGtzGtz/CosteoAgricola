@@ -14,7 +14,7 @@ namespace CosteoAgricola.Core.Services
         SEMILLA GetSemilla(int id);
         SEMILLA GetSemilla(string desc);
         List<SEMILLA> GetSemillas();
-        List<dynamic> GetSemillasFiltro(string activo = null);
+        List<dynamic> GetSemillasFiltro(string nombre = null, string inventariable = null, string status = null);
         bool InsertUpdateSemilla(SEMILLA Semillas, out string Message);
         bool EliminarSemilla(int id, out string Message);
     }
@@ -64,17 +64,59 @@ namespace CosteoAgricola.Core.Services
             return _semillasRepository.GetAll("SEMILLAS").ToList();
         }
 
-        public List<dynamic> GetSemillasFiltro(string activo = null)
+        public List<dynamic> GetSemillasFiltro(string semillas, string inventariable , string estatus)
         {
-            string filter = " Where ";
+            string filter = " ";
+            string filter2 = " ";
+            string filter3 = " ";
 
-            if (!string.IsNullOrEmpty(activo))
+            if (inventariable.Equals("false"))
             {
-                filter += string.Format("p.sem_status like '%{0}%'",activo);
+                inventariable = null;
+            }
+            if (estatus.Equals("false"))
+            {
+                estatus = null;
             }
 
-            Sql query = new Sql(@"select p.*, pt.sem_desc as NombreSemilla from SEMILLAS p
-                                   on pt.sem_status = true" + (!string.IsNullOrEmpty(activo) ? filter : ""));
+            if (!string.IsNullOrEmpty(semillas))
+            {
+                filter += "Where "+ string.Format("p.sem_desc like '%{0}%'", semillas);
+            }
+
+            if ((!string.IsNullOrEmpty(inventariable))  && inventariable.Equals("true"))
+            {
+                if(!filter.Contains("Where"))
+                {
+
+                    filter2 += "Where " + string.Format("p.sem_inventariable = '{0}'", inventariable);
+                }
+                else
+                {
+                    filter2 += "and " + string.Format("p.sem_inventariable = '{0}'", inventariable);
+                }
+                
+            }
+
+            if ((!string.IsNullOrEmpty(estatus)) && estatus.Equals("true"))
+            {
+                if (!filter.Contains("Where") && !filter2.Contains("Where"))
+                {
+                    filter3 += "Where "+string.Format("p.sem_status = '{0}'", estatus);
+                }
+                else
+                {
+                    filter3 += "and "+ string.Format("p.sem_status = '{0}'", estatus);
+                }
+
+            }
+
+
+            
+
+            Sql query = new Sql(@"select p.*  from SEMILLAS p " + (!string.IsNullOrEmpty(semillas) ? filter : "") +
+                                                                  (!string.IsNullOrEmpty(inventariable) ? filter2 : "") +
+                                                                  (!string.IsNullOrEmpty(estatus) ? filter3 : ""));
             return _semillasRepository.GetByDynamicFilter(query);
         }
 

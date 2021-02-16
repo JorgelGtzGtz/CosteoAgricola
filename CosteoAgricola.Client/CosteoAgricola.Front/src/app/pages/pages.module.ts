@@ -17,6 +17,7 @@ import { DatepickerToggleDirective } from '../directives/datepicker-toggle.direc
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { TiposUsuarioComponent } from './tipos-usuario/tipos-usuario.component';
+import { SemillasInsumosComponent } from './semillas-insumos/semillas-insumos.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { TiposUsuarioComponent } from './tipos-usuario/tipos-usuario.component';
         UsuariosComponent,
         TiposUsuarioComponent,
         DatepickerToggleDirective,
+        SemillasInsumosComponent,
     ],
     imports: [
         CommonModule,

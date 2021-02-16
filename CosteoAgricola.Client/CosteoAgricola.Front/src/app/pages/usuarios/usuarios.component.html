@@ -192,7 +192,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label class="font-weight-bold">Genero <span class="text-danger">*</span></label>
-                        <ng-select name="sucursal" [items]="generos" [hideSelected]="true" bindLabel="Nombre" bindValue="Tipo" [searchable]="true" placeholder="Seleccionar Genero..." [(ngModel)]="usuario.usuario_genero" #sucursal="ngModel" [ngClass]="{'form-control-danger': sucursal.invalid && (sucursal.dirty || sucursal.touched || userForm.submitted)}"
+                        <ng-select name="sucursal" [items]="generos" [hideSelected]="true" bindLabel="Nombre" bindValue="Tipo" [searchable]="true" placeholder="Seleccionar genero..." [(ngModel)]="usuario.usuario_genero" #sucursal="ngModel" [ngClass]="{'form-control-danger': sucursal.invalid && (sucursal.dirty || sucursal.touched || userForm.submitted)}"
                             required>
                         </ng-select>
                     </div>

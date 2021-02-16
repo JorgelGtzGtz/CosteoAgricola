@@ -5,14 +5,15 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { UsersService } from '../../services/users/users.service';
-import { Usuario } from '../../models/Usuario';
+import { Semillas } from '../../models/Semillas';
+import { SemillasInsumosService } from '../../services/semillasInsumos/semillas-insumos.service';
 
 @Component({
-  selector: 'app-usuarios',
-  templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.css']
+  selector: 'app-semillas-insumos',
+  templateUrl: './semillas-insumos.component.html',
+  styleUrls: ['./semillas-insumos.component.css']
 })
-export class UsuariosComponent implements OnInit {
+export class SemillasInsumosComponent implements OnInit {
   @ViewChild('editModal') editModal: ModalDirective;
   modalRef: BsModalRef;
   config = {
@@ -20,30 +21,28 @@ export class UsuariosComponent implements OnInit {
     ignoreBackdropClick: true,
   };
   public toastconfig: any = { timeOut: 0, extendedTimeOut: 0, preventDuplicates: true, maxOpened: 1, autoDismiss: false };
-  usuarioFilter: string = '';
-  usuarios: any[] = [];
-  usuario: Usuario = new Usuario();
-  generos = [{ID: 1, Nombre: 'Masculino', Tipo: 'M'}, {ID: 2, Nombre: 'Femenino', Tipo: 'F'}];
-  tiposUsuario:  any[] = [];
-
-
-  public imagePath;
-  imgURL: any;
-  public message: string;
-
-  constructor(private _userService: UsersService, private modalService: BsModalService, private toastr: ToastrService) {
+  semillaFilter: string = '';
+  semillaStatus: boolean = false;
+  semillaIn: boolean = false;
+  semillas: any[] = [];
+  semilla: Semillas = new Semillas();
+  mostrarExistencia = 0;
+  mostrarCosto = 0;
+  //inventariable = [{ID: 1, Nombre: 'Si', Tipo: true}, {ID: 2, Nombre: 'No', Tipo: false}];
+  tiposMedidas:  any[] = [];
+  constructor(private _userService: UsersService, private _semillasService: SemillasInsumosService, 
+    private modalService: BsModalService, private toastr: ToastrService) {
     this._userService.loadStorage();
   }
 
   ngOnInit() {
-    this.imgURL = 'assets/images/default-upload.png';
     this.onBuscar();
   }
-  
+
   onBuscar() {
-    this._userService.getLista(this.usuarioFilter).subscribe(
+    this._semillasService.getLista(this.semillaFilter, this.semillaIn, this.semillaStatus).subscribe(
       (data: any) => {
-        this.usuarios = data;
+        this.semillas = data;
       },
       (error) => {
         Swal.fire({
@@ -60,10 +59,10 @@ export class UsuariosComponent implements OnInit {
 
   onSubmit(FormData) {
     if (FormData.valid) {
-      this._userService.guardar(this.usuario)
+      this._semillasService.guardar(this.semilla)
     .subscribe(
       success => {
-        this.toastr.success('Usuario guardado con exito.', 'Guardado!');
+        this.toastr.success('Semilla guardada con exito.', 'Guardado!');
         this.onBuscar();
         FormData.resetForm();
         this.modalRef.hide();
@@ -77,7 +76,7 @@ export class UsuariosComponent implements OnInit {
   onDelete(id: number) {
     Swal.fire({
       title: 'Esta seguro?',
-      text: 'Esta seguro que quiere eliminar el usuario, no se podra revertir!',
+      text: 'Esta seguro que quiere eliminar la semilla, no se podra revertir!',
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -88,13 +87,13 @@ export class UsuariosComponent implements OnInit {
       allowEnterKey: false
     }).then((result) => {
       if (result.value) {
-        this._userService.eliminar(id)
+        this._semillasService.eliminar(id)
         .subscribe(
           success => {
             this.onBuscar();
             Swal.fire({
               title: 'Eliminado!',
-              text: 'Usuario a sido eliminado con exito.',
+              text: 'Semilla a sido eliminada con exito.',
               type: 'success',
               confirmButtonText: 'Aceptar'
             });
@@ -105,49 +104,43 @@ export class UsuariosComponent implements OnInit {
       }
     });
   }
-  
+
   onShow(id: number, template: TemplateRef<any>) {
-    this.getTiposUsuario();
-    this.usuario = new Usuario();
+    this.getTiposMedidas();
+    this.semilla = new Semillas();
     if (id <= 0) {
       this.modalRef = this.modalService.show(template, this.config);
     } else {
-      this._userService.getUsuario(id)
+      this._semillasService.getSemilla(id)
     .subscribe(
       data => {
-        this.usuario = data;
+        this.semilla = data;
+        this.mostrarExistenciaCosto(this.semilla);
         this.modalRef = this.modalService.show(template, this.config);
       },
       error => this.toastr.error(error.message, 'Error!') );
     }
-    
   }
 
-  getTiposUsuario() {
-  this._userService.getTiposUsuarios()
-    .subscribe(
-      data => {
-        this.tiposUsuario = data;
-      },
-      error => this.toastr.error(error.message, 'Error!') );
-  }
-  preview(files) {
-  if (files.length === 0) {
-    return;
-  }
-
-    const mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = 'Only images are supported.';
-      return;
+  mostrarExistenciaCosto(valor)
+  {
+    if(valor.sem_inventariable == true)
+    {
+      this.mostrarExistencia = valor.sem_existencia;
+      this.mostrarCosto = valor.sem_costoProm;
     }
-
-    const reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]);
-    // tslint:disable-next-line: variable-name
-    reader.onload = (_event) => {
-      this.imgURL = reader.result;
+    else
+    {
+      this.mostrarExistencia = 0;
+      this.mostrarCosto = 0;
     }
-  }
+   }
+  getTiposMedidas() {
+    this._semillasService.getTiposMedidas()
+      .subscribe(
+        data => {
+          this.tiposMedidas = data;
+        },
+        error => this.toastr.error(error.message, 'Error!') );
+    }
 }

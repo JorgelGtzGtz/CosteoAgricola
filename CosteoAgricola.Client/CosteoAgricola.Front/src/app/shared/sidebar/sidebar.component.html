@@ -16,7 +16,43 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">NAVEGACION PRINCIPAL</li>
             <li routerLinkActive="active"><a [routerLink]="['/dashboard']"><i class="fa fa-circle-o text-aqua"></i> Inicio</a></li>
+            <!-- MENU DE CATALOGOS-->
+            <li routerLinkActive="active" class="treeview">
+                <a href="javascript: void(0);">
+                    <i class="fa fa-clipboard"></i> <span>Catálogos</span>
+                    <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li routerLinkActive="active"><a [routerLink]="['/cicloAgricola']"><i class="fa fa-circle-o text-aqua"></i> Ciclo Agrícola</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/lotes']"><i class="fa fa-circle-o text-aqua"></i> Lotes</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/tiposActivos']"><i class="fa fa-circle-o text-aqua"></i> Tipos de activos</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/activos']"><i class="fa fa-circle-o text-aqua"></i> Activos</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/tipoPersonal']"><i class="fa fa-circle-o text-aqua"></i> Tipo de personal</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/Personal']"><i class="fa fa-circle-o text-aqua"></i> Personal</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/tiposGastosAdmin']"><i class="fa fa-circle-o text-aqua"></i> Tipos de gastos administrativos</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/gastosAdmin']"><i class="fa fa-circle-o text-aqua"></i> Gatos administrativos</a></li>
+                </ul>
+            </li>
+            <!-- MENU DE SEMILLAS-->
+            <li routerLinkActive="active" class="treeview">
+                <a href="javascript: void(1);">
+                    <i class="fa fa-tint"></i> <span>Insumos</span>
+                    <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li routerLinkActive="active"><a [routerLink]="['/semillasInsumos']"><i class="fa fa-circle-o text-aqua"></i> Semillas</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/']"><i class="fa fa-circle-o text-aqua"></i> Fertilizantes</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/']"><i class="fa fa-circle-o text-aqua"></i> Agroquímicos</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/']"><i class="fa fa-circle-o text-aqua"></i> Productos</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/']"><i class="fa fa-circle-o text-aqua"></i> Unidades</a></li>
+                </ul>
+            </li>
 
+            <!-- MENU DE ADMINISTRACION-->
             <li routerLinkActive="active" class="treeview">
                 <a href="javascript: void(0);">
                     <i class="fa fa-dashboard"></i> <span>Administracion</span>
@@ -32,4 +68,5 @@
         </ul>
     </section>
     <!-- /.sidebar -->
-</aside>
+    <aside> /.sidebar -->
+    </aside>
