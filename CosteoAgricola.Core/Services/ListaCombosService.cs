@@ -13,6 +13,7 @@ namespace CosteoAgricola.Core.Services
     {
         List<TIPO_USUARIO> GetTipoUsuarios();
         List<UNIDADE> GetTipoMedidas();
+
     }
 
     public class ListaCombosService : IListaCombosService
@@ -25,6 +26,7 @@ namespace CosteoAgricola.Core.Services
             _tipoUsuarioRepository = tipoUsuarioRepository;
             _unidadesRepository = unidadesRepository;
         }
+
 
         public List<UNIDADE> GetTipoMedidas()
         {

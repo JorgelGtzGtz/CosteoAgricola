@@ -76,6 +76,7 @@
                                 <th>Folio</th>
                                 <th>Nombre/Descripcion</th>
                                 <th>Unidad</th>
+                                <th>Inventariable</th>
                                 <th>Estatus</th>
                                 <th>
                                     <div class="row">
@@ -93,8 +94,9 @@
                             <tr *ngFor="let item of semillas; let i=index;">
                                 <td>{{ item.sem_ID }}</td>
                                 <td>{{ item.sem_desc}}</td>
-                                <td>{{ item.sem_unidad }}</td>
-                                <td>{{ item.sem_status }}</td>
+                                <td>{{ item.NombreUnidad}}</td>
+                                <td>{{ mostrarToF(item.sem_inventariable,1) }}</td>
+                                <td>{{ mostrarToF(item.sem_status,2) }}</td>
                                 <td>
                                     <button type="button" class="btn btn-warning btn-xs m-lg-1" (click)="onShow(item.sem_ID, template)"><i class="fa fa-edit"></i> Editar</button>
                                     <button type="button" class="btn btn-danger btn-xs m-lg-1" (click)="onDelete(item.sem_ID)"><i class="fa fa-trash"></i> Eliminar</button>
@@ -155,20 +157,16 @@
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label class="font-weight-bold">Unidad de medida <span class="text-danger">*</span></label>
+                        <label class="font-weight-bold">Unidad de medida</label>
                         <ng-select name="sucursal" [items]="tiposMedidas" [hideSelected]="true" bindLabel="unidad_abrev" bindValue="unidad_id" [searchable]="true" placeholder="Seleccionar Tipo de medida..." [(ngModel)]="semilla.sem_unidad" #sucursal="ngModel" [ngClass]="{'form-control-danger': sucursal.invalid && (sucursal.dirty || sucursal.touched || userForm.submitted)}"
                             required>
                         </ng-select>
                     </div>
-                    <div *ngIf="sucursal.invalid && (sucursal.dirty || sucursal.touched || userForm.submitted)" class="w-100" style="margin-top: -10px; margin-bottom: 1rem">
-                        <span class="messages" *ngIf="sucursal.errors">
-                                <small class="text-danger error">Unidad de medida es requerido.</small>
-                        </span>
-                    </div>
+
                 </div>
 
                 <div class="col-6">
-                    <label class="font-weight-bold">Inventariable<span class="text-danger">*</span></label>
+                    <label class="font-weight-bold">Inventariable</label>
                     <div class="form-group">
                         <div class="switch pull-right float-left">
                             <label>No
@@ -184,15 +182,10 @@
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label class="font-weight-bold">Unidad peso mil<span class="text-danger">*</span></label>
+                        <label class="font-weight-bold">Unidad peso mil</label>
                         <ng-select name="sucursal" [items]="tiposMedidas" [hideSelected]="true" bindLabel="unidad_desc" bindValue="unidad_id" [searchable]="true" placeholder="Seleccionar unidad de peso mil..." [(ngModel)]="semilla.sem_upm" #sucursal="ngModel" [ngClass]="{'form-control-danger': sucursal.invalid && (sucursal.dirty || sucursal.touched || userForm.submitted)}"
                             required>
                         </ng-select>
-                    </div>
-                    <div *ngIf="sucursal.invalid && (sucursal.dirty || sucursal.touched || userForm.submitted)" class="w-100" style="margin-top: -10px; margin-bottom: 1rem">
-                        <span class="messages" *ngIf="sucursal.errors">
-                                    <small class="text-danger error">Unidad de peso mil es requerido.</small>
-                            </span>
                     </div>
                 </div>
 
