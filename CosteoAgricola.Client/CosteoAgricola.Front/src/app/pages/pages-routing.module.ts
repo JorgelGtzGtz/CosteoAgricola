@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { TiposUsuarioComponent } from './tipos-usuario/tipos-usuario.component';
+import { SemillasInsumosComponent } from './semillas-insumos/semillas-insumos.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'tiposusuario',
     component: TiposUsuarioComponent
+  },
+  {
+    path: 'semillasInsumos',
+    component: SemillasInsumosComponent
   }  
 ];
 
