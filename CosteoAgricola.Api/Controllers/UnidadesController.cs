@@ -14,16 +14,17 @@ namespace CosteoAgricola.Api.Controllers
     public class UnidadesController : BaseApiController
     {
         private readonly IUnidadesService _unidadesservice;
+        private readonly IListaCombosService _listaCombosService;
 
-        public UnidadesController(IUnidadesService unidadesservice)
+        public UnidadesController(IUnidadesService unidadesservice, IListaCombosService listaCombosService)
         {
             _unidadesservice = unidadesservice;
-
+            _listaCombosService = listaCombosService;
         }
 
         [HttpGet]
-        [Route("Lista/")]
-        public async Task<HttpResponseMessage> GetUnidades(HttpRequestMessage request)
+        [Route("Lista/{unidades?}/{estatus?}")]
+        public async Task<HttpResponseMessage> GetUnidades(HttpRequestMessage request, string unidades, string estatus)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {
@@ -31,7 +32,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var item = _unidadesservice.GetUnidades();
+                    var item = _unidadesservice.GetUnidadesFiltro(unidades, estatus);
                     response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)
@@ -48,8 +49,9 @@ namespace CosteoAgricola.Api.Controllers
             });
         }
 
-        [Route("GetUnidad/{id:int=0}/")]
         [HttpGet]
+        [Route("GetUnidad/{id:int=0}/")]
+        
         public async Task<HttpResponseMessage> getUnidad(HttpRequestMessage request, int id)
         {
             return await CreateHttpResponseAsync(request, async () =>
@@ -140,6 +142,33 @@ namespace CosteoAgricola.Api.Controllers
                         });
                     }
 
+                }
+                catch (Exception ex)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest,
+                    new
+                    {
+                        error = "ERROR",
+                        message = ex.Message
+                    });
+                }
+
+                return await Task.FromResult(response);
+            });
+        }
+
+        [HttpGet]
+        [Route("TiposUnidades")]
+        public async Task<HttpResponseMessage> GetTiposUnidades(HttpRequestMessage request)
+        {
+            return await CreateHttpResponseAsync(request, async () =>
+            {
+                HttpResponseMessage response = null;
+                string message = String.Empty;
+                try
+                {
+                    var item = _listaCombosService.GetTiposUnidades();
+                    response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)
                 {

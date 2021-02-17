@@ -14,7 +14,7 @@ namespace CosteoAgricola.Core.Services
         UNIDADE GetUnidad(int id);
         UNIDADE GetUnidad(string desc);
         List<UNIDADE> GetUnidades();
-       // List<dynamic> GetUnidadesFiltro(string activo = null);
+        List<dynamic> GetUnidadesFiltro(string unidades = null, string estatus = null);
         bool InsertUpdateUnidad(UNIDADE unidades, out string Message);
         bool EliminarUnidad(int id, out string Message);
     }
@@ -64,21 +64,48 @@ namespace CosteoAgricola.Core.Services
             return _unidadesRepository.GetAll("UNIDADES").ToList();
         }
 
-        /*
-        public List<dynamic> GetUnidadesFiltro(string activo = null)
+        public List<dynamic> GetUnidadesFiltro(string unidades, string estatus)
         {
-            string filter = " Where ";
+            string filter = " ";
+            string filter2 = " ";
 
-            if (!string.IsNullOrEmpty(activo))
+            if(string.IsNullOrEmpty(unidades) && estatus.Equals("false"))
+             {
+                estatus = null;
+            }
+            //MUESTRA LOS QUE CUMPLAN CON LA CADENA
+            if (!string.IsNullOrEmpty(unidades))
             {
-                filter += string.Format("p.sem_status like '%{0}%'", activo);
+                filter += " Where " + string.Format(" pt.unidad_desc like '%{0}%' or pt.unidad_abrev like '%{0}%' ", unidades);
+
             }
 
-            Sql query = new Sql(@"select p.*, pt.sem_desc as NombreSemilla from SEMILLAS p
-                                   on pt.sem_status = true" + (!string.IsNullOrEmpty(activo) ? filter : ""));
+            //MUESTRA LOS ACTIVOS/IN SIN NECESIDAD DE UNA CADENA
+            if (!string.IsNullOrEmpty(unidades))
+            {
+                if (!filter.Contains("Where"))
+                {
+                    filter2 += " Where " + string.Format(" pt.unidad_status = '{0}' ", estatus);
+                }
+                else
+                {
+                    filter2 += " and " + string.Format(" pt.unidad_status = '{0}' ", estatus);
+                }
+
+            }
+            else
+            {
+                filter2 += " Where " + string.Format(" pt.unidad_status = '{0}' ", estatus);
+            }
+
+
+            Sql query = new Sql(@"select pt.*, p.unidTipo_desc as NombreUnidadTipo from  UNIDAD_TIPO p
+                                  inner join UNIDADES pt on pt.unidad_tipo = p.unidTipo_id "
+                                  + (!string.IsNullOrEmpty(unidades) ? filter : "")
+                                  + (!string.IsNullOrEmpty(estatus) ? filter2 : ""));
+
             return _unidadesRepository.GetByDynamicFilter(query);
         }
-        */
         public bool InsertUpdateUnidad(UNIDADE unidades, out string Message)
         {
             Message = string.Empty;

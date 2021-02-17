@@ -72,6 +72,7 @@
     <Compile Include="Repository\LotesRepository.cs" />
     <Compile Include="Repository\ProductosRepository.cs" />
     <Compile Include="Repository\SemillasRepository.cs" />
+    <Compile Include="Repository\TiposUnidadesRepository.cs" />
     <Compile Include="Repository\TipoUsuarioRepository.cs" />
     <Compile Include="Repository\UnidadesRepository.cs" />
     <Compile Include="Repository\UsuarioRepository.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Services\LotesService.cs" />
     <Compile Include="Services\ProductosService.cs" />
     <Compile Include="Services\SemillasService.cs" />
+    <Compile Include="Services\TipoUnidadesService.cs" />
     <Compile Include="Services\TipoUsuarioService.cs" />
     <Compile Include="Services\UnidadesService.cs" />
     <Compile Include="Services\UsuarioService.cs" />

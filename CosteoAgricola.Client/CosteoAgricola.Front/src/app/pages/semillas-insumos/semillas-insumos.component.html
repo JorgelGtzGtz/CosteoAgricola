@@ -18,6 +18,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Lista de Semillas</h3>
+                    <button type="button" class="close pull-right float-right" aria-label="Close" (click)="cerrar()"><i class="fa fa-times-circle fa-lg" style="color:rgb(207, 1, 1)"aria-hidden="true"></i></button>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -135,7 +136,7 @@
                 <div class="col">
                     <div class="switch pull-right">
                         <label>Inactivo
-                                                    <input type="checkbox" checked="" [(ngModel)]="semilla.sem_status" [ngModelOptions]="{standalone: true}"><span class="lever switch-col-light-blue"></span>Activo</label>
+                        <input [disabled]="nuevoItem" type="checkbox" checked="" [(ngModel)]="semilla.sem_status" [ngModelOptions]="{standalone: true}"><span class="lever switch-col-light-blue"></span>Activo</label>
                     </div>
                 </div>
             </div>

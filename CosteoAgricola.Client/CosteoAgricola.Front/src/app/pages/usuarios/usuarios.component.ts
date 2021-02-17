@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalDirective } from 'ngx-bootstrap';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -31,7 +32,7 @@ export class UsuariosComponent implements OnInit {
   imgURL: any;
   public message: string;
 
-  constructor(private _userService: UsersService, private modalService: BsModalService, private toastr: ToastrService) {
+  constructor(private router: Router,private _userService: UsersService, private modalService: BsModalService, private toastr: ToastrService) {
     this._userService.loadStorage();
   }
 
@@ -149,5 +150,9 @@ export class UsuariosComponent implements OnInit {
     reader.onload = (_event) => {
       this.imgURL = reader.result;
     }
+  }
+  cerrar()
+  {
+    this.router.navigate(['/dashboard']);
   }
 }

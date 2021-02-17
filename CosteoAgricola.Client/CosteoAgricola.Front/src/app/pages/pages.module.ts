@@ -18,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { TiposUsuarioComponent } from './tipos-usuario/tipos-usuario.component';
 import { SemillasInsumosComponent } from './semillas-insumos/semillas-insumos.component';
+import { UnidadesInsumosComponent } from './unidades-insumos/unidades-insumos/unidades-insumos.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { SemillasInsumosComponent } from './semillas-insumos/semillas-insumos.co
         TiposUsuarioComponent,
         DatepickerToggleDirective,
         SemillasInsumosComponent,
+        UnidadesInsumosComponent,
     ],
     imports: [
         CommonModule,
