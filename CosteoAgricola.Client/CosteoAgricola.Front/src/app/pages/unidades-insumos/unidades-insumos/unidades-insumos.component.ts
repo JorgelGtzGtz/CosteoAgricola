@@ -5,16 +5,17 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
-import { UsersService } from '../../services/users/users.service';
-import { Semillas } from '../../models/Semillas';
-import { SemillasInsumosService } from '../../services/semillasInsumos/semillas-insumos.service';
+import { UsersService } from '../../../services/users/users.service';
+import { Unidades } from '../../../models/Unidades';
+import { UnidadesInsumosService } from '../../../services/unidadesInsumos/unidades-insumos.service';
+
 
 @Component({
-  selector: 'app-semillas-insumos',
-  templateUrl: './semillas-insumos.component.html',
-  styleUrls: ['./semillas-insumos.component.css']
+  selector: 'app-unidades-insumos',
+  templateUrl: './unidades-insumos.component.html',
+  styleUrls: ['./unidades-insumos.component.css']
 })
-export class SemillasInsumosComponent implements OnInit {
+export class UnidadesInsumosComponent implements OnInit {
   @ViewChild('editModal') editModal: ModalDirective;
   modalRef: BsModalRef;
   config = {
@@ -22,19 +23,13 @@ export class SemillasInsumosComponent implements OnInit {
     ignoreBackdropClick: true,
   };
   public toastconfig: any = { timeOut: 0, extendedTimeOut: 0, preventDuplicates: true, maxOpened: 1, autoDismiss: false };
-  semillaFilter: string = '';
-  semillaStatus: boolean = false;
-  semillaIn: boolean = false;
-  semillas: any[] = [];
-  semilla: Semillas = new Semillas();
-  mostrarExistencia = 0;
-  mostrarCosto = 0;
+  unidadFilter: string = '';
+  unidadStatus: boolean = false;
+  unidades: any[] = [];
+  tiposUnidades: any[] = [];
+  unidad: Unidades = new Unidades();
   nuevoItem = true;
-  //inventariable = [{ID: 1, Nombre: 'Si', Tipo: true}, {ID: 2, Nombre: 'No', Tipo: false}];
-  tiposMedidas:  any[] = [];
-  tipoAbrev:  any[] = [];
-
-  constructor(private router: Router, private _userService: UsersService, private _semillasService: SemillasInsumosService, 
+  constructor(private router: Router,private _userService: UsersService, private _unidadesService: UnidadesInsumosService, 
     private modalService: BsModalService, private toastr: ToastrService) {
     this._userService.loadStorage();
   }
@@ -44,9 +39,9 @@ export class SemillasInsumosComponent implements OnInit {
   }
 
   onBuscar() {
-    this._semillasService.getLista(this.semillaFilter, this.semillaIn, this.semillaStatus).subscribe(
+    this._unidadesService.getLista(this.unidadFilter,this.unidadStatus).subscribe(
       (data: any) => {
-        this.semillas = data;
+        this.unidades = data;
       },
       (error) => {
         Swal.fire({
@@ -63,11 +58,12 @@ export class SemillasInsumosComponent implements OnInit {
 
   onSubmit(FormData) {
     if (FormData.valid) {
-      this._semillasService.guardar(this.semilla)
+      this._unidadesService.guardar(this.unidad)
     .subscribe(
       success => {
-        this.toastr.success('Semilla guardada con exito.', 'Guardado!');
+        this.toastr.success('Unidad guardada con exito.', 'Guardado!');
         this.onBuscar();
+        this.getTiposUnidad();
         FormData.resetForm();
         this.modalRef.hide();
       },
@@ -80,7 +76,7 @@ export class SemillasInsumosComponent implements OnInit {
   onDelete(id: number) {
     Swal.fire({
       title: 'Esta seguro?',
-      text: 'Esta seguro que quiere eliminar la semilla, no se podra revertir!',
+      text: 'Esta seguro que quiere eliminar la unidad, no se podra revertir!',
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -91,13 +87,13 @@ export class SemillasInsumosComponent implements OnInit {
       allowEnterKey: false
     }).then((result) => {
       if (result.value) {
-        this._semillasService.eliminar(id)
+        this._unidadesService.eliminar(id)
         .subscribe(
           success => {
             this.onBuscar();
             Swal.fire({
               title: 'Eliminado!',
-              text: 'Semilla a sido eliminada con exito.',
+              text: 'Unidad a sido eliminada con exito.',
               type: 'success',
               confirmButtonText: 'Aceptar'
             });
@@ -110,49 +106,35 @@ export class SemillasInsumosComponent implements OnInit {
   }
 
   onShow(id: number, template: TemplateRef<any>) {
-    this.getTiposMedidas();
-    this.semilla = new Semillas();
+    this.getTiposUnidad();
+    this.unidad = new Unidades();
     if (id <= 0) {
-      this.nuevoItem = true;
       this.modalRef = this.modalService.show(template, this.config);
-      this.semilla.sem_status = true;
+      this.unidad.unidad_status = true;
+      this.nuevoItem=true;
+      
     } else {
-      this._semillasService.getSemilla(id)
+      this._unidadesService.getUnidad(id)
     .subscribe(
       data => {
-        this.nuevoItem = false;
-        this.semilla = data;
-        this.mostrarExistenciaCosto(this.semilla);
+        this.nuevoItem=false;
+        this.unidad = data;
         this.modalRef = this.modalService.show(template, this.config);
       },
       error => this.toastr.error(error.message, 'Error!') );
     }
   }
-  
 
-  mostrarExistenciaCosto(valor)
-  {
-      if(valor.sem_inventariable == true)
-      {
-        this.mostrarExistencia = valor.sem_existencia;
-        this.mostrarCosto = valor.sem_costoProm;
-      }
-      else
-      {
-        this.mostrarExistencia = 0;
-        this.mostrarCosto = 0;
-      }
-   }
-  getTiposMedidas() {
-    this._semillasService.getTiposMedidas()
+  getTiposUnidad() {
+    this._unidadesService.getTiposUnidades()
       .subscribe(
         data => {
-          this.tiposMedidas = data;
+          this.tiposUnidades = data;
         },
         error => this.toastr.error(error.message, 'Error!') );
     }
 
-   mostrarToF(valor: boolean, op: number): string
+    mostrarToF(valor: boolean, op: number): string
     {
       var res = "";
       if(op == 1)
@@ -179,7 +161,6 @@ export class SemillasInsumosComponent implements OnInit {
       }
       
     }
-    
     cerrar()
     {
       this.router.navigate(['/dashboard']);

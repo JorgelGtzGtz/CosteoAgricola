@@ -13,6 +13,7 @@ namespace CosteoAgricola.Core.Services
     {
         List<TIPO_USUARIO> GetTipoUsuarios();
         List<UNIDADE> GetTipoMedidas();
+        List<UNIDAD_TIPO> GetTiposUnidades();
 
     }
 
@@ -20,11 +21,13 @@ namespace CosteoAgricola.Core.Services
     {
         private readonly ITipoUsuarioRepository _tipoUsuarioRepository;
         private readonly IUnidadesRepository _unidadesRepository;
+        private readonly ITiposUnidadesRepository _tiposUnidadesRepository;
 
-        public ListaCombosService(ITipoUsuarioRepository tipoUsuarioRepository, IUnidadesRepository unidadesRepository)
+        public ListaCombosService(ITipoUsuarioRepository tipoUsuarioRepository, IUnidadesRepository unidadesRepository, ITiposUnidadesRepository tiposUnidadesRepository)
         {
             _tipoUsuarioRepository = tipoUsuarioRepository;
             _unidadesRepository = unidadesRepository;
+            _tiposUnidadesRepository = tiposUnidadesRepository;
         }
 
 
@@ -33,6 +36,13 @@ namespace CosteoAgricola.Core.Services
             Sql query = new Sql()
                .Select("*").From("UNIDADES").Where("unidad_abrev = 'Kg' or unidad_abrev = 'Gr' or unidad_abrev = 'Mg'");
             return _unidadesRepository.GetByFilter(query);
+        }
+
+        public List<UNIDAD_TIPO> GetTiposUnidades()
+        {
+            Sql query = new Sql()
+                .Select("*").From(" UNIDAD_TIPO");
+            return _tiposUnidadesRepository.GetByFilter(query);
         }
 
         public List<TIPO_USUARIO> GetTipoUsuarios()

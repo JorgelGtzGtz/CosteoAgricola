@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { TiposUsuarioComponent } from './tipos-usuario/tipos-usuario.component';
 import { SemillasInsumosComponent } from './semillas-insumos/semillas-insumos.component';
-
+import { UnidadesInsumosComponent } from './unidades-insumos/unidades-insumos/unidades-insumos.component';
 
 const routes: Routes = [
   {
@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'semillasInsumos',
     component: SemillasInsumosComponent
-  }  
+  },
+  {
+    path: 'unidadesInsumos',
+    component: UnidadesInsumosComponent
+  } 
 ];
 
 @NgModule({
