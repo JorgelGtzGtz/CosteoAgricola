@@ -228,10 +228,12 @@ namespace dbconnection
     {
 		[Column] public int lote_ID { get; set; }
 		[Column] public string lote_descripcion { get; set; }
-		[Column] public decimal? lote_superficie { get; set; }
+		[Column] public int? lote_superficie { get; set; }
 		[Column] public bool? lote_status { get; set; }
 		[Column] public string lote_ubicación { get; set; }
 		[Column] public string lote_obs { get; set; }
+		[Column] public string lote_latitud { get; set; }
+		[Column] public string lote_longitud { get; set; }
 	}
     
 	[TableName("hiram74_residencias.PROCESOS_PERMISOS")]

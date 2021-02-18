@@ -1,5 +1,6 @@
 ﻿using CosteoAgricola.Core.Repository;
 using dbconnection;
+using PetaPoco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace CosteoAgricola.Core.Services
         LOTE GetLote(int id);
         LOTE GetLote(string desc);
         List<LOTE> GetLotes();
-        // List<dynamic> GetUnidadesFiltro(string activo = null);
+        List<dynamic> GetLotesFiltro(string estatus = null, string hectarea1 = null, string hectarea2 = null);
         bool InsertUpdateLote(LOTE Lotes, out string Message);
         bool EliminarLote(int id, out string Message);
     }
@@ -63,21 +64,23 @@ namespace CosteoAgricola.Core.Services
             return _lotesRepository.GetAll("LOTES").ToList();
         }
 
-        /*
-        public List<dynamic> GetUnidadesFiltro(string activo = null)
+        public List<dynamic> GetLotesFiltro(string estatus, string hectarea1, string hectarea2)
         {
-            string filter = " Where ";
+            Sql query = null;
 
-            if (!string.IsNullOrEmpty(activo))
+            if (!string.IsNullOrEmpty(hectarea1) && !string.IsNullOrEmpty(hectarea2))
             {
-                filter += string.Format("p.sem_status like '%{0}%'", activo);
+
+                query = Sql.Builder.Append(";EXEC sp_filtroRango @0, @1, @2", hectarea1, hectarea2, estatus);
+            }
+            else
+            {
+                query = new Sql("Select * from lotes");
+
             }
 
-            Sql query = new Sql(@"select p.*, pt.sem_desc as NombreSemilla from SEMILLAS p
-                                   on pt.sem_status = true" + (!string.IsNullOrEmpty(activo) ? filter : ""));
-            return _unidadesRepository.GetByDynamicFilter(query);
+            return _lotesRepository.GetByDynamicFilter(query);
         }
-        */
         public bool InsertUpdateLote(LOTE lotes, out string Message)
         {
             Message = string.Empty;

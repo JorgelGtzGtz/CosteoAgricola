@@ -5,6 +5,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { TiposUsuarioComponent } from './tipos-usuario/tipos-usuario.component';
 import { SemillasInsumosComponent } from './semillas-insumos/semillas-insumos.component';
 import { UnidadesInsumosComponent } from './unidades-insumos/unidades-insumos/unidades-insumos.component';
+import { LotesComponent } from './lotes/lotes.component';
+
 
 const routes: Routes = [
   {
@@ -26,6 +28,10 @@ const routes: Routes = [
   {
     path: 'unidadesInsumos',
     component: UnidadesInsumosComponent
+  },
+  {
+    path: 'lotes',
+    component: LotesComponent
   } 
 ];
 

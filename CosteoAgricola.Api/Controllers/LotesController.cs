@@ -21,8 +21,8 @@ namespace CosteoAgricola.Api.Controllers
 
         }
         [HttpGet]
-        [Route("Lista/")]
-        public async Task<HttpResponseMessage> GetLotes(HttpRequestMessage request)
+        [Route("Lista/{estatus?}/{hectarea1?}/{hectarea2?}")]
+        public async Task<HttpResponseMessage> GetLotes(HttpRequestMessage request, string estatus, string hectarea1, string hectarea2)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {
@@ -30,7 +30,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var item = _lotesservice.GetLotes();
+                    var item = _lotesservice.GetLotesFiltro(estatus, hectarea1, hectarea2);
                     response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)
