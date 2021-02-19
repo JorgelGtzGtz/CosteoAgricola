@@ -14,15 +14,17 @@ namespace CosteoAgricola.Api.Controllers
     public class Productos1Controller : BaseApiController
     {
         private readonly IProductosService _productosservice;
+        private readonly IListaCombosService _listaCombosService;
 
-        public Productos1Controller(IProductosService productosservice)
+        public Productos1Controller(IProductosService productosservice, IListaCombosService listaCombosService)
         {
             _productosservice = productosservice;
+            _listaCombosService = listaCombosService;
 
         }
         [HttpGet]
-        [Route("Lista/")]
-        public async Task<HttpResponseMessage> GetProductos(HttpRequestMessage request)
+        [Route("Lista/{nombre?}/{inventariable?}/{estatus?}")]
+        public async Task<HttpResponseMessage> GetProductos(HttpRequestMessage request, string nombre, string inventariable, string estatus)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {
@@ -30,7 +32,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var item = _productosservice.GetProductos();
+                    var item = _productosservice.GetProductosFiltro(nombre,inventariable,estatus);
                     response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)
@@ -139,6 +141,33 @@ namespace CosteoAgricola.Api.Controllers
                         });
                     }
 
+                }
+                catch (Exception ex)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest,
+                    new
+                    {
+                        error = "ERROR",
+                        message = ex.Message
+                    });
+                }
+
+                return await Task.FromResult(response);
+            });
+        }
+
+        [HttpGet]
+        [Route("TiposUnidades")]
+        public async Task<HttpResponseMessage> GetTiposUnidades(HttpRequestMessage request)
+        {
+            return await CreateHttpResponseAsync(request, async () =>
+            {
+                HttpResponseMessage response = null;
+                string message = String.Empty;
+                try
+                {
+                    var item = _listaCombosService.GetTipoUnidades();
+                    response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)
                 {

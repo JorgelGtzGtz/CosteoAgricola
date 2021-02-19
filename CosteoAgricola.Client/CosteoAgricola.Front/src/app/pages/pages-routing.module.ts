@@ -6,6 +6,7 @@ import { TiposUsuarioComponent } from './tipos-usuario/tipos-usuario.component';
 import { SemillasInsumosComponent } from './semillas-insumos/semillas-insumos.component';
 import { UnidadesInsumosComponent } from './unidades-insumos/unidades-insumos/unidades-insumos.component';
 import { LotesComponent } from './lotes/lotes.component';
+import { ProductosInsumosComponent } from './productos-insumos/productos-insumos.component';
 
 
 const routes: Routes = [
@@ -30,9 +31,14 @@ const routes: Routes = [
     component: UnidadesInsumosComponent
   },
   {
+    path: 'productosInsumos',
+    component: ProductosInsumosComponent
+  } ,
+  {
     path: 'lotes',
     component: LotesComponent
-  } 
+  }
+  
 ];
 
 @NgModule({

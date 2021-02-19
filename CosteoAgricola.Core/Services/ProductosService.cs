@@ -1,5 +1,6 @@
 ﻿using CosteoAgricola.Core.Repository;
 using dbconnection;
+using PetaPoco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace CosteoAgricola.Core.Services
         PRODUCTO GetProducto(int id);
         PRODUCTO GetProducto(string desc);
         List<PRODUCTO> GetProductos();
-        // List<dynamic> GetUnidadesFiltro(string activo = null);
+        List<dynamic> GetProductosFiltro(string nombre = null, string inventariable = null, string estatus = null);
         bool InsertUpdateProducto(PRODUCTO productos, out string Message);
         bool EliminarProducto(int id, out string Message);
     }
@@ -61,21 +62,64 @@ namespace CosteoAgricola.Core.Services
             return _productosRepository.GetAll("PRODUCTOS").ToList();
         }
 
-        /*
-        public List<dynamic> GetUnidadesFiltro(string activo = null)
+        
+        public List<dynamic> GetProductosFiltro(string nombre, string inventariable, string estatus)
         {
-            string filter = " Where ";
+            string filter = " ";
+            string filter2 = " ";
+            string filter3 = " ";
 
-            if (!string.IsNullOrEmpty(activo))
+            if (inventariable.Equals("false") && estatus.Equals("false") && (string.IsNullOrEmpty(nombre) || !string.IsNullOrEmpty(nombre)))
             {
-                filter += string.Format("p.sem_status like '%{0}%'", activo);
+                inventariable = null;
+                estatus = null;
             }
 
-            Sql query = new Sql(@"select p.*, pt.sem_desc as NombreSemilla from SEMILLAS p
-                                   on pt.sem_status = true" + (!string.IsNullOrEmpty(activo) ? filter : ""));
-            return _unidadesRepository.GetByDynamicFilter(query);
+            if (!string.IsNullOrEmpty(nombre))
+            {
+                filter += " Where " + string.Format("pt.prod_desc like '%{0}%'", nombre);
+            }
+
+            if ((!string.IsNullOrEmpty(inventariable)))
+            {
+                if (!filter.Contains("Where"))
+                {
+
+                    filter2 += " Where " + string.Format("pt.prod_inventariable = '{0}'", inventariable);
+                }
+                else
+                {
+                    filter2 += "and " + string.Format("pt.prod_inventariable = '{0}'", inventariable);
+                }
+
+            }
+
+            if ((!string.IsNullOrEmpty(estatus)))
+            {
+                if (!filter.Contains("Where") && !filter2.Contains("Where"))
+                {
+                    filter3 += " Where " + string.Format("pt.prod_status = '{0}'", estatus);
+                }
+                else
+                {
+                    filter3 += "and " + string.Format("pt.prod_status = '{0}'", estatus);
+                }
+
+            }
+
+
+
+
+
+            Sql query = new Sql(@"select pt.*, p.unidad_desc as NombreUnidad from  UNIDADES p
+                                 inner join PRODUCTOS pt on pt.prod_unidad = p.unidad_id"
+                                 + (!string.IsNullOrEmpty(nombre) ? filter : "")
+                                 + (!string.IsNullOrEmpty(inventariable) ? filter2 : "")
+                                 + (!string.IsNullOrEmpty(estatus) ? filter3 : ""));
+
+            return _productosRepository.GetByDynamicFilter(query);
         }
-        */
+        
         public bool InsertUpdateProducto(PRODUCTO productos, out string Message)
         {
             Message = string.Empty;

@@ -20,6 +20,7 @@ import { TiposUsuarioComponent } from './tipos-usuario/tipos-usuario.component';
 import { SemillasInsumosComponent } from './semillas-insumos/semillas-insumos.component';
 import { UnidadesInsumosComponent } from './unidades-insumos/unidades-insumos/unidades-insumos.component';
 import { LotesComponent } from './lotes/lotes.component';
+import { ProductosInsumosComponent } from './productos-insumos/productos-insumos.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { LotesComponent } from './lotes/lotes.component';
         SemillasInsumosComponent,
         UnidadesInsumosComponent,
         LotesComponent,
+        ProductosInsumosComponent,
     ],
     imports: [
         CommonModule,
