@@ -15,6 +15,8 @@ namespace CosteoAgricola.Core.Services
         List<UNIDADE> GetTipoMedidas();
         List<UNIDAD_TIPO> GetTiposUnidades();
 
+        List<UNIDADE> GetTipoUnidades();
+
     }
 
     public class ListaCombosService : IListaCombosService
@@ -37,11 +39,17 @@ namespace CosteoAgricola.Core.Services
                .Select("*").From("UNIDADES").Where("unidad_abrev = 'Kg' or unidad_abrev = 'Gr' or unidad_abrev = 'Mg'");
             return _unidadesRepository.GetByFilter(query);
         }
+        public List<UNIDADE> GetTipoUnidades()
+        {
+            Sql query = new Sql()
+               .Select("*").From("UNIDADES");
+            return _unidadesRepository.GetByFilter(query);
+        }
 
         public List<UNIDAD_TIPO> GetTiposUnidades()
         {
             Sql query = new Sql()
-                .Select("*").From(" UNIDAD_TIPO");
+                .Select("*").From("UNIDAD_TIPO");
             return _tiposUnidadesRepository.GetByFilter(query);
         }
 

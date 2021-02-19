@@ -25,3 +25,4 @@ C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CosteoAgricola.Cor
 C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.csproj.CopyComplete
 C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.dll
 C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.pdb
+C:\Users\hanni\Documents\RESIDENCIAS PROYECTO\CosteoAgricola1\CosteoAgricola.Core\obj\Debug\CosteoAgricola.Core.csprojAssemblyReference.cache
