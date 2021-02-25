@@ -7,6 +7,7 @@ import { SemillasInsumosComponent } from './semillas-insumos/semillas-insumos.co
 import { UnidadesInsumosComponent } from './unidades-insumos/unidades-insumos/unidades-insumos.component';
 import { LotesComponent } from './lotes/lotes.component';
 import { ProductosInsumosComponent } from './productos-insumos/productos-insumos.component';
+import { CicloComponent } from './ciclo/ciclo.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'lotes',
     component: LotesComponent
+  },
+  {
+    path: 'ciclos',
+    component: CicloComponent
   }
   
 ];

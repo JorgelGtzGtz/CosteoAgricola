@@ -164,6 +164,19 @@ namespace dbconnection
 		[Column] public string agroq_obs { get; set; }
 	}
     
+	[TableName("hiram74_residencias.CICLOS")]
+	[PrimaryKey("ciclo_id")]
+	[ExplicitColumns]
+    public partial class CICLO : dbconnectionDB.Record<CICLO>  
+    {
+		[Column] public int ciclo_id { get; set; }
+		[Column] public string ciclo_descripcion { get; set; }
+		[Column] public DateTime? ciclo_fechaIni { get; set; }
+		[Column] public DateTime? ciclo_fechaFin { get; set; }
+		[Column] public bool? ciclo_status { get; set; }
+		[Column] public string ciclo_obs { get; set; }
+	}
+    
 	[TableName("hiram74_residencias.DETALLE_AGROQUIMICOS")]
 	[PrimaryKey("detAgroq_ID")]
 	[ExplicitColumns]
