@@ -21,6 +21,8 @@ export class SemillasInsumosComponent implements OnInit {
     backdrop: true,
     ignoreBackdropClick: true,
   };
+  pageActual: number = 1;
+  
   public toastconfig: any = { timeOut: 0, extendedTimeOut: 0, preventDuplicates: true, maxOpened: 1, autoDismiss: false };
   semillaFilter: string = '';
   semillaStatus: boolean = false;

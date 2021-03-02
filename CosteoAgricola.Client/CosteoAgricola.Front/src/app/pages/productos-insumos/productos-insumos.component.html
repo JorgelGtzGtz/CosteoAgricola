@@ -92,7 +92,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of productos; let i=index;">
+                            <tr *ngFor="let item of productos| paginate: { itemsPerPage: 7, currentPage: pageActual }">
                                 <td>{{ item.prod_id }}</td>
                                 <td>{{ item.prod_desc}}</td>
                                 <td>{{ mostrarToF(item.prod_inventariable,1) }}</td>
@@ -107,6 +107,7 @@
                         <tfoot>
                         </tfoot>
                     </table>
+                    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
                 </div>
                 <!-- /.box-body -->
             </div>

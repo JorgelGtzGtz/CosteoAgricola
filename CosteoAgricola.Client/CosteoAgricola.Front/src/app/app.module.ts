@@ -20,6 +20,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { ServiceModule } from './services/service.module';
 
+//Pagination
+
 // Components
 import { AppComponent } from './app.component';
 import { PagesComponent } from './pages/pages.component';

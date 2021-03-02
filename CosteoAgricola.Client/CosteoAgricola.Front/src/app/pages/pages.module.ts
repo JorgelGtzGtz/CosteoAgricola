@@ -11,6 +11,9 @@ import { PagesRoutingModule } from './pages-routing.module';
 
 // Directives
 import { DatepickerToggleDirective } from '../directives/datepicker-toggle.directive';
+
+// Pagination
+import {NgxPaginationModule} from 'ngx-pagination';
 // Routes
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
@@ -21,6 +24,7 @@ import { LotesComponent } from './lotes/lotes.component';
 import { ProductosInsumosComponent } from './productos-insumos/productos-insumos.component';
 import { CicloComponent } from './ciclo/ciclo.component';
 import {NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SiembraComponent } from './siembra/siembra.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +36,8 @@ import {NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
         UnidadesInsumosComponent,
         LotesComponent,
         ProductosInsumosComponent,
-        CicloComponent
+        CicloComponent,
+        SiembraComponent
         
     ],
     imports: [
@@ -44,7 +49,8 @@ import {NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
         NgOptionHighlightModule,
         NgbModule.forRoot(),
         BsDatepickerModule.forRoot(),
-        NgxMaskModule.forRoot()
+        NgxMaskModule.forRoot(),
+        NgxPaginationModule
     ],
     exports: [
         DashboardComponent

@@ -22,6 +22,8 @@ export class TiposUsuarioComponent implements OnInit {
     ignoreBackdropClick: true,
     class: 'gray modal-lg'
   };
+  pageActual: number = 1;
+  
   public toastconfig: any = { timeOut: 0, extendedTimeOut: 0, preventDuplicates: true, maxOpened: 1, autoDismiss: false };
   usuarioFilter: string = '';
   tiposusuario: any[] = [];

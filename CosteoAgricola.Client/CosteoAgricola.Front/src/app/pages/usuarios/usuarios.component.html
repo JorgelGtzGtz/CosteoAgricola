@@ -63,7 +63,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of usuarios; let i=index;">
+                            <tr *ngFor="let item of usuarios| paginate: { itemsPerPage: 7, currentPage: pageActual }">
                                 <td>{{ item.usuario_id }}</td>
                                 <td>{{ item.usuario_nom }}</td>
                                 <td>{{ item.usuario_login }}</td>
@@ -79,6 +79,7 @@
                         <tfoot>
                         </tfoot>
                     </table>
+                    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
                 </div>
                 <!-- /.box-body -->
             </div>

@@ -5,45 +5,50 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
-
 import { UsersService } from '../../services/users/users.service';
-import { Ciclo } from '../../models/Ciclo';
-import { CiclosService } from '../../services/ciclos/ciclos.service';
+import { Siembra } from '../../models/Siembra';
+import { SiembraService } from '../../services/siembra/siembra.service';
 import {NgbDate, NgbCalendar, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-ciclo',
-  templateUrl: './ciclo.component.html',
-  styleUrls: ['./ciclo.component.css']
+  selector: 'app-siembra',
+  templateUrl: './siembra.component.html',
+  styleUrls: ['./siembra.component.css']
 })
-
-export class CicloComponent implements OnInit {
+export class SiembraComponent implements OnInit {
   @ViewChild('editModal') editModal: ModalDirective;
   modalRef: BsModalRef;
   config = {
     backdrop: true,
     ignoreBackdropClick: true,
   };
-
   hoveredDate: NgbDate | null = null;
+
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
-
   pageActual: number = 1;
-
+  
   public toastconfig: any = { timeOut: 0, extendedTimeOut: 0, preventDuplicates: true, maxOpened: 1, autoDismiss: false };
-  cicloFilter: string = '';
-  cicloStatus: boolean = false;
-  ciclos: any[] = [];
-  close = false;
-  //tiposUnidades: any[] = [];
-  ciclo: Ciclo = new Ciclo();
+  descripcionFilter: string = '';
+  siembraStatusFilter: boolean = false;
+  siembraLoteFilter: string = ' ';
+  siembraCicloFilter: string = '';
+  siembraSemillaFilter: string = '';
+
+  siembras: any[] = [];
+  siembra: Siembra = new Siembra();
+
+  //mostrarExistencia = 0;
+  //mostrarCosto = 0;
   nuevoItem = true;
-  constructor(private router: Router,private _userService: UsersService, 
-    private _ciclosService: CiclosService, 
+  //inventariable = [{ID: 1, Nombre: 'Si', Tipo: true}, {ID: 2, Nombre: 'No', Tipo: false}];
+  getLote:  any[] = [];
+  getCiclo:  any[] = [];
+  getSemilla:  any[] = [];
+
+  constructor(private router: Router, private _userService: UsersService, private _siembraService: SiembraService,
     private modalService: BsModalService, private toastr: ToastrService,
-    private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) 
-    {
+    private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this._userService.loadStorage();
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
@@ -51,6 +56,10 @@ export class CicloComponent implements OnInit {
 
   ngOnInit() {
     this.onBuscar();
+    this.getLotes();
+    this.getSemillas();
+    this.getCiclos();
+    
   }
   cleanDate()
   {
@@ -58,10 +67,13 @@ export class CicloComponent implements OnInit {
     this.fromDate= null;
     this.toDate=null;
   }
+
   onBuscar() {
-    this._ciclosService.getLista(this.cicloFilter,this.cicloStatus).subscribe(
+    this.checkCombos();
+    this._siembraService.getLista(this.descripcionFilter,this.siembraCicloFilter,this.siembraStatusFilter,this.siembraLoteFilter,this.siembraSemillaFilter).subscribe(
       (data: any) => {
-        this.ciclos = data;
+        this.siembras = data;
+        
       },
       (error) => {
         Swal.fire({
@@ -74,43 +86,50 @@ export class CicloComponent implements OnInit {
         });
       }
     );
+    
   }
-
+  checkCombos()
+  {
+    if(this.siembraLoteFilter == null)
+    {
+      this.siembraLoteFilter = ' ';
+    }
+    if(this.siembraSemillaFilter == null)
+    {
+      this.siembraSemillaFilter = ' ';
+    }
+    if(this.siembraCicloFilter == null)
+    {
+      this.siembraCicloFilter = ' ';
+    }
+  }
   onSubmit(FormData) {
     if (FormData.valid) {
-      this.ciclo.ciclo_fechaIni = new Date(this.fromDate.year,this.fromDate.month-1,this.fromDate.day);
-      this.ciclo.ciclo_fechaFin = new Date(this.toDate.year,this.toDate.month-1,this.toDate.day);
+
+      this.siembra.siembra_fechaIni = new Date(this.fromDate.year,this.fromDate.month-1,this.fromDate.day);
+      this.siembra.siembra_fechaFin = new Date(this.toDate.year,this.toDate.month-1,this.toDate.day);
       
-    if(!this.close)
-      { 
-          this._ciclosService.guardar(this.ciclo)
-        .subscribe(
-          success => {
-            this.toastr.success('Ciclo guardado con exito.', 'Guardado!');
-            this.onBuscar();
-           // this.getTiposUnidad();
-            FormData.resetForm();
-            this.modalRef.hide();
-            this.cleanDate();
-            
-          },
-          error => {
-            this.toastr.error(error.message, 'Error!');
-          });
-          
-      }
-      else
-      {
-        this.toastr.error('Cambios no guardados!');
-        this.close = false;
-      }
+      this._siembraService.guardar(this.siembra)
+    .subscribe(
+      success => {
+        this.toastr.success('Siembra guardada con exito.', 'Guardado!');
+        this.onBuscar();
+        FormData.resetForm();
+        this.cleanDate();
+        this.modalRef.hide();
+      },
+      error => {
+        this.toastr.error(error.message, 'Error!');
+      });
+  
     }
+    
   }
 
   onDelete(id: number) {
     Swal.fire({
       title: 'Esta seguro?',
-      text: 'Esta seguro que quiere eliminar dl ciclo, no se podra revertir!',
+      text: 'Esta seguro que quiere eliminar la siembra, no se podra revertir!',
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -121,13 +140,13 @@ export class CicloComponent implements OnInit {
       allowEnterKey: false
     }).then((result) => {
       if (result.value) {
-        this._ciclosService.eliminar(id)
+        this._siembraService.eliminar(id)
         .subscribe(
           success => {
             this.onBuscar();
             Swal.fire({
               title: 'Eliminado!',
-              text: 'Ciclo a sido eliminada con exito.',
+              text: 'Siembra a sido eliminada con exito.',
               type: 'success',
               confirmButtonText: 'Aceptar'
             });
@@ -140,57 +159,66 @@ export class CicloComponent implements OnInit {
   }
 
   onShow(id: number, template: TemplateRef<any>) {
-    //this.getTiposUnidad();
-    this.ciclo = new Ciclo();
+    this.getLotes();
+    this.getSemillas();
+    this.getCiclos();
+
+    this.siembra = new Siembra();
+
     if (id <= 0) {
+      this.nuevoItem = true;
       this.modalRef = this.modalService.show(template, this.config);
-      this.ciclo.ciclo_status = true;
-      this.nuevoItem=true;
+      this.siembra.siembra_status = true;
       this.cleanDate();
     } else {
-      this._ciclosService.getCiclo(id)
+      this._siembraService.getSiembra(id)
     .subscribe(
       data => {
-        this.nuevoItem=false;
-        this.ciclo = data;
-         
-        var fDate = new Date(this.ciclo.ciclo_fechaIni);  
-        var tDate = new Date(this.ciclo.ciclo_fechaFin);  
-        /*
-        console.log("Dia new: "+ newDate.getDate());
-        console.log("Mes new: "+ newDate.getMonth());
-        console.log("Mes new+: "+ this.mostrarMes(newDate.getMonth()));
-        console.log("Año new: "+ newDate.getFullYear());
-         
-        var dateIni = new Date(newDate.getDate(),this.mostrarMes(newDate.getMonth()),newDate.getFullYear());
-        */
+        this.nuevoItem = false;
+        this.siembra = data;
+
+        var fDate = new Date(this.siembra.siembra_fechaIni);  
+        var tDate = new Date(this.siembra.siembra_fechaFin); 
+
         this.fromDate = new NgbDate (fDate.getFullYear(),fDate.getMonth()+1,fDate.getDate());
         this.toDate = new NgbDate (tDate.getFullYear(),tDate.getMonth()+1,tDate.getDate());
-        //this.cleanDate();
+        //this.mostrarExistenciaCosto(this.semilla);
         this.modalRef = this.modalService.show(template, this.config);
       },
       error => this.toastr.error(error.message, 'Error!') );
     }
   }
-  mostrarMes(value: number): number
-  {
-    switch(value)
-    {
-      case 0 : return 12; break;
-      case 1 : return 1; break;
-      case 2 : return 2; break;
-      case 3 : return 3; break;
-      case 4 : return 4; break;
-      case 5 : return 5; break;
-      case 6 : return 6; break;
-      case 7 : return 7; break;
-      case 8 : return 8; break;
-      case 9 : return 9; break;
-      case 10 : return 10; break;
-      case 11 : return 11; break;
-    }
+  
+  getCiclos() {
+    this._siembraService.getCiclos()
+      .subscribe(
+        data => {
+          this.getCiclo = data;
+        },
+        error => this.toastr.error(error.message, 'Error!') );
+
+      
   }
-   mostrarToF(valor: boolean, op: number): string
+
+  getLotes() {
+    this._siembraService.getLotes()
+      .subscribe(
+        data => {
+          this.getLote = data;
+        },
+        error => this.toastr.error(error.message, 'Error!') );
+  }
+
+  getSemillas() {
+    this._siembraService.getSemillas()
+      .subscribe(
+        data => {
+          this.getSemilla = data;
+        },
+        error => this.toastr.error(error.message, 'Error!') );
+  }
+
+  mostrarToF(valor: boolean, op: number): string
     {
       var res = "";
       if(op == 1)
@@ -217,7 +245,7 @@ export class CicloComponent implements OnInit {
       }
       
     }
-
+    
     cerrar()
     {
       this.router.navigate(['/dashboard']);
