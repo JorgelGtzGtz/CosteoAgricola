@@ -294,6 +294,22 @@ namespace dbconnection
 		[Column] public string sem_obs { get; set; }
 	}
     
+	[TableName("hiram74_residencias.SIEMBRAS")]
+	[PrimaryKey("siembra_id")]
+	[ExplicitColumns]
+    public partial class SIEMBRA : dbconnectionDB.Record<SIEMBRA>  
+    {
+		[Column] public int siembra_id { get; set; }
+		[Column] public int? siembra_loteID { get; set; }
+		[Column] public int? siembra_semillaID { get; set; }
+		[Column] public int? siembra_cicloID { get; set; }
+		[Column] public string siembra_descripcion { get; set; }
+		[Column] public DateTime? siembra_fechaIni { get; set; }
+		[Column] public DateTime? siembra_fechaFin { get; set; }
+		[Column] public bool? siembra_status { get; set; }
+		[Column] public string siembra_obs { get; set; }
+	}
+    
 	[TableName("hiram74_residencias.TIPO_AGROQUIMICO")]
 	[PrimaryKey("tipoAgroq_id")]
 	[ExplicitColumns]

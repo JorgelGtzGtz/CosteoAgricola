@@ -79,7 +79,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of ciclos; let i=index;">
+                            <tr *ngFor="let item of ciclos | paginate: { itemsPerPage: 7, currentPage: pageActual }">
                                 <td>{{ item.ciclo_id }}</td>
                                 <td>{{ item.ciclo_descripcion}}</td>
                                 <td>{{ item.Fecha_inicio}}</td>
@@ -94,6 +94,7 @@
                         <tfoot>
                         </tfoot>
                     </table>
+                    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
                 </div>
                 <!-- /.box-body -->
             </div>

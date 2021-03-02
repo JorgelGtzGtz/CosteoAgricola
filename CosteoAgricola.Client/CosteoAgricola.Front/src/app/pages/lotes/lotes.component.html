@@ -87,7 +87,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of lotes; let i=index;">
+                            <tr *ngFor="let item of lotes| paginate: { itemsPerPage: 7, currentPage: pageActual }">
                                 <td>{{ item.lote_ID }}</td>
                                 <td>{{ item.lote_descripcion}}</td>
                                 <td>{{ item.lote_superficie}}</td>
@@ -101,6 +101,7 @@
                         <tfoot>
                         </tfoot>
                     </table>
+                    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
                 </div>
                 <!-- /.box-body -->
             </div>

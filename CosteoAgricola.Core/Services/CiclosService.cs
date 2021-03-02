@@ -15,7 +15,6 @@ namespace CosteoAgricola.Core.Services
         CICLO GetCiclo(string desc);
         List<CICLO> GetCiclos();
         List<dynamic> GetCiclosFiltro(string ciclo = null, string estatus = null);
-        List<dynamic> GetCiclosFechas(string id = null);
         bool InsertUpdateCiclo(CICLO ciclos, out string Message);
         bool EliminarCiclo(int id, out string Message);
     }
@@ -108,26 +107,6 @@ namespace CosteoAgricola.Core.Services
             return _ciclosRepository.GetByDynamicFilter(query);
         }
 
-        public List<dynamic> GetCiclosFechas(string id)
-        {
-            string filter = " Where ";
-            if (!string.IsNullOrEmpty(id))
-            {
-                filter += string.Format(" ciclo_id = '{0}'", id);
-            }
-
-            Sql query = new Sql(@" SELECT MONTH(ciclo_fechaIni) as MesFechaIni,
-		                            Day(ciclo_fechaIni) as DiaFechaIni,
-		                            year(ciclo_fechaIni) as AnoFechaIni,
-
-		                            MONTH(ciclo_fechaFin) as MesFechaFin,
-		                            Day(ciclo_fechaFin) as DiaFechaFin,
-		                            year(ciclo_fechaFin) as AnoFechaFin
-
-                                    from CICLOS "+ (!string.IsNullOrEmpty(id) ? filter : ""));
-
-            return _ciclosRepository.GetByDynamicFilter(query);
-        }
 
         public bool InsertUpdateCiclo(CICLO ciclos, out string Message)
         {

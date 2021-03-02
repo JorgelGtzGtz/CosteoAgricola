@@ -10,22 +10,23 @@ using System.Web.Http;
 
 namespace CosteoAgricola.Api.Controllers
 {
-    [RoutePrefix("api/Semillas")]
-    public class SemillasController : BaseApiController
+    [RoutePrefix("api/Siembras")]
+    public class SiembrasController : BaseApiController
     {
-        private readonly ISemillasService _semillasservice;
+        private readonly ISiembrasService _siembrasservice;
         private readonly IListaCombosService _listaCombosService;
 
-        public SemillasController(ISemillasService semillasservice, IListaCombosService listaCombosService)
+        public SiembrasController(ISiembrasService siembrasservice,
+                                  IListaCombosService listaCombosService
+                                  )
         {
-            _semillasservice = semillasservice;
+            _siembrasservice = siembrasservice;
             _listaCombosService = listaCombosService;
-
         }
 
         [HttpGet]
-        [Route("Lista/{semillas?}/{inventariable?}/{estatus?}")]
-        public async Task<HttpResponseMessage> GetSemillas(HttpRequestMessage request, string semillas, string inventariable, string estatus)
+        [Route("Lista/{descripcion?}/{ciclo?}/{estatus?}/{lote?}/{semilla?}")]
+        public async Task<HttpResponseMessage> GetSiembras(HttpRequestMessage request, string descripcion, string ciclo, string estatus, string lote, string semilla)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {
@@ -33,7 +34,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var item = _semillasservice.GetSemillasFiltro(semillas, inventariable, estatus);
+                    var item = _siembrasservice.GetSiembrasFiltro(descripcion, ciclo, estatus,lote,semilla);
                     response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)
@@ -50,7 +51,7 @@ namespace CosteoAgricola.Api.Controllers
             });
         }
 
-        [Route("GetSemilla/{id:int=0}/")]
+        [Route("GetSiembra/{id:int=0}/")]
         [HttpGet]
         public async Task<HttpResponseMessage> getSemilla(HttpRequestMessage request, int id)
         {
@@ -60,9 +61,9 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var semilla = _semillasservice.GetSemilla(id);
+                    var semilla = _siembrasservice.GetSiembra(id);
 
-                    response = request.CreateResponse(HttpStatusCode.OK,semilla);
+                    response = request.CreateResponse(HttpStatusCode.OK, semilla);
                 }
                 catch (Exception ex)
                 {
@@ -77,9 +78,10 @@ namespace CosteoAgricola.Api.Controllers
                 return await Task.FromResult(response);
             });
         }
+
         [HttpPost]
         [Route("Guardar")]
-        public async Task<HttpResponseMessage> Guardar(HttpRequestMessage request, SEMILLA model)
+        public async Task<HttpResponseMessage> Guardar(HttpRequestMessage request, SIEMBRA model)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {
@@ -87,7 +89,8 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var result = _semillasservice.InsertUpdateSemilla(model, out message);
+                    var result = _siembrasservice.InsertUpdateSiembra(model, out message);
+
                     if (result)
                     {
                         response = request.CreateResponse(HttpStatusCode.OK);
@@ -116,6 +119,7 @@ namespace CosteoAgricola.Api.Controllers
                 return await Task.FromResult(response);
             });
         }
+
         [HttpDelete]
         [Route("Eliminar/{id}")]
         public async Task<HttpResponseMessage> Eliminar(HttpRequestMessage request, int id)
@@ -126,7 +130,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var result = _semillasservice.EliminarSemilla(id, out message);
+                    var result = _siembrasservice.EliminarSiembra(id, out message);
                     if (result)
                     {
                         response = request.CreateResponse(HttpStatusCode.OK);
@@ -157,8 +161,8 @@ namespace CosteoAgricola.Api.Controllers
         }
 
         [HttpGet]
-        [Route("TiposMedidas")]
-        public async Task<HttpResponseMessage> GetTiposMedidas(HttpRequestMessage request)
+        [Route("GetCiclos")]
+        public async Task<HttpResponseMessage> GetCiclos(HttpRequestMessage request)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {
@@ -166,7 +170,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var item = _listaCombosService.GetTipoMedidas();
+                    var item = _listaCombosService.GetCiclos();
                     response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)
@@ -183,5 +187,58 @@ namespace CosteoAgricola.Api.Controllers
             });
         }
 
+        [HttpGet]
+        [Route("GetLotes")]
+        public async Task<HttpResponseMessage> GetLotes(HttpRequestMessage request)
+        {
+            return await CreateHttpResponseAsync(request, async () =>
+            {
+                HttpResponseMessage response = null;
+                string message = String.Empty;
+                try
+                {
+                    var item = _listaCombosService.GetLotes();
+                    response = request.CreateResponse(HttpStatusCode.OK, item);
+                }
+                catch (Exception ex)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest,
+                    new
+                    {
+                        error = "ERROR",
+                        message = ex.Message
+                    });
+                }
+
+                return await Task.FromResult(response);
+            });
+        }
+
+        [HttpGet]
+        [Route("GetSemillas")]
+        public async Task<HttpResponseMessage> GetSemillas(HttpRequestMessage request)
+        {
+            return await CreateHttpResponseAsync(request, async () =>
+            {
+                HttpResponseMessage response = null;
+                string message = String.Empty;
+                try
+                {
+                    var item = _listaCombosService.GetSemillas();
+                    response = request.CreateResponse(HttpStatusCode.OK, item);
+                }
+                catch (Exception ex)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest,
+                    new
+                    {
+                        error = "ERROR",
+                        message = ex.Message
+                    });
+                }
+
+                return await Task.FromResult(response);
+            });
+        }
     }
 }

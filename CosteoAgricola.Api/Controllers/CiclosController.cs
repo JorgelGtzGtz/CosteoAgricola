@@ -49,33 +49,6 @@ namespace CosteoAgricola.Api.Controllers
             });
         }
 
-        [HttpGet]
-        [Route("GetCiclosFechas/{id?}")]
-        public async Task<HttpResponseMessage> GetCiclosFechas(HttpRequestMessage request, string id)
-        {
-            return await CreateHttpResponseAsync(request, async () =>
-            {
-                HttpResponseMessage response = null;
-                string message = String.Empty;
-                try
-                {
-                    var item = _ciclosservice.GetCiclosFechas(id);
-                    response = request.CreateResponse(HttpStatusCode.OK, item);
-                }
-                catch (Exception ex)
-                {
-                    response = request.CreateResponse(HttpStatusCode.BadRequest,
-                    new
-                    {
-                        error = "ERROR",
-                        message = ex.Message
-                    });
-                }
-
-                return await Task.FromResult(response);
-            });
-        }
-
         [Route("GetCiclo/{id:int=0}/")]
         [HttpGet]
         public async Task<HttpResponseMessage> getCiclo(HttpRequestMessage request, int id)

@@ -8,7 +8,7 @@ import { UnidadesInsumosComponent } from './unidades-insumos/unidades-insumos/un
 import { LotesComponent } from './lotes/lotes.component';
 import { ProductosInsumosComponent } from './productos-insumos/productos-insumos.component';
 import { CicloComponent } from './ciclo/ciclo.component';
-
+import { SiembraComponent } from './siembra/siembra.component';
 
 const routes: Routes = [
   {
@@ -42,6 +42,10 @@ const routes: Routes = [
   {
     path: 'ciclos',
     component: CicloComponent
+  },
+  {
+    path: 'siembra',
+    component: SiembraComponent
   }
   
 ];

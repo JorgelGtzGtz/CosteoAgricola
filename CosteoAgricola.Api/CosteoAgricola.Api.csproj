@@ -181,6 +181,7 @@
     <Compile Include="Controllers\LotesController.cs" />
     <Compile Include="Controllers\Productos1Controller.cs" />
     <Compile Include="Controllers\SemillasController.cs" />
+    <Compile Include="Controllers\SiembrasController.cs" />
     <Compile Include="Controllers\TiposUsuarioController.cs" />
     <Compile Include="Controllers\UnidadesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
