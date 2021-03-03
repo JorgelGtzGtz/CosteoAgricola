@@ -7,24 +7,24 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+
+
 namespace CosteoAgricola.Api.Controllers
 {
-    [RoutePrefix("api/Fertilizantes")]
-    public class FertilizantesController : BaseApiController
+    [RoutePrefix("api/TiposAgroquimicos")]
+    public class TipoAgroquimicoController : BaseApiController
     {
-        private readonly IFertilizantesService _fertilizantesservice;
-        private readonly IListaCombosService _listaCombosService;
+        private readonly ITipoAgroquimicosService _tipoAgroservice;
 
-        public FertilizantesController(IFertilizantesService fertilizantesservice, IListaCombosService listaCombosService)
+        public TipoAgroquimicoController(ITipoAgroquimicosService tipoAgroservice)
         {
-            _fertilizantesservice = fertilizantesservice;
-            _listaCombosService = listaCombosService;
+            _tipoAgroservice = tipoAgroservice;
 
         }
 
         [HttpGet]
-        [Route("Lista/{descripcion?}/{estado?}/{estatus?}/{inventariable?}")]
-        public async Task<HttpResponseMessage> GetFertilizantes(HttpRequestMessage request, string descripcion, string estado, string estatus, string inventariable)
+        [Route("Lista/{nombre?}/{estatus?}")]
+        public async Task<HttpResponseMessage> GetTiposAgro(HttpRequestMessage request, string nombre, string estatus)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {
@@ -32,7 +32,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var item = _fertilizantesservice.GetFertilizantesFiltro(descripcion, estado, estatus, inventariable);
+                    var item = _tipoAgroservice.GetTipoAgroFiltro(nombre, estatus);
                     response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)
@@ -49,9 +49,9 @@ namespace CosteoAgricola.Api.Controllers
             });
         }
 
-        [Route("GetFertilizante/{id:int=0}/")]
+        [Route("GetTipoAgro/{id:int=0}/")]
         [HttpGet]
-        public async Task<HttpResponseMessage> getUnidad(HttpRequestMessage request, int id)
+        public async Task<HttpResponseMessage> getTipoAgro(HttpRequestMessage request, int id)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {
@@ -59,9 +59,9 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var fert = _fertilizantesservice.GetFertilizante(id);
+                    var tipo = _tipoAgroservice.GetTipoAgro(id);
 
-                    response = request.CreateResponse(HttpStatusCode.OK, fert);
+                    response = request.CreateResponse(HttpStatusCode.OK, tipo);
                 }
                 catch (Exception ex)
                 {
@@ -79,7 +79,7 @@ namespace CosteoAgricola.Api.Controllers
 
         [HttpPost]
         [Route("Guardar")]
-        public async Task<HttpResponseMessage> Guardar(HttpRequestMessage request, FERTILIZANTE model)
+        public async Task<HttpResponseMessage> Guardar(HttpRequestMessage request, TIPO_AGROQUIMICO model)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {
@@ -87,7 +87,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var result = _fertilizantesservice.InsertUpdateFertilizante(model, out message);
+                    var result = _tipoAgroservice.InsertUpdateTipoAgro(model, out message);
                     if (result)
                     {
                         response = request.CreateResponse(HttpStatusCode.OK);
@@ -116,6 +116,7 @@ namespace CosteoAgricola.Api.Controllers
                 return await Task.FromResult(response);
             });
         }
+
         [HttpDelete]
         [Route("Eliminar/{id}")]
         public async Task<HttpResponseMessage> Eliminar(HttpRequestMessage request, int id)
@@ -126,7 +127,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var result = _fertilizantesservice.EliminarFertilizante(id, out message);
+                    var result = _tipoAgroservice.EliminarTipoAgro(id, out message);
                     if (result)
                     {
                         response = request.CreateResponse(HttpStatusCode.OK);
@@ -141,33 +142,6 @@ namespace CosteoAgricola.Api.Controllers
                         });
                     }
 
-                }
-                catch (Exception ex)
-                {
-                    response = request.CreateResponse(HttpStatusCode.BadRequest,
-                    new
-                    {
-                        error = "ERROR",
-                        message = ex.Message
-                    });
-                }
-
-                return await Task.FromResult(response);
-            });
-        }
-
-        [HttpGet]
-        [Route("TiposUnidades")]
-        public async Task<HttpResponseMessage> GetTiposUnidades(HttpRequestMessage request)
-        {
-            return await CreateHttpResponseAsync(request, async () =>
-            {
-                HttpResponseMessage response = null;
-                string message = String.Empty;
-                try
-                {
-                    var item = _listaCombosService.GetTipoUnidades();
-                    response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)
                 {

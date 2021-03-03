@@ -14,6 +14,7 @@ import { Fertilizantes } from '../../models/Fertilizantes';
 export class FertilizantesService {
   private _url = `${AppSettings.API_ENDPOINT}/Fertilizantes`;
   private _getLista = `${this._url}/Lista`;
+  private _getTiposUnidades = `${this._url}/TiposUnidades`;
   private _getGetFertilizante = `${this._url}/GetFertilizante`;
   private _guardar = `${this._url}/Guardar`;
   private _eliminar = `${this._url}/Eliminar`;
@@ -41,7 +42,13 @@ export class FertilizantesService {
         catchError(this.handleError)
       );
   }
-
+  getTiposUnidades(): Observable<any[]> {
+    return this._http.get<any[]>(this._getTiposUnidades, { params: null, headers: this._userService.header})
+    .pipe(
+      tap(data => data),
+      catchError(this.handleError)
+    );
+  }
   guardar(_lote: any): Observable<Fertilizantes> {
     return this._http.post<Fertilizantes>(`${this._guardar}`, _lote, { headers: this._userService.header})
     .pipe(

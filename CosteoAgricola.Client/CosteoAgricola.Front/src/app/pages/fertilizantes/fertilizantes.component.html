@@ -172,6 +172,18 @@
 
             <div class="row">
                 <div class="col-6">
+                    <div class="form-group">
+                        <label class="font-weight-bold">Unidad</label>
+                        <ng-select name="unidad" [items]="tiposUnidades" [hideSelected]="true" bindLabel="unidad_desc" bindValue="unidad_id" [searchable]="true" placeholder="Seleccionar unidad..." [(ngModel)]="fertilizante.fert_unidad" #unidad="ngModel" [ngClass]="{'form-control-danger': unidad.invalid && (unidad.dirty || unidad.touched || userForm.submitted)}"
+                            required>
+                        </ng-select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-6">
                     <label>Composición</label>
                     <div class="row pl-4">
                         <div class="form-group">

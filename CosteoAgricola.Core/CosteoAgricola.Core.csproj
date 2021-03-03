@@ -74,6 +74,7 @@
     <Compile Include="Repository\ProductosRepository.cs" />
     <Compile Include="Repository\SemillasRepository.cs" />
     <Compile Include="Repository\SiembrasRepository.cs" />
+    <Compile Include="Repository\TiposAgroquimicosRepository.cs" />
     <Compile Include="Repository\TiposUnidadesRepository.cs" />
     <Compile Include="Repository\TipoUsuarioRepository.cs" />
     <Compile Include="Repository\UnidadesRepository.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Services\ProductosService.cs" />
     <Compile Include="Services\SemillasService.cs" />
     <Compile Include="Services\SiembrasService.cs" />
+    <Compile Include="Services\TipoAgroquimicosService.cs" />
     <Compile Include="Services\TipoUnidadesService.cs" />
     <Compile Include="Services\TipoUsuarioService.cs" />
     <Compile Include="Services\UnidadesService.cs" />
