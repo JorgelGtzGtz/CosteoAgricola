@@ -47,7 +47,22 @@
                 <ul class="treeview-menu">
                     <li routerLinkActive="active"><a [routerLink]="['/semillasInsumos']"><i class="fa fa-circle-o text-aqua"></i> Semillas</a></li>
                     <li routerLinkActive="active"><a [routerLink]="['/fertilizantes']"><i class="fa fa-circle-o text-aqua"></i> Fertilizantes</a></li>
-                    <li routerLinkActive="active"><a [routerLink]="['/agroquimicosInsumos']"><i class="fa fa-circle-o text-aqua"></i> Agroquímicos</a></li>
+
+                    <li routerLinkActive="active" class="treeview">
+                        <a href="javascript: void(1);">
+                            <i class="fa fa-circle-o text-aqua"></i> <span>Seccion Agroquímicos</span>
+                            <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li routerLinkActive="active"> <a [routerLink]="['/agroquimicosInsumos']"><i class="fa fa-circle-o text-aqua"></i> Agroquímicos</a></li>
+                            <li routerLinkActive="active"> <a [routerLink]="['/tipoAgroquimicos']"><i class="fa fa-circle-o text-aqua"></i> Tipo Agroquímicos</a></li>
+                            <li routerLinkActive="active"> <a [routerLink]="['/ingredientesActivos']"><i class="fa fa-circle-o text-aqua"></i> Ingredientes Activos</a></li>
+                        </ul>
+
+                    </li>
+
                     <li routerLinkActive="active"><a [routerLink]="['/productosInsumos']"><i class="fa fa-circle-o text-aqua"></i> Productos</a></li>
                     <li routerLinkActive="active"><a [routerLink]="['/unidadesInsumos']"><i class="fa fa-circle-o text-aqua"></i> Unidades</a></li>
                 </ul>

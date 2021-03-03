@@ -35,9 +35,10 @@ export class FertilizantesComponent implements OnInit {
   mostrarCosto = 0;
   nuevoItem = true;
 
+  tiposUnidades: any[] = [];
+
   estados = [{ID: 1, Nombre: 'Solido', Tipo: 1}, {ID: 2, Nombre: 'Liquido', Tipo: 2},
-  {ID: 3, Nombre: 'Gaseoso', Tipo: 3},
-  {ID: 4, Nombre: 'Coloide', Tipo: 4}];
+  {ID: 3, Nombre: 'Gaseoso', Tipo: 3}];
   
   constructor(private router: Router, private _userService: UsersService, private _fertilizantesService: FertilizantesService, 
     private modalService: BsModalService, private toastr: ToastrService) {
@@ -118,10 +119,11 @@ export class FertilizantesComponent implements OnInit {
       }
     });
   }
-
+  
   onShow(id: number, template: TemplateRef<any>) {
-    //this.getTiposMedidas();
+    this.getTiposUnidades();
     this.fertilizante = new Fertilizantes();
+
     if (id <= 0) {
       this.nuevoItem = true;
       this.modalRef = this.modalService.show(template, this.config);
@@ -138,6 +140,15 @@ export class FertilizantesComponent implements OnInit {
       error => this.toastr.error(error.message, 'Error!') );
     }
   }
+  
+  getTiposUnidades() {
+    this._fertilizantesService.getTiposUnidades()
+      .subscribe(
+        data => {
+          this.tiposUnidades = data;
+        },
+        error => this.toastr.error(error.message, 'Error!') );
+    }
 
   mostrarExistenciaCosto(valor)
   {
