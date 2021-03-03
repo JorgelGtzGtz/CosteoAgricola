@@ -1,0 +1,288 @@
+<section class="content-header">
+    <h1>
+        Fertilizantes
+        <small>módulo de registro y edición de fertilizantes</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a>Insumos</a></li>
+        <li class="active">Fertilizantes</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Lista de Fertilizantes</h3>
+                    <button type="button" class="close pull-right float-right" aria-label="Close" (click)="cerrar()"><i class="fa fa-times-circle fa-lg" style="color:rgb(207, 1, 1)"aria-hidden="true"></i></button>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <div>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" [(ngModel)]="nombreFilter" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-2 float-right">
+                            <div class="form-group">
+                                <label class="font-weight-bold">Estatus</label>
+                                <div class="form-group">
+                                    <div class="switch pull-right float-left">
+                                        <label>Inactivo
+                                 <input type="checkbox" checked="" [(ngModel)]=" fertStatus" [ngModelOptions]="{standalone: true}">
+                                 <span class="lever switch-col-light-blue"></span>Activo
+                                </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class=" col-2 float-right">
+                            <div class="form-group">
+                                <label class="font-weight-bold">Inventariable</label>
+                                <div class="form-group">
+                                    <div class="switch pull-right float-left">
+                                        <label>No
+                                     <input type="checkbox" checked="" [(ngModel)]=" fertIn" [ngModelOptions]="{standalone: true}">
+                                     <span class="lever switch-col-light-blue"></span>Si
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group text-right">
+                                <br>
+                                <button type="button" class="btn btn-success waves-effect waves-light m-r-5 m-t-5" (click)="onBuscar()"> <i class="fa fa-search "></i> <span> Buscar</span> </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="font-weight-bold"> Estado </label>
+                                <ng-select name="sucursal" [items]="estados" [hideSelected]="true" bindLabel="Nombre" bindValue="Tipo" [searchable]="true" placeholder="Seleccionar estado..." [(ngModel)]="estadoFert" #sucursal="ngModel" [ngClass]="{'form-control-danger': sucursal.invalid && (sucursal.dirty || sucursal.touched)}"
+                                    required>
+                                </ng-select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Nombre/Descripcion</th>
+                                <th>Estado</th>
+                                <th>Inventariable</th>
+                                <th>Estatus</th>
+                                <th>
+                                    <div class="row">
+                                        <div class="col mt-2">
+                                            Acciones
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-primary float-right waves-effect waves-light" (click)="onShow(0, template)"> <i class="fa fa-plus-circle m-r-5"></i> <span> Nuevo</span> </button>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of fertilizantes | paginate: { itemsPerPage: 7, currentPage: pageActual }">
+                                <td>{{ item.fert_id }}</td>
+                                <td>{{ item.fert_desc}}</td>
+                                <td>{{ mostrarEstado(item.fert_estado)}}</td>
+                                <td>{{ mostrarToF(item.fert_inventariable,1) }}</td>
+                                <td>{{ mostrarToF(item.fert_status,2) }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning btn-xs m-lg-1" (click)="onShow(item.fert_id, template)"><i class="fa fa-edit"></i> Editar</button>
+                                    <button type="button" class="btn btn-danger btn-xs m-lg-1" (click)="onDelete(item.fert_id)"><i class="fa fa-trash"></i> Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+
+<ng-template #template>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm, $event)" novalidate>
+        <div class="modal-header modal-info-custom">
+            <h4 class="modal-title pull-left">Fertilizantes</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <div class="form-group">
+                        <label>Folio</label>
+                        <input type="text" class="form-control" placeholder="Folio" [(ngModel)]="fertilizante.fert_id" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="switch pull-right">
+                        <label>Inactivo
+                      <input [disabled]="nuevoItem" type="checkbox" checked="" [(ngModel)]="fertilizante.fert_status" [ngModelOptions]="{standalone: true}"><span class="lever switch-col-light-blue"></span>Activo</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label>Nombre/Descripción <span class="text-danger">*</span></label>
+                        <input name="Nombre" #Nombre="ngModel" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="fertilizante.fert_desc" [ngClass]="{'form-control-danger': Nombre.invalid && (Nombre.dirty || Nombre.touched || (userForm.submitted && !userForm.valid)),
+                      'form-control-success': Nombre.valid && (Nombre.dirty || Nombre.touched)}" required>
+                    </div>
+                    <div *ngIf="Nombre.invalid && (Nombre.dirty || Nombre.touched || userForm.submitted)" class="w-100" style="margin-top: -10px; margin-bottom: 1rem">
+                        <span class="messages" *ngIf="Nombre.errors">
+                        <small class="text-danger error">Nombre/Descripción es requerido.</small>
+                      </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label>Composición</label>
+                    <div class="row pl-4">
+                        <div class="form-group">
+                            <label>Nitrógeno (N) </label>
+                            <input name="Nitrogeno" #Nitrogeno="ngModel" type="text" class="form-control" placeholder="%" [(ngModel)]="fertilizante.fert_N" [ngClass]="{'form-control-danger': Nitrogeno.invalid && (Nitrogeno.dirty || Nitrogeno.touched || (userForm.submitted && !userForm.valid)),
+                            'form-control-success':Nitrogeno.valid && (Nitrogeno.dirty || Nitrogeno.touched)}" required>
+                        </div>
+                    </div>
+                    <div class="row pl-4">
+                        <div class="form-group">
+                            <label>Potasio (K) </label>
+                            <input name="Potasio" #Potasio="ngModel" type="text" class="form-control" placeholder="%" [(ngModel)]="fertilizante.fert_K" [ngClass]="{'form-control-danger': Potasio.invalid && (Potasio.dirty || Potasio.touched || (userForm.submitted && !userForm.valid)),
+                          'form-control-success':Potasio.valid && (Potasio.dirty || Potasio.touched)}" required>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-6">
+                    <label></label>
+                    <div class="row pl-4">
+                        <div class="form-group">
+                            <label>Fósforo (P) </label>
+                            <input name="Fosforo" #Fosforo="ngModel" type="text" class="form-control" placeholder="%" [(ngModel)]="fertilizante.fert_P" [ngClass]="{'form-control-danger': Fosforo.invalid && (Fosforo.dirty || Fosforo.touched || (userForm.submitted && !userForm.valid)),
+                    'form-control-success':Fosforo.valid && (Fosforo.dirty || Fosforo.touched)}" required>
+                        </div>
+                    </div>
+                    <div class="row pl-4">
+                        <div class="form-group">
+                            <label>Azufre (S) </label>
+                            <input name="Azufre" #Azufre="ngModel" type="text" class="form-control" placeholder="%" [(ngModel)]="fertilizante.fert_S" [ngClass]="{'form-control-danger': Azufre.invalid && (Azufre.dirty || Azufre.touched || (userForm.submitted && !userForm.valid)),
+                  'form-control-success':Azufre.valid && (Azufre.dirty || Azufre.touched)}" required>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>Otros compuestos </label>
+                        <input name="Otros" #Otros="ngModel" type="text" class="form-control" placeholder="Otros..." [(ngModel)]="fertilizante.fert_otrasComp" [ngClass]="{'form-control-danger': Otros.invalid && (Otros.dirty || Otros.touched || (userForm.submitted && !userForm.valid)),
+                'form-control-success':Otros.valid && (Otros.dirty || Otros.touched)}" required>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>Función </label>
+                        <input name="Funcion" #Funcion="ngModel" type="text" class="form-control" placeholder="Función que cumple" [(ngModel)]="fertilizante.fert_funcion" [ngClass]="{'form-control-danger': Funcion.invalid && (Funcion.dirty || Funcion.touched || (userForm.submitted && !userForm.valid)),
+            'form-control-success':Funcion.valid && (Funcion.dirty || Funcion.touched)}" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="font-weight-bold"> Estado </label>
+                        <ng-select name="sucursal" [items]="estados" [hideSelected]="true" bindLabel="Nombre" bindValue="Tipo" [searchable]="true" placeholder="Seleccionar estado..." [(ngModel)]="fertilizante.fert_estado" #sucursal="ngModel" [ngClass]="{'form-control-danger': sucursal.invalid && (sucursal.dirty || sucursal.touched || userForm.submitted)}"
+                            required>
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class=" col-6 float-right">
+                    <div class="form-group">
+                        <label class="font-weight-bold">Inventariable</label>
+                        <div class="form-group">
+                            <div class="switch pull-right float-left">
+                                <label>No
+                           <input type="checkbox" checked="" [(ngModel)]="fertilizante.fert_inventariable" [ngModelOptions]="{standalone: true}">
+                           <span class="lever switch-col-light-blue"></span>Si
+                          </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>Existencia</label>
+                        <input type="text" class="form-control" [(ngModel)]="mostrarExistencia" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>Costo Promedio</label>
+                        <input type="text" class="form-control" [(ngModel)]="mostrarCosto" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>Observaciones</label>
+                        <input type="text" class="form-control" placeholder="Se capturan las observaciones " [(ngModel)]="fertilizante.fert_obs" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" (click)="modalRef.hide()">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+
+    </form>
+</ng-template>

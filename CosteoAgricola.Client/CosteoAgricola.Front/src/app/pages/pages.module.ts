@@ -25,6 +25,7 @@ import { ProductosInsumosComponent } from './productos-insumos/productos-insumos
 import { CicloComponent } from './ciclo/ciclo.component';
 import {NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SiembraComponent } from './siembra/siembra.component';
+import { FertilizantesComponent } from './fertilizantes/fertilizantes.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { SiembraComponent } from './siembra/siembra.component';
         LotesComponent,
         ProductosInsumosComponent,
         CicloComponent,
-        SiembraComponent
+        SiembraComponent,
+        FertilizantesComponent
         
     ],
     imports: [

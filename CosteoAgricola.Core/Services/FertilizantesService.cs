@@ -1,5 +1,6 @@
 ﻿using CosteoAgricola.Core.Repository;
 using dbconnection;
+using PetaPoco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace CosteoAgricola.Core.Services
         FERTILIZANTE GetFertilizante(int id);
         FERTILIZANTE GetFertilizante(string desc);
         List<FERTILIZANTE> GetFertilizantes();
-        // List<dynamic> GetUnidadesFiltro(string activo = null);
+        List<dynamic> GetFertilizantesFiltro(string descripcion = null, string estado = null, string estatus = null, string inventariable = null);
         bool InsertUpdateFertilizante(FERTILIZANTE fertilizantes, out string Message);
         bool EliminarFertilizante(int id, out string Message);
     }
@@ -62,21 +63,80 @@ namespace CosteoAgricola.Core.Services
             return _fertilizantesRepository.GetAll("FERTILIZANTES").ToList();
         }
 
-        /*
-        public List<dynamic> GetUnidadesFiltro(string activo = null)
+        public List<dynamic> GetFertilizantesFiltro(string descripcion = null, string estado = null, string estatus = null, string inventariable = null)
         {
-            string filter = " Where ";
+            var filter = "";
+            var filter2 = "";
+            var filter3 = "";
+            var filter4 = "";
 
-            if (!string.IsNullOrEmpty(activo))
+            ///CUANDO NO HAY NINGUN FILTRO SE MUESTRA TODO
+            if (string.IsNullOrEmpty(descripcion) && string.IsNullOrEmpty(estado)
+                && estatus.Equals("false") && inventariable.Equals("false"))
             {
-                filter += string.Format("p.sem_status like '%{0}%'", activo);
+                estatus = null;
+                inventariable = null;
             }
 
-            Sql query = new Sql(@"select p.*, pt.sem_desc as NombreSemilla from SEMILLAS p
-                                   on pt.sem_status = true" + (!string.IsNullOrEmpty(activo) ? filter : ""));
-            return _unidadesRepository.GetByDynamicFilter(query);
+            //CUANDO SOLO PONE LA DESCRIPCION (TOMA EL ESTATUS COMO FALSE)
+            if (!string.IsNullOrEmpty(descripcion))
+            {
+                filter += " Where " + string.Format(" p.fert_desc like '%{0}%' or p.fert_estado like '%{0}%' or p.fert_id like '%{0}%'", descripcion);
+            }
+
+            /// CUANDO TIENE DESCRIPCION Y UN CICLO SELECCIONADO
+            if (!string.IsNullOrEmpty(estado))
+            {
+                if (!filter.Contains("Where"))
+                {
+                    filter2 += " Where " + string.Format(" p.fert_estado = '{0}'", estado);
+                }
+                else
+                {
+                    filter2 += " and " + string.Format(" p.fert_estado = '{0}'", estado);
+                }
+            }
+
+            ///CUANDO SELECCIONA ESTATUS (POR DEFAULT ES FALSE)
+            if (!string.IsNullOrEmpty(estatus) && (estatus.Equals("true") || estatus.Equals("false")))
+            {
+                if (!filter.Contains("Where") && !filter2.Contains("Where"))
+                {
+                    filter3 += " Where " + string.Format(" p.fert_status = '{0}'", estatus);
+                }
+                else
+                {
+                    filter3 += " and " + string.Format(" p.fert_status = '{0}'", estatus);
+                }
+
+            }
+
+            ///CUANDO SELECCIONA INVENTARIABLE (POR DEFAULT ES FALSE)
+            if (!string.IsNullOrEmpty(inventariable) && (inventariable.Equals("true") || inventariable.Equals("false")))
+            {
+                if (!filter.Contains("Where") && !filter2.Contains("Where") && !filter3.Contains("Where"))
+                {
+                    filter4 += " Where " + string.Format(" p.fert_inventariables = '{0}'", inventariable);
+                }
+                else
+                {
+                    filter4 += " and " + string.Format(" p.fert_inventariable = '{0}'", inventariable);
+                }
+
+            }
+
+
+
+            Sql query = new Sql(@" SELECT * FROM FERTILIZANTES p "
+                                 + (!string.IsNullOrEmpty(descripcion) ? filter : "")
+                                 + (!string.IsNullOrEmpty(estado) ? filter2 : "")
+                                 + (!string.IsNullOrEmpty(estatus) ? filter3 : "")
+                                 + (!string.IsNullOrEmpty(inventariable) ? filter4 : ""));
+
+            return _fertilizantesRepository.GetByDynamicFilter(query);
         }
-        */
+
+        
         public bool InsertUpdateFertilizante(FERTILIZANTE fertilizantes, out string Message)
         {
             Message = string.Empty;

@@ -63,7 +63,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label class="font-weight-bold">Lote</label>
-                                <ng-select name="sucursal1" [items]="getLote" [hideSelected]="true" bindLabel="lote_descripcion" bindValue="lote_ID" [searchable]="true" placeholder="Seleccionar lote..." [(ngModel)]="siembraLoteFilter" #sucursal1="ngModel" [ngClass]="{'form-control-danger': sucursal1.invalid && (sucursal1.dirty || sucursal1.touched || userForm.submitted)}"
+                                <ng-select name="sucursal1" [items]="getLote" [hideSelected]="true" bindLabel="lote_descripcion" bindValue="lote_ID" [searchable]="true" placeholder="Seleccionar lote..." [(ngModel)]="siembraLoteFilter" #sucursal1="ngModel" [ngClass]="{'form-control-danger': sucursal1.invalid && (sucursal1.dirty || sucursal1.touched)}"
                                     required>
                                 </ng-select>
                             </div>
@@ -72,7 +72,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label class="font-weight-bold">Cultivo</label>
-                                <ng-select name="sucursal2" [items]="getSemilla" [hideSelected]="true" bindLabel="sem_desc" bindValue="sem_ID" [searchable]="true" placeholder="Seleccionar cultivo..." [(ngModel)]="siembraSemillaFilter" #sucursal2="ngModel" [ngClass]="{'form-control-danger': sucursal2.invalid && (sucursal2.dirty || sucursal2.touched || userForm.submitted)}"
+                                <ng-select name="sucursal2" [items]="getSemilla" [hideSelected]="true" bindLabel="sem_desc" bindValue="sem_ID" [searchable]="true" placeholder="Seleccionar cultivo..." [(ngModel)]="siembraSemillaFilter" #sucursal2="ngModel" [ngClass]="{'form-control-danger': sucursal2.invalid && (sucursal2.dirty || sucursal2.touched)}"
                                     required>
                                 </ng-select>
                             </div>
@@ -81,7 +81,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label class="font-weight-bold">Ciclo</label>
-                                <ng-select name="sucursal3" [items]="getCiclo" [hideSelected]="true" bindLabel="ciclo_descripcion" bindValue="ciclo_id" [searchable]="true" placeholder="Seleccionar ciclo..." [(ngModel)]="siembraCicloFilter" #sucursal3="ngModel" [ngClass]="{'form-control-danger': sucursal3.invalid && (sucursal3.dirty || sucursal3.touched || userForm.submitted)}"
+                                <ng-select name="sucursal3" [items]="getCiclo" [hideSelected]="true" bindLabel="ciclo_descripcion" bindValue="ciclo_id" [searchable]="true" placeholder="Seleccionar ciclo..." [(ngModel)]="siembraCicloFilter" #sucursal3="ngModel" [ngClass]="{'form-control-danger': sucursal3.invalid && (sucursal3.dirty || sucursal3.touched)}"
                                     required>
                                 </ng-select>
                             </div>

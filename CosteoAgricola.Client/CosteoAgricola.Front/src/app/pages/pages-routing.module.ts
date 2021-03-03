@@ -9,6 +9,7 @@ import { LotesComponent } from './lotes/lotes.component';
 import { ProductosInsumosComponent } from './productos-insumos/productos-insumos.component';
 import { CicloComponent } from './ciclo/ciclo.component';
 import { SiembraComponent } from './siembra/siembra.component';
+import { FertilizantesComponent } from './fertilizantes/fertilizantes.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'siembra',
     component: SiembraComponent
+  },
+  {
+    path: 'fertilizantes',
+    component: FertilizantesComponent
   }
   
 ];
