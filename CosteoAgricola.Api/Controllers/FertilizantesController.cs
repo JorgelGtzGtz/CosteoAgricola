@@ -21,8 +21,8 @@ namespace CosteoAgricola.Api.Controllers
         }
 
         [HttpGet]
-        [Route("Lista/")]
-        public async Task<HttpResponseMessage> GetFertilizantes(HttpRequestMessage request)
+        [Route("Lista/{descripcion?}/{estado?}/{estatus?}/{inventariable?}")]
+        public async Task<HttpResponseMessage> GetFertilizantes(HttpRequestMessage request, string descripcion, string estado, string estatus, string inventariable)
         {
             return await CreateHttpResponseAsync(request, async () =>
             {
@@ -30,7 +30,7 @@ namespace CosteoAgricola.Api.Controllers
                 string message = String.Empty;
                 try
                 {
-                    var item = _fertilizantesservice.GetFertilizantes();
+                    var item = _fertilizantesservice.GetFertilizantesFiltro(descripcion, estado, estatus, inventariable);
                     response = request.CreateResponse(HttpStatusCode.OK, item);
                 }
                 catch (Exception ex)
