@@ -26,6 +26,7 @@ import { CicloComponent } from './ciclo/ciclo.component';
 import {NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SiembraComponent } from './siembra/siembra.component';
 import { FertilizantesComponent } from './fertilizantes/fertilizantes.component';
+import { TipoAgroquimicoComponent } from './tipo-agroquimico/tipo-agroquimico.component';
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import { FertilizantesComponent } from './fertilizantes/fertilizantes.component'
         ProductosInsumosComponent,
         CicloComponent,
         SiembraComponent,
-        FertilizantesComponent
+        FertilizantesComponent,
+        TipoAgroquimicoComponent
         
     ],
     imports: [
