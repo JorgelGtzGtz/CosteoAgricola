@@ -46,6 +46,7 @@ namespace CosteoAgricola.Api.App_Start
             builder.RegisterType<CiclosRepository>().As<ICiclosRepository>().AsImplementedInterfaces();
             builder.RegisterType<SiembrasRepository>().As<ISiembrasRepository>().AsImplementedInterfaces();
             builder.RegisterType<TiposAgroquimicosRepository>().As<ITiposAgroquimicosRepository>().AsImplementedInterfaces();
+            builder.RegisterType<IngredientesActivosRepository>().As<IIngredientesActivosRepository>().AsImplementedInterfaces();
 
 
             builder.RegisterType<ListaCombosService>().As<IListaCombosService>().AsImplementedInterfaces();
@@ -61,6 +62,7 @@ namespace CosteoAgricola.Api.App_Start
             builder.RegisterType<CiclosService>().As<ICiclosService>().AsImplementedInterfaces();
             builder.RegisterType<SiembrasService>().As<ISiembrasService>().AsImplementedInterfaces();
             builder.RegisterType<TipoAgroquimicosService>().As<ITipoAgroquimicosService>().AsImplementedInterfaces();
+            builder.RegisterType<IngredientesActivosService>().As<IIngredientesActivosService>().AsImplementedInterfaces();
 
 
 
