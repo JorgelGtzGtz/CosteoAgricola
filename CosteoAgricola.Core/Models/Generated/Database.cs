@@ -232,6 +232,7 @@ namespace dbconnection
 		[Column] public string ingredAct_desc { get; set; }
 		[Column] public int? unidad_ID { get; set; }
 		[Column] public bool? ingredAct_status { get; set; }
+		[Column] public string ingredAct_obs { get; set; }
 	}
     
 	[TableName("hiram74_residencias.LOTES")]

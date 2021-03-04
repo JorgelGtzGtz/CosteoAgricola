@@ -70,6 +70,7 @@
     <Compile Include="Repository\AgroquimicosRepository.cs" />
     <Compile Include="Repository\CiclosRepository.cs" />
     <Compile Include="Repository\FertilizantesRepository.cs" />
+    <Compile Include="Repository\IngredientesActivosRepository.cs" />
     <Compile Include="Repository\LotesRepository.cs" />
     <Compile Include="Repository\ProductosRepository.cs" />
     <Compile Include="Repository\SemillasRepository.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Services\AgroquimicoService.cs" />
     <Compile Include="Services\CiclosService.cs" />
     <Compile Include="Services\FertilizantesService.cs" />
+    <Compile Include="Services\IngredientesActivosService.cs" />
     <Compile Include="Services\ListaCombosService.cs" />
     <Compile Include="Services\LotesService.cs" />
     <Compile Include="Services\ProductosService.cs" />

@@ -10,7 +10,8 @@ import { ProductosInsumosComponent } from './productos-insumos/productos-insumos
 import { CicloComponent } from './ciclo/ciclo.component';
 import { SiembraComponent } from './siembra/siembra.component';
 import { FertilizantesComponent } from './fertilizantes/fertilizantes.component';
-import { TipoAgroquimicoComponent } from './tipo-agroquimico/tipo-agroquimico.component';
+import { TipoAgroquimicoComponent } from '././tipo-agroquimico/tipo-agroquimico.component';
+import { IngredientesActivosComponent } from './ingredientes-activos/ingredientes-activos.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'tipoAgroquimico',
     component: TipoAgroquimicoComponent
+  },
+  {
+    path: 'ingredientesActivos',
+    component: IngredientesActivosComponent
   }
   
 ];

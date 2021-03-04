@@ -178,6 +178,7 @@
     <Compile Include="Controllers\FertilizantesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\IngredientesActivosController.cs" />
     <Compile Include="Controllers\LotesController.cs" />
     <Compile Include="Controllers\Productos1Controller.cs" />
     <Compile Include="Controllers\SemillasController.cs" />
