@@ -10,6 +10,8 @@ import { ProductosInsumosComponent } from './productos-insumos/productos-insumos
 import { CicloComponent } from './ciclo/ciclo.component';
 import { SiembraComponent } from './siembra/siembra.component';
 import { FertilizantesComponent } from './fertilizantes/fertilizantes.component';
+import { TipoAgroquimicoComponent } from './tipo-agroquimico/tipo-agroquimico.component';
+
 
 const routes: Routes = [
   {
@@ -51,6 +53,10 @@ const routes: Routes = [
   {
     path: 'fertilizantes',
     component: FertilizantesComponent
+  },
+  {
+    path: 'tipoAgroquimico',
+    component: TipoAgroquimicoComponent
   }
   
 ];
